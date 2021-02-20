@@ -83,18 +83,18 @@
 			<!-- 내용 -->
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
-					<h4 style="display: inline;">문제 등록</h4>
-					<span style="float:right; margin-right:5%;">최대 문제 수 : 15<br>현재 문제 수 : <span class="quizCnt">0</span></span>
+					<h4 style="display: inline;">문제 수정</h4>
+					<span style="float:right; margin-right:5%;">최대 문제 수 : 15<br>현재 문제 수 : <span class="quizCnt">${quizList.size() }</span></span>
 					<div class="row" style="margin-top:20px;">
 					  	<div class="col-sm-1" style="text-align: center;margin-top: 5px;font-size: 1.2em;">제목</div>
 					  	<div class="col-sm-9">
-							<input type="text" class="form-control" id="title">
+							<input type="text" class="form-control" id="title" value="${quizList.get(0).quizTitle }">
 					  	</div>
 					</div>
 					<div class="row" style="margin-top:20px;">
 					  	<div class="col-sm-1" style="text-align: center;margin-top: 5px;font-size: 1.2em;">작성자</div>
 					  	<div class="col-sm-2">
-							<input type="text" class="form-control" style="background-color: white;" id="writer" readonly="readonly" value="${sessionScope.loginUser.memId }">
+							<input type="text" class="form-control" style="background-color: white;" id="writer" readonly="readonly" value="${quizList.get(0).memId }">
 					  	</div>
 					</div>
 				</div>
@@ -104,8 +104,9 @@
 				</div>
 				<button class="btn btn-primary" type="button" onclick="addQuiz();">문제 추가하기</button>
 				<button class="btn btn-danger removeBtn" type="button" style="display:none;" onclick="removeQuiz();">문제 삭제</button>
-				<button class="btn btn-primary" type="button" onclick="insertQuiz();" style="float: right;">등록</button>
-				<button class="btn btn-primary" type="button" onclick="javascript:alert('저장버튼클릭');" style="float: right; margin-right:10px;">저장</button>
+				<button class="btn btn-danger" type="button" onclick="history.go(-1);" style="float:right;">취소</button>
+				<button class="btn btn-primary" type="button" onclick="insertQuiz();" style="float:right;margin-right:10px;">수정</button>
+				<button class="btn btn-primary" type="button" onclick="javascript:alert('저장버튼클릭');" style="float:right;margin-right:10px;">저장</button>
 			</div>
 			
 		</div>
