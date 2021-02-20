@@ -22,10 +22,22 @@
       <param-value>UTF-8</param-value>
     </init-param>
   </filter>
-
   <filter-mapping>
     <filter-name>CharterEncoding</filter-name>
     <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <filter>
+	<filter-name>loginCheckFilter</filter-name>
+	<filter-class>kr.or.ddit.common.util.LoginCheckFilter</filter-class>
+	<init-param>
+		<param-name>exclude</param-name>
+		<param-value>common,res</param-value>
+	</init-param>
+  </filter>
+  <filter-mapping>
+	<filter-name>loginCheckFilter</filter-name>
+	<url-pattern>/*</url-pattern>
   </filter-mapping>
   
 </web-app>

@@ -6,8 +6,8 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import kr.or.ddit.common.JsonResolver;
 import kr.or.ddit.common.handler.CommandHandler;
+import kr.or.ddit.common.util.JsonResolver;
 import kr.or.ddit.quiz.service.IQuizService;
 import kr.or.ddit.quiz.service.QuizServiceImpl;
 import kr.or.ddit.quiz.vo.SubjectVO;

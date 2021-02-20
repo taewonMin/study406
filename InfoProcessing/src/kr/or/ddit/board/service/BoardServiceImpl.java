@@ -8,7 +8,7 @@ import com.ibatis.sqlmap.client.SqlMapClient;
 import kr.or.ddit.board.dao.BoardDAOImpl;
 import kr.or.ddit.board.dao.IBoardDAO;
 import kr.or.ddit.board.vo.BoardVO;
-import kr.or.ddit.common.SqlMapClientFactory;
+import kr.or.ddit.common.util.SqlMapClientFactory;
 
 public class BoardServiceImpl implements IBoardService{
 	

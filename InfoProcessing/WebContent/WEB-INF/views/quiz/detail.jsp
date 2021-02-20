@@ -124,8 +124,8 @@
 					}
 					%>
 				</div>
-				<button class="btn btn-danger" type="button" onclick="remove_go();" style="float: right;">삭제</button>
-				<button class="btn btn-primary" type="button" onclick="alert('수정버튼클릭');" style="float: right; margin-right:10px;">수정</button>
+				<button class="btn btn-danger" type="button" onclick="remove_go();" style="float:right;display:none;">삭제</button>
+				<button class="btn btn-primary" type="button" onclick="alert('수정버튼클릭');" style="float:right;margin-right:10px;display:none;">수정</button>
 			</div>
 			
 		</div>
@@ -149,6 +149,10 @@
 </script>
 
 <script type="text/javascript">
+var memId = ${sessionScope.loginUser.memId};
+
+alert(memId);
+
 function openAnswer(obj){
 	if($(obj).text()=="정답보기"){
 		$('textarea.'+$(obj).attr("class")).css("display","block");

@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
-import kr.or.ddit.common.SqlMapClientFactory;
+import kr.or.ddit.common.util.SqlMapClientFactory;
 import kr.or.ddit.member.dao.IMemberDao;
 import kr.or.ddit.member.dao.MemberDaoImpl;
 import kr.or.ddit.member.vo.MemberVO;
