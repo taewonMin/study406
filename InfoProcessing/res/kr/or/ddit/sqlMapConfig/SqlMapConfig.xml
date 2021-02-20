@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE sqlMapConfig
+    PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+<sqlMapConfig>
+
+	<properties resource="kr/or/ddit/sqlMapConfig/SqlMapConfig.properties" />
+
+	<settings cacheModelsEnabled="true" enhancementEnabled="true"
+		lazyLoadingEnabled="true" maxRequests="32" maxSessions="10"
+		maxTransactions="5" useStatementNamespaces="true" />
+		
+		
+	<typeAlias alias="int" type="java.lang.Integer"/>
+	<typeAlias alias="str" type="java.lang.String"/>
+	<typeAlias alias="board" type="kr.or.ddit.board.vo.BoardVO"/>
+	<typeAlias alias="member" type="kr.or.ddit.member.vo.MemberVO"/>
+	<typeAlias alias="subject" type="kr.or.ddit.quiz.vo.SubjectVO"/>
+	<typeAlias alias="quiz" type="kr.or.ddit.quiz.vo.QuizVO"/>
+	
+	<transactionManager type="JDBC">
+		<dataSource type="SIMPLE">
+			<property name="JDBC.Driver" value="${driver}" />
+			<property name="JDBC.ConnectionURL" value="${url}" />
+			<property name="JDBC.Username" value="${username}" />
+			<property name="JDBC.Password" value="${password}" />
+			<property name="Pool.MaximumActiveConnections" value="2"/>
+			<property name="Pool.MaximumIdleConnections" value="3"/>
+		</dataSource>
+	</transactionManager>
+	
+	<sqlMap resource="kr/or/ddit/sqlMap/board.xml"/>
+	<sqlMap resource="kr/or/ddit/sqlMap/member.xml"/>
+	<sqlMap resource="kr/or/ddit/sqlMap/quiz.xml"/>
+
+</sqlMapConfig>

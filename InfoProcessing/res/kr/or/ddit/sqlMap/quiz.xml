@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+			PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="quiz">
+
+	<select id="getSubject" resultClass="subject">
+		select sub_no as subNo
+				,sub_parent_code as subParentCode
+				,sub_parent_name as subParentName
+				,sub_code as subCode
+				,sub_name as subName
+				,sub_descript as subDescript
+		from subject
+		where sub_parent_code = #subParentCode#
+	</select>
+	
+	<select id="createQuizId" resultClass="int">
+		select ifnull(max(quiz_id)+1,1)
+		from quiz
+	</select>
+	
+	<select id="createQuizGroupValue" resultClass="int">
+		select ifnull(max(quiz_group)+1,1)
+		from quiz
+	</select>
+	
+	<select id="selectQuizGroupList" resultClass="quiz">
+		select quiz_group as quizGroup,
+				 quiz_title as quizTitle,
+				 quiz_regdate as quizRegdate,
+				 quiz_viewcnt as quizViewcnt,
+				 mem_id
+		from quiz
+		group by quiz_group
+		order by quiz_group desc
+	</select>
+	
+	<select id="selectQuizList" resultClass="quiz">
+		select * 
+			,(select sub_parent_name from subject where sub_no = A.subNo) as subParentName
+			,(select sub_name from subject where sub_no = A.subNo) as subName
+		from (select quiz_group as quizGroup,
+			   quiz_no as quizNo,
+			   quiz_title as quizTitle,
+			   quiz_prob as quizProb,
+			   quiz_answer as quizAnswer,
+			   mem_id as memId,
+			   sub_no as subNo,
+			   quiz_regdate as quizRegdate,
+			   quiz_viewcnt as quizViewcnt,
+			   quiz_tag as quizTag
+		from quiz 
+		where quiz_group=#quizGroup#) A
+	</select>
+	
+	<insert id="insertQuiz">
+		insert into quiz
+		values(#quizId#,#quizGroup#,#quizNo#,#quizTitle#,#quizProb#,#quizAnswer#,#memId#,#subNo#,now(),0,#quizTag#)
+	</insert>
+	
+	<update id="updateQuizViewcnt">
+		update quiz
+		set quiz_viewcnt = quiz_viewcnt+1
+		where quiz_group = #quizGroup#
+	</update>
+	
+	<delete id="deleteQuiz">
+		delete from quiz
+		where quiz_group = #quizGroup#
+	</delete>
+</sqlMap>
