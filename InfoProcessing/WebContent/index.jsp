@@ -1,3 +1,3 @@
 <script>
-	location.href='<%= request.getContextPath()%>/main.do';
+	location.href='<%= request.getContextPath()%>/common/loginForm.do';
 </script>
