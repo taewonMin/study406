@@ -1,7 +1,7 @@
 setBoardMenu();
 
 function getContextPath(){
-	return "/InfoPro";
+	return "/InfoProcessing";
 }
 
 function setBoardMenu(){
