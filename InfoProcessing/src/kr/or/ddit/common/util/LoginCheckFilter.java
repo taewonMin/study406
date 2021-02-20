@@ -52,9 +52,8 @@ public class LoginCheckFilter implements Filter {
 			out.println("<script>");
 			out.println("alert('로그인은 필수입니다.');");
 			out.println("if(window.opener){window.close();window.opener.parent.location.href='"
-						+httpReq.getContextPath()
-						+"/';}else{");
-			out.println("window.parent.location.href='"+httpReq.getContextPath()+"/';");
+						+httpReq.getContextPath()+"/common/loginForm.do';}else{");
+			out.println("window.parent.location.href='"+httpReq.getContextPath()+"/common/loginForm.do';");
 			out.println("}");
 			out.println("</script>");
 			

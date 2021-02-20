@@ -87,7 +87,7 @@
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
 					<h4 style="display: inline;"><%=quizList.get(0).getQuizTitle() %></h4>
-					<span><%=quizList.get(0).getMemId() %></span>
+					<span id="writer"><%=quizList.get(0).getMemId() %></span>
 				</div>
 				<hr>
 				<div class="prob-body">
@@ -124,8 +124,8 @@
 					}
 					%>
 				</div>
-				<button class="btn btn-danger" type="button" onclick="remove_go();" style="float:right;display:none;">삭제</button>
-				<button class="btn btn-primary" type="button" onclick="alert('수정버튼클릭');" style="float:right;margin-right:10px;display:none;">수정</button>
+				<button class="btn btn-danger myBtn" type="button" onclick="remove_go();" style="float:right;display:none;">삭제</button>
+				<button class="btn btn-primary myBtn" type="button" onclick="alert('수정버튼클릭');" style="float:right;margin-right:10px;display:none;">수정</button>
 			</div>
 			
 		</div>
@@ -149,9 +149,11 @@
 </script>
 
 <script type="text/javascript">
-var memId = ${sessionScope.loginUser.memId};
+var memId = '${sessionScope.loginUser.memId}';
 
-alert(memId);
+if(memId==$('span#writer').text()){
+	$('button.myBtn').css('display','block');
+}
 
 function openAnswer(obj){
 	if($(obj).text()=="정답보기"){
