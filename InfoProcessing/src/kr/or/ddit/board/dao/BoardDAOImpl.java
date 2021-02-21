@@ -28,19 +28,18 @@ public class BoardDAOImpl implements IBoardDAO{
 
 	@Override
 	public List<BoardVO> selectBoardList(SqlMapClient smc, SearchPagingVO paging) throws SQLException {
-		
-		List<BoardVO> boardList = smc.queryForList("",paging);
-		
+		List<BoardVO> boardList = smc.queryForList("board.selectBoardList",paging);
 		return boardList;
 	}
 	@Override
 	public void insertBoard(SqlMapClient smc, BoardVO board) throws SQLException {
-		smc.insert("", board);
+		smc.insert("board.inserBoard", board);
 	}
+	
 	@Override
 	public int getBoardListCnt(SqlMapClient smc, SearchPagingVO paging) throws SQLException {
 		
-		int cnt = Integer.parseInt((String)smc.queryForObject("",paging));
+		int cnt = Integer.parseInt(smc.queryForObject("board.getBoardListCnt",paging)+"");
 		
 		return cnt;
 	}

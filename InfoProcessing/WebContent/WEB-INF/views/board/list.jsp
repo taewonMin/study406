@@ -1,21 +1,18 @@
 <%@page import="kr.or.ddit.board.vo.BoardVO"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	List<BoardVO> boardList = (List<BoardVO>)request.getAttribute("boardList");
+%>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
 <title>정보처리기사 실기</title>
-
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
-
 <!-- Bootstrap core CSS -->
 <link href="<%= request.getContextPath() %>/res/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/res/template/css/simple-sidebar.css" rel="stylesheet">
 <style type="text/css">
@@ -102,16 +99,24 @@ li.quizItem:hover {
 							</div>	
 						</form>					
 					</div>
+					<button class="btn btn-warning" style="float: right;" onclick="location.href = 'insert.do?boardGroup=${param.boardGroup}'">글등록</button>
 				</div>
 				<hr>
 				<div>
 					<ul class="list-group" style="clear:both;" id="boardList">
-						<%List<BoardVO> boardList = (List<BoardVO>)request.getAttribute("boardList");
+						<%
 							for(BoardVO board : boardList){
 								pageContext.setAttribute("board", board);
 						%>
-						
-						
+						<li class="list-group-item quizItem" onclick="location.href='detail.do?boardNo=${board.boardNo}';">
+							<span style="font-weight: bold;">${board.boardTitle}</span>
+							<div style="display: block; font-size: x-small;">
+								<span>${board.memId}</span>
+								<span>${board.boardDate}</span>
+								<span>조회수${board.boardCnt}</span>
+								<span style="float: right">...</span>
+							</div>
+						</li>
 					
 						<%}%>
 					</ul>
