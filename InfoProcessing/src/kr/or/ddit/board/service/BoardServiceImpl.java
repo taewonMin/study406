@@ -9,6 +9,7 @@ import kr.or.ddit.board.dao.BoardDAOImpl;
 import kr.or.ddit.board.dao.IBoardDAO;
 import kr.or.ddit.board.vo.BoardVO;
 import kr.or.ddit.common.util.SqlMapClientFactory;
+import kr.or.ddit.common.vo.SearchPagingVO;
 
 public class BoardServiceImpl implements IBoardService{
 	
@@ -29,9 +30,22 @@ public class BoardServiceImpl implements IBoardService{
 	}
 
 	@Override
-	public List<BoardVO> getBoardGroupList(int boardGroup) throws SQLException {
-		List<BoardVO> boardList = boardDao.selectBoardList(smc, boardGroup);
+	public List<BoardVO> getBoardGroupList(SearchPagingVO paging) throws SQLException {
+		List<BoardVO> boardList = boardDao.selectBoardList(smc, paging);
 		return boardList;
+	}
+
+	@Override
+	public void insertBoard(BoardVO board) throws SQLException {
+		boardDao.insertBoard(smc,board);
+	}
+
+	@Override
+	public int getBoardListCnt(SearchPagingVO paging) throws SQLException {
+		
+		int cnt = boardDao.getBoardListCnt(smc, paging);
+		
+		return cnt;
 	}
 
 

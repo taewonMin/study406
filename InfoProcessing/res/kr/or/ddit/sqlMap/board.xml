@@ -4,5 +4,42 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="board">
-
+	<select id="selectBoardList" resultClass="board">
+		 select *
+		   from
+				 (select A.* ,
+				 		rownum as rnum
+				   from
+						(select * 
+						  from board
+						 where 1=1
+						   and board_group = #boardGroup#
+						<isNotEmpty property="searchType">
+							<isNotEmpty property="keyword">
+						   and #searchType# like '%' || #keyword# || '%' 
+							</isNotEmpty>
+						</isNotEmpty>
+						 order by board_no desc) A
+				    )
+		   where rnum between #firstRecNo# and #lastRecNo#
+	</select>
+	
+	<select id="getBoardListCnt" resultClass="int">
+		select count(*)
+		  from board
+		 where 1=1
+		   and board_group = #boardGroup#
+		<isNotEmpty property="searchType">
+			<isNotEmpty property="keyword">
+		   and #searchType# like '%' || #keyword# || '%' 
+			</isNotEmpty>
+		</isNotEmpty>
+	
+	</select>
+	
+	<insert id="inserBoard">
+		INSERT INTO BOARD(board_no,board_group,board_title,board_content,board_date,mem_id)
+		VALUSE(board_seq.nextval,#boardGroup#,#boardTitle#,#boardContent#,SYSDATE,#memId#)
+	</insert>
+	
 </sqlMap>

@@ -9,7 +9,14 @@ public class BoardVO {
 	private int boardCnt; // 조회 수
 	private String boardGroup;
 	private String memId;	// 작성자
+	private String boardContent;
 	
+	public String getBoardContent() {
+		return boardContent;
+	}
+	public void setBoardContent(String boardContent) {
+		this.boardContent = boardContent;
+	}
 	public int getBoardNo() {
 		return boardNo;
 	}

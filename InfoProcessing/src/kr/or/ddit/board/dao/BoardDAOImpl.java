@@ -10,6 +10,7 @@ import java.util.Map;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.board.vo.BoardVO;
+import kr.or.ddit.common.vo.SearchPagingVO;
 import kr.or.ddit.quiz.dao.IQuizDAO;
 import kr.or.ddit.quiz.dao.QuizDAOImpl;
 
@@ -26,9 +27,22 @@ public class BoardDAOImpl implements IBoardDAO{
 	}
 
 	@Override
-	public List<BoardVO> selectBoardList(SqlMapClient smc, int boardGroup) throws SQLException {
-		List<BoardVO> boardList = smc.queryForList("");
+	public List<BoardVO> selectBoardList(SqlMapClient smc, SearchPagingVO paging) throws SQLException {
+		
+		List<BoardVO> boardList = smc.queryForList("",paging);
+		
 		return boardList;
+	}
+	@Override
+	public void insertBoard(SqlMapClient smc, BoardVO board) throws SQLException {
+		smc.insert("", board);
+	}
+	@Override
+	public int getBoardListCnt(SqlMapClient smc, SearchPagingVO paging) throws SQLException {
+		
+		int cnt = Integer.parseInt((String)smc.queryForObject("",paging));
+		
+		return cnt;
 	}
 
 }

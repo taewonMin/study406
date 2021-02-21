@@ -1,8 +1,6 @@
 package kr.or.ddit.board.handler;
 
-import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import kr.or.ddit.board.service.BoardServiceImpl;
 import kr.or.ddit.board.service.IBoardService;
 import kr.or.ddit.board.vo.BoardVO;
-import kr.or.ddit.command.SearchCriteria;
 import kr.or.ddit.common.handler.CommandHandler;
+import kr.or.ddit.common.vo.SearchPagingVO;
 
 
 public class BoardListHandler implements CommandHandler{
@@ -26,16 +24,21 @@ public class BoardListHandler implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String url = "/WEB-INF/views/board/list.jsp";
-		
-		SearchCriteria cri = new SearchCriteria();
-		cri.setKeyword(request.getParameter("keyword"));
-		cri.setPage(request.getParameter("page"));
-		cri.setPerPageNum(request.getParameter("perPageNum"));
-		cri.setSearchType(request.getParameter("searchType"));
+		int pageNo = request.getParameter("pageNo") == null ? 1 : Integer.parseInt(request.getParameter("pageNo"));
 		String boardGroup = request.getParameter("boardGroup");
+		String searchType = request.getParameter("searchType");
+		String keyword =request.getParameter("keyword");
 		
-		List<BoardVO> boardList = Collections.EMPTY_LIST;
+		SearchPagingVO paging = new SearchPagingVO();
+		paging.setBoardGroup(boardGroup);
+		paging.setCurrentPageNo(pageNo);
+		paging.setSearchType(searchType);
+		paging.setKeyword(keyword);
+		paging.setTotalCount(boardService.getBoardListCnt(paging));
 		
+		boardService.getBoardGroupList(paging);
+		
+		List<BoardVO> boardList = boardService.getBoardGroupList(paging);
 		request.setAttribute("boardList", boardList);
 		
 		return url;

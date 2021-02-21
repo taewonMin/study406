@@ -6,10 +6,15 @@ import java.util.List;
 import com.ibatis.sqlmap.client.SqlMapClient;
 
 import kr.or.ddit.board.vo.BoardVO;
+import kr.or.ddit.common.vo.SearchPagingVO;
 
 public interface IBoardDAO {
 
-	public List<BoardVO> selectBoardList(SqlMapClient smc, int boardGroup) throws SQLException;
+	public List<BoardVO> selectBoardList(SqlMapClient smc, SearchPagingVO paging) throws SQLException;
+
+	public void insertBoard(SqlMapClient smc, BoardVO board) throws SQLException;
+
+	public int getBoardListCnt(SqlMapClient smc, SearchPagingVO paging) throws SQLException;
 
 	
 }
