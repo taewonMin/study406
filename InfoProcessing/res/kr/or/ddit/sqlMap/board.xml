@@ -39,12 +39,15 @@
 		   and #searchType# like '%' || #keyword# || '%' 
 			</isNotEmpty>
 		</isNotEmpty>
-	
+	</select>
+
+	<select id="getBoardNextNo" resultClass="int">
+		select max(board_no) from board
 	</select>
 	
 	<insert id="inserBoard">
 		INSERT INTO BOARD(board_no,board_group,board_title,board_content,board_date,mem_id)
-		VALUSE( NVL((select max(board_no) from board),-1)+1  ,#boardGroup#,#boardTitle#,#boardContent#,SYSDATE,#memId#)
+		VALUES(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#)
 	</insert>
 	
 </sqlMap>

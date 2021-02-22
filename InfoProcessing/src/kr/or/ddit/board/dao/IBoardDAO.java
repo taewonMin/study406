@@ -16,5 +16,7 @@ public interface IBoardDAO {
 
 	public int getBoardListCnt(SqlMapClient smc, SearchPagingVO paging) throws SQLException;
 
+	public int getBoardNextNo(SqlMapClient smc) throws SQLException;
+
 	
 }

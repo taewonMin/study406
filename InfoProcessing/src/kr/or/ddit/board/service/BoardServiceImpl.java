@@ -37,14 +37,14 @@ public class BoardServiceImpl implements IBoardService{
 
 	@Override
 	public void insertBoard(BoardVO board) throws SQLException {
+		int boardNo = boardDao.getBoardNextNo(smc);
+		board.setBoardNo(boardNo);
 		boardDao.insertBoard(smc,board);
 	}
 
 	@Override
 	public int getBoardListCnt(SearchPagingVO paging) throws SQLException {
-		
 		int cnt = boardDao.getBoardListCnt(smc, paging);
-		
 		return cnt;
 	}
 
