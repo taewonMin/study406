@@ -18,5 +18,7 @@ public interface IBoardDAO {
 
 	public int getBoardNextNo(SqlMapClient smc) throws SQLException;
 
+	public BoardVO getBoard(SqlMapClient smc, int boardNo)  throws SQLException;
+
 	
 }

@@ -50,4 +50,9 @@
 		VALUES(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#)
 	</insert>
 	
+	<select id="getBoard" resultMap="boardMap">
+		select * from board 
+		 where board_no = #boardNo#
+	</select>
+	
 </sqlMap>

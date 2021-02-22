@@ -23,12 +23,12 @@ public class BoardInsertHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
-		String url = "/views/board/list.do";
+		String boardGroup = req.getParameter("boardGroup");
+		String url = req.getContextPath()+"/board/list.do?boardGroup="+boardGroup;
 		
 		if(req.getMethod().equals("GET")) {
 			url = "/WEB-INF/views/board/registForm.jsp";
 		}else {
-			String boardGroup = req.getParameter("boardGroup");
 			String boardTitle = req.getParameter("boardTitle");
 			String memId = req.getParameter("memId");
 			String boardContent = req.getParameter("boardContent");

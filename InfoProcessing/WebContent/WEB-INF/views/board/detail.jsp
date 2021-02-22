@@ -1,162 +1,117 @@
+<%@page import="kr.or.ddit.board.vo.BoardVO"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page trimDirectiveWhitespaces="true" %>
+<%
+	List<BoardVO> boardList = (List<BoardVO>)request.getAttribute("boardList");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  
-  <title>Notice | home</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>정보처리기사 실기</title>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
+<!-- Bootstrap core CSS -->
+<link href="<%= request.getContextPath() %>/res/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="<%= request.getContextPath() %>/res/template/css/simple-sidebar.css" rel="stylesheet">
+<style type="text/css">
+.fa-home:before {
+    content: "\f015";
+    font-size: x-large;
+    color:black;
+    text-shadow:1px 1px 2px #000000;
+}
+	input[type=radio], input[type=checkbox] {
+	margin-right: 5px;
+}
+li.quizItem:hover {
+	cursor: pointer;
+	background-color: #f0f8ff;
+}
+</style>
 
-  <!-- Font Awesome Icons -->
-  <link rel="stylesheet" href="/resources/bootstrap/plugins/fontawesome-free/css/all.min.css">
-  <!-- Theme style -->
-  <link rel="stylesheet" href="/resources/bootstrap/dist/css/adminlte.min.css">
-  <!-- Google Font: Source Sans Pro -->
-  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
 </head>
-<body class="hold-transition sidebar-mini">
-
-
-
-  <!-- Content Wrapper. Contains page content -->
-  <div style="width:100%;">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Notice Detail</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">상세보기</a></li>
-              <li class="breadcrumb-item active">공지사항</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <!-- Main content -->
-    <div class="content">
-    	<div class="row">
-			<div class="col-md-12">
-				<div class="card card-outline card-info">
-					<div class="card-header">
-						<h3 class="card-title">상세보기</h3>
-						<div class="card-tools">
-							<button type="button" id="modifyBtn" class="btn btn-warning" onclick="modify_go();">MODIFY</button>						
-						    <button type="button" id="removeBtn" class="btn btn-danger" onclick="remove_go();">REMOVE</button>					    
-						    <button type="button" id="listBtn" class="btn btn-primary" onclick="CloseWindow();">CLOSE</button>
-						</div>
+<body>
+	<div class="d-flex" id="wrapper">
+		<!-- Sidebar -->
+		<div class="bg-light border-right" id="sidebar-wrapper">
+			<div class="sidebar-heading">로그인<span  class="glyphicon glyphicon-log-in" style="cursor: pointer;"></span></div>
+			<div class="sidebar-heading" style="display: none;">로그아웃<span  class="glyphicon glyphicon-log-in" style="cursor: pointer;"></span></div>
+			<div class="list-group list-group-flush">
+				<a href="#" class="list-group-item list-group-item-action bg-light">이용안내</a>
+				<a href="#" class="list-group-item list-group-item-action bg-light">+정보게시판</a>
+				<div>
+					<ul class="nav flex-column" id="info_board"></ul>
+				</div>
+				<a href="#" class="list-group-item list-group-item-action bg-light">+스터디그룹</a>
+				<div>
+					<ul class="nav flex-column">
+						<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/quiz/list.do">1기</a></li>
+						<li class="nav-item"><a class="nav-link" href="#">2기</a></li>
+					</ul>
+				</div>
+				<a href="#" class="list-group-item list-group-item-action bg-light">익명게시판</a>
+				<a href="myPage.html" class="list-group-item list-group-item-action bg-light">마이페이지</a>
+			</div>
+			
+		</div>
+		<!-- /#sidebar-wrapper -->
+		
+		<!-- Page Content -->
+		<div id="page-content-wrapper">
+			<nav class="navbar navbar-light bg-light border-bottom sticky-top">
+				<button class="btn btn-secondary" id="menu-toggle">메뉴</button>
+				
+				<h4 style="text-align: center; margin: 0px; cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/main.do';">406호의 모험</h4>
+				<div class="dropdown">
+					<button class="dropdown-toggle btn" data-toggle="dropdown" aria-expanded="false">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item" href="#">Home</a>
+						<a class="dropdown-item" href="#">달력</a>
+						<a class="dropdown-item" href="#">etc</a>
 					</div>
-					<div class="card-body">
-						<div class="form-group col-sm-12">
-							<label for="title">제 목</label>
-							<input type="text" class="form-control" id="title" value="" readonly />							
-						</div>
-						<div class="row">	
-							<div class="form-group col-sm-4" >
-								<label for="writer">작성자</label>
-								<input type="text" class="form-control" id="writer" value="" readonly />
-							</div>		
-							
-							<div class="form-group col-sm-4" >
-								<label for="regDate">작성일</label>
-								<input type="text" class="form-control" id="regDate" value="" readonly />
-							
-							</div>
-							<div class="form-group col-sm-4" >
-								<label for="viewcnt">조회수</label>
-								<input type="text" class="form-control" id="viewcnt" value="" readonly />
-							</div>
-						</div>		
-						<div class="form-group col-sm-12">
-							<label for="content">내 용</label>
-							<div id="content"></div>	
-						</div>						
+				</div>
+				
+			</nav>
+			
+			<!-- 내용 -->
+			<div class="container-fluid" style="padding: 20px;">
+				<div class="header">
+					<h4>${board.boardTitle }</h4>
+					<div style="text-align: right;">
+						<span>작성자 : ${board.memId }</span>
+						<span>조회수 : ${board.boardCnt }</span>
 					</div>
-					
-					<!-- 첨부파일 -->
-					<div class="card-footer" style="padding:0;">
-						<div class="card card-warning">
-							<div class="card-header" style="padding-top:0;padding-bottom:0;">
-								<i class="nav-icon fas fa-book"></i>&nbsp;<span style="font-weight:bold;">Attaches</span>
-							</div>
-								<div class="card-body"><div class="row attachList">
-								</div> 
-							</div>
-						</div>
-					</div>
-				</div><!-- end card -->				
-			</div><!-- end col-md-12 -->
-		</div><!-- end row  -->
-    </div>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-
-<!-- jQuery -->
-<script src="/resources/bootstrap/plugins/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4 -->
-<script src="/resources/bootstrap/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/resources/bootstrap/dist/js/adminlte.min.js"></script>
-<!-- Summernote -->
-<script src="/resources/bootstrap/plugins/summernote/summernote-bs4.min.js"></script>
-
-<!-- jquery cookie -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
-<!-- handlebars -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.6/handlebars.min.js" ></script>
-<!-- common -->
-<script src="/resources/js/common.js" ></script>
-
-<script  type="text/x-handlebars-template"  id="attach-div-template">
-{{#each .}}
-	<div class="col-md-4 col-sm-4 col-xs-12 attach"  style="cursor:pointer;"
-		 onclick="location.href='/notice/attach/getFile.do?nno={{nno }}&nano={{nano }}';">
-		<div class="info-box">	
-		 	<span class="info-box-icon bg-yellow">
-				<i class="fa fa-copy"></i>
-			</span>
-			<div class="info-box-content">
-				<span class ="info-box-text">{{prettifyDate regDate }}</span>
-				<span class ="info-box-number">{{fileName }}</span>
+				</div>
+				<hr>
+				<div>
+					<div>${board.boardContent} </div>
+				</div>
 			</div>
 		</div>
-	</div>	
-{{/each}}										 
-</script>
+		<!-- /#page-content-wrapper -->
+	</div>
+<!-- /#wrapper -->
 
+<!-- jQeury 3.5.1 -->
+<script src="<%= request.getContextPath() %>/res/template/vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap 4.5.3 -->
+<script src="<%= request.getContextPath() %>/res/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Menu Toggle Script -->
 <script>
-var nno = getParameterValueFromUrl('nno');
-var queryParams = getParameterValueFromUrl();
-
-setNoticeDetail();
-
-function setNoticeDetail(){
-	var notice = ${dataMap};
-	$('#title').val(notice.title);
-	$('#writer').val(notice.writer);
-	$('#viewcnt').val(notice.viewcnt);
-	$('#regDate').val(prettifyDate(notice.regDate));
-	$('#content').html(notice.content);
-	printData(notice.attachList,$('div.attachList'),$('#attach-div-template'),'.attach');
-};
-
-
-function modify_go(){
-	location.href="<%=request.getContextPath()%>/notice/modifyForm.do?nno="+nno;	
-}
-function remove_go(){
-	if(confirm("정말 삭제하시겠습니까?")){
-		location.href="<%=request.getContextPath()%>/notice/remove.do?nno="+nno;
-	}
-}
-
+$("#menu-toggle").click(function(e) {
+	e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});
 </script>
+<!-- main.js -->
+<script src="<%= request.getContextPath() %>/res/js/main.js"></script>
+
 </body>
+
 </html>

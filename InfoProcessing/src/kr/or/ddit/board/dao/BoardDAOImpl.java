@@ -45,8 +45,15 @@ public class BoardDAOImpl implements IBoardDAO{
 	}
 	@Override
 	public int getBoardNextNo(SqlMapClient smc) throws SQLException {
-		int boardNo = Integer.parseInt(smc.queryForObject("board.getBoardNextNo")+"")+1;
+		int boardNo = smc.queryForObject("board.getBoardNextNo") == null ? 0 : Integer.parseInt(""+smc.queryForObject("board.getBoardNextNo")) +1 ;
 		return boardNo;
+	}
+	@Override
+	public BoardVO getBoard(SqlMapClient smc, int boardNo) throws SQLException {
+		
+		BoardVO board = (BoardVO)smc.queryForObject("board.getBoard", boardNo);
+		
+		return board;
 	}
 
 }

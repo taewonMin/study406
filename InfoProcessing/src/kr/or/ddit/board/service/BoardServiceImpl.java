@@ -48,6 +48,15 @@ public class BoardServiceImpl implements IBoardService{
 		return cnt;
 	}
 
+	@Override
+	public BoardVO getBoard(int boardNo) throws SQLException {
+		
+		BoardVO board = boardDao.getBoard(smc,boardNo);
+		
+		
+		return board;
+	}
+
 
 	
 }

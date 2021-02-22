@@ -12,8 +12,9 @@ public interface IBoardService {
 
 	public List<BoardVO> getBoardGroupList(SearchPagingVO paging) throws SQLException;
 
-	public void insertBoard(BoardVO board)throws SQLException;
+	public void insertBoard(BoardVO board) throws SQLException;
 
-	public int getBoardListCnt(SearchPagingVO paging)throws SQLException;
-	
+	public int getBoardListCnt(SearchPagingVO paging) throws SQLException;
+
+	public BoardVO getBoard(int boardNo) throws SQLException;
 }
