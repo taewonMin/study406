@@ -51,7 +51,8 @@ public class QuizInsertHandler implements CommandHandler{
 					quiz.setSubNo(obj.getString("subNo"));
 					quiz.setMemId(obj.getString("memId"));
 					String quizTag = obj.getString("quizTag");
-					quiz.setQuizTag(quizTag==null ? "" : quizTag);
+					quiz.setQuizTag(quizTag==null ? " " : quizTag);
+					quiz.setStudyNo(obj.getInt("studyNo"));
 					
 					quizService.regist(quiz);
 				}
