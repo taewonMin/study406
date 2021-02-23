@@ -33,6 +33,7 @@
 				 quiz_viewcnt as quizViewcnt,
 				 mem_id
 		from quiz
+		where study_no = #studyNo#
 		group by quiz_group
 		order by quiz_group desc
 	</select>
@@ -64,12 +65,12 @@
 	
 	<insert id="insertQuiz">
 		insert into quiz
-		(quiz_id,quize_group,quiz_no,quiz_title,quiz_prob,quiz_answer,mem_id,sub_no,quiz_regdate,quiz_viewcnt
+		(quiz_id,quiz_group,quiz_no,quiz_title,quiz_prob,quiz_answer,mem_id,sub_no,quiz_regdate,quiz_viewcnt,study_no
 		<isNotEmpty property="quizTag">
 		,quiz_tag
 		</isNotEmpty>
 		)
-		values(#quizId#,#quizGroup#,#quizNo#,#quizTitle#,#quizProb#,#quizAnswer#,#memId#,#subNo#,now(),0
+		values(#quizId#,#quizGroup#,#quizNo#,#quizTitle#,#quizProb#,#quizAnswer#,#memId#,#subNo#,now(),0,#studyNo#
 		<isNotEmpty property="quizTag">
 			,#quizTag#
 		</isNotEmpty>
