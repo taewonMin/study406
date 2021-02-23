@@ -57,6 +57,16 @@ public class BoardServiceImpl implements IBoardService{
 		return board;
 	}
 
+	@Override
+	public void updateBoard(BoardVO board) throws SQLException {
+		boardDao.updateBoard(smc,board);
+	}
+
+	@Override
+	public void removeBoard(int boardNo)  throws SQLException{
+		boardDao.removeBoard(smc,boardNo);
+	}
+
 
 	
 }

@@ -17,4 +17,8 @@ public interface IBoardService {
 	public int getBoardListCnt(SearchPagingVO paging) throws SQLException;
 
 	public BoardVO getBoard(int boardNo) throws SQLException;
+
+	public void updateBoard(BoardVO board) throws SQLException;
+
+	public void removeBoard(int boardNo) throws SQLException;
 }

@@ -55,5 +55,13 @@ public class BoardDAOImpl implements IBoardDAO{
 		
 		return board;
 	}
+	@Override
+	public void updateBoard(SqlMapClient smc, BoardVO board) throws SQLException {
+		smc.update("board.modifyBoard",board);
+	}
+	@Override
+	public void removeBoard(SqlMapClient smc, int boardNo) throws SQLException {
+		smc.delete("board.removeBoard",boardNo);
+	}
 
 }

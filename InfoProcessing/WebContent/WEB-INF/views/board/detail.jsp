@@ -85,6 +85,8 @@ li.quizItem:hover {
 					<div style="text-align: right;">
 						<span>작성자 : ${board.memId }</span>
 						<span>조회수 : ${board.boardCnt }</span>
+						<a href="javascript:location.href ='modify.do?boardNo=${board.boardNo }'" class="btn btn-success">수정</a>
+						<a href="javascript:location.href ='remove.do?boardNo=${board.boardNo }'" class="btn btn-danger">삭제</a>
 					</div>
 				</div>
 				<hr>

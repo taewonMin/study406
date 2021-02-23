@@ -55,4 +55,16 @@
 		 where board_no = #boardNo#
 	</select>
 	
+	<update id="modifyBoard">
+		update board 
+		   set board_title = #boardTitle#,
+		   	   board_content = #boardContent#,
+		   	   board_cnt = #boardCnt#
+		 where board_no = #boardNo#	
+	</update>
+	
+	<delete id="removeBoard">
+		delete from board 
+		 where board_no = #boardNo#
+	</delete>
 </sqlMap>

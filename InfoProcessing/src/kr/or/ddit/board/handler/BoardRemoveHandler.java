@@ -1,7 +1,5 @@
 package kr.or.ddit.board.handler;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,32 +7,31 @@ import kr.or.ddit.board.service.BoardServiceImpl;
 import kr.or.ddit.board.service.IBoardService;
 import kr.or.ddit.board.vo.BoardVO;
 import kr.or.ddit.common.handler.CommandHandler;
-import kr.or.ddit.common.vo.SearchPagingVO;
 
 
-public class BoardDetailHandler implements CommandHandler{
+public class BoardRemoveHandler implements CommandHandler{
 
 	IBoardService boardService = BoardServiceImpl.getInstance();
 	
 	@Override
 	public boolean isRedirect(HttpServletRequest request) {
-		return false;
+		return true;
 	}
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url = "/WEB-INF/views/board/detail.jsp";
+		
+		String url = null;
+		
 		int boardNo = Integer.parseInt(request.getParameter("boardNo")+"");
 		
 		BoardVO board = boardService.getBoard(boardNo);
-		request.setAttribute("board", board);
 		
-		int my = response.getStatus();
-		System.out.println(my+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		board.setBoardCnt(board.getBoardCnt()+1);
-		boardService.updateBoard(board);
+		boardService.removeBoard(boardNo);
 		
+		url = request.getContextPath()+"/board/list.do?boardGroup="+board.getBoardGroup();
 		
 		return url;
 	}
+
 }
