@@ -81,4 +81,10 @@ public class QuizServiceImpl implements IQuizService {
 		quizDao.deleteQuiz(smc, quiz);
 	}
 
+	@Override
+	public List<SubjectVO> getSubjectParentList() throws SQLException {
+		List<SubjectVO> subList = quizDao.getSubjectParentList(smc);
+		return subList;
+	}
+
 }

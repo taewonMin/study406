@@ -30,4 +30,7 @@ public interface IQuizService {
 	
 	// 문제 삭제
 	public void remove(QuizVO quiz) throws SQLException;
+	
+	// 문제 상위
+	public List<SubjectVO> getSubjectParentList() throws SQLException;
 }
