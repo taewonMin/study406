@@ -37,10 +37,13 @@ public class QuizInsertHandler implements CommandHandler{
 			JSONArray jsonArray = JSONArray.fromObject(req.getParameter("quizList"));
 			
 			try {
-				int quizGroup = quizService.createQuizGroupValue();
 				
 				for(int i=0; i<jsonArray.size(); i++) {
+					
 					JSONObject obj = (JSONObject)jsonArray.get(i);
+					
+					int studyNo = obj.getInt("studyNo");
+					int quizGroup = quizService.createQuizGroupValue(studyNo);
 					
 					QuizVO quiz = new QuizVO();
 					quiz.setQuizGroup(quizGroup);
@@ -51,8 +54,8 @@ public class QuizInsertHandler implements CommandHandler{
 					quiz.setSubNo(obj.getString("subNo"));
 					quiz.setMemId(obj.getString("memId"));
 					String quizTag = obj.getString("quizTag");
-					quiz.setQuizTag(quizTag==null ? " " : quizTag);
-					quiz.setStudyNo(obj.getInt("studyNo"));
+					quiz.setQuizTag(quizTag==null ? "" : quizTag);
+					quiz.setStudyNo(studyNo);
 					
 					quizService.regist(quiz);
 				}

@@ -13,7 +13,7 @@ public interface IQuizDAO {
 	public List<QuizVO> selectQuizGroupList(SqlMapClient smc,int studyNo) throws SQLException;
 	
 	// 문제 리스트 출력
-	public List<QuizVO> selectQuizList(SqlMapClient smc, int quizGroup) throws SQLException;
+	public List<QuizVO> selectQuizList(SqlMapClient smc, QuizVO quiz) throws SQLException;
 	
 	// 과목 정보 가져오기
 	public List<SubjectVO> getSubject(SqlMapClient smc, String subParentCode) throws SQLException;
@@ -25,7 +25,7 @@ public interface IQuizDAO {
 	public int createQuizId(SqlMapClient smc) throws SQLException;
 	
 	// 문제 그룹코드 생성
-	public int createQuizGroupValue(SqlMapClient smc) throws SQLException;
+	public int createQuizGroupValue(SqlMapClient smc, int studyNo) throws SQLException;
 	
 	// 문제 조회수 증가
 	public void updateQuizViewcnt(SqlMapClient smc, int quizGroup) throws SQLException;
@@ -33,9 +33,6 @@ public interface IQuizDAO {
 	// 문제 수정
 	public void updateQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
 	
-	// 수정 여부 체크
-	public boolean updateCheck(SqlMapClient smc, QuizVO quiz) throws SQLException;
-	
 	// 문제 삭제
-	public void deleteQuiz(SqlMapClient smc, int quizGroup) throws SQLException;
+	public void deleteQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
 }

@@ -41,8 +41,8 @@ public class QuizServiceImpl implements IQuizService {
 	}
 	
 	@Override
-	public List<QuizVO> getQuizList(int quizGroup) throws SQLException {
-		List<QuizVO> quizList = quizDao.selectQuizList(smc, quizGroup);
+	public List<QuizVO> getQuizList(QuizVO quiz) throws SQLException {
+		List<QuizVO> quizList = quizDao.selectQuizList(smc, quiz);
 		return quizList;
 	}
 	
@@ -62,8 +62,8 @@ public class QuizServiceImpl implements IQuizService {
 	}
 
 	@Override
-	public int createQuizGroupValue() throws SQLException {
-		int cnt = quizDao.createQuizGroupValue(smc);
+	public int createQuizGroupValue(int studyNo) throws SQLException {
+		int cnt = quizDao.createQuizGroupValue(smc,studyNo);
 		return cnt;
 	}
 
@@ -74,17 +74,11 @@ public class QuizServiceImpl implements IQuizService {
 
 	@Override
 	public void modify(QuizVO quiz) throws SQLException {
-		quizDao.updateQuiz(smc, quiz);
 	}
 	
 	@Override
-	public boolean modifyCheck(QuizVO quiz) throws SQLException {
-		return quizDao.updateCheck(smc,quiz);
-	}
-	
-	@Override
-	public void remove(int quizGroup) throws SQLException {
-		quizDao.deleteQuiz(smc, quizGroup);
+	public void remove(QuizVO quiz) throws SQLException {
+		quizDao.deleteQuiz(smc, quiz);
 	}
 
 }

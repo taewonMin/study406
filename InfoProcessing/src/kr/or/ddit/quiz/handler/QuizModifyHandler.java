@@ -29,12 +29,17 @@ public class QuizModifyHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int quizGroup = Integer.parseInt(request.getParameter("quizGroup"));
+		int studyNo = Integer.parseInt(request.getParameter("studyNo"));
 		
 		if(request.getMethod().equals("GET")) {
 			
 			String url="/WEB-INF/views/quiz/modify.jsp";
 			
-			List<QuizVO> quizList = quizService.getQuizList(quizGroup);
+			QuizVO quiz = new QuizVO();
+			quiz.setStudyNo(studyNo);
+			quiz.setQuizGroup(quizGroup);
+			
+			List<QuizVO> quizList = quizService.getQuizList(quiz);
 			
 			request.setAttribute("quizList", quizList);
 			
@@ -44,11 +49,15 @@ public class QuizModifyHandler implements CommandHandler {
 			JSONArray jsonArray = JSONArray.fromObject(request.getParameter("quizList"));
 			try {
 				
+				QuizVO quiz = new QuizVO();
+				quiz.setStudyNo(studyNo);
+				quiz.setQuizGroup(quizGroup);
+				
+				quizService.remove(quiz);
+				
 				for(int i=0; i<jsonArray.size(); i++) {
 					JSONObject obj = (JSONObject)jsonArray.get(i);
 					
-					QuizVO quiz = new QuizVO();
-					quiz.setQuizGroup(quizGroup);
 					quiz.setQuizNo(obj.getInt("quizNo"));
 					quiz.setQuizTitle(obj.getString("quizTitle"));
 					quiz.setQuizProb(obj.getString("quizProb"));
@@ -58,11 +67,7 @@ public class QuizModifyHandler implements CommandHandler {
 					String quizTag = obj.getString("quizTag");
 					quiz.setQuizTag(quizTag==null ? "" : quizTag);
 					
-					if(quizService.modifyCheck(quiz)) {
-						quizService.modify(quiz);
-					}else {
-						quizService.regist(quiz);
-					}
+					quizService.regist(quiz);
 				}
 			}catch(SQLException e) {
 				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

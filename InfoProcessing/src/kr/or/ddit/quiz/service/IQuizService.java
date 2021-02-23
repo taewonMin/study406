@@ -11,7 +11,7 @@ public interface IQuizService {
 	public List<QuizVO> getQuizGroupList(int studyNo) throws SQLException;
 	
 	// 문제 리스트 출력
-	public List<QuizVO> getQuizList(int quizGroup) throws SQLException;
+	public List<QuizVO> getQuizList(QuizVO quiz) throws SQLException;
 	
 	// 과목 정보 가져오기
 	public List<SubjectVO> getSubject(String subParentCode) throws SQLException;
@@ -20,7 +20,7 @@ public interface IQuizService {
 	public void regist(QuizVO quiz) throws SQLException;
 	
 	// 문제 그룹 번호 가져오기
-	public int createQuizGroupValue() throws SQLException;
+	public int createQuizGroupValue(int studyNo) throws SQLException;
 	
 	// 문제 조회수 증가
 	public void increaseViewcnt(int quizGroup) throws SQLException;
@@ -28,9 +28,6 @@ public interface IQuizService {
 	// 문제 수정
 	public void modify(QuizVO quiz) throws SQLException;
 	
-	// 수정 여부 체크
-	public boolean modifyCheck(QuizVO quiz) throws SQLException;
-	
 	// 문제 삭제
-	public void remove(int quizGroup) throws SQLException;
+	public void remove(QuizVO quiz) throws SQLException;
 }

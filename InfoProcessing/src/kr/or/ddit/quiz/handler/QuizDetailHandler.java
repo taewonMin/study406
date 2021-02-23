@@ -23,11 +23,15 @@ public class QuizDetailHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		String url = "/WEB-INF/views/quiz/detail.jsp";
 		
-		String quizGroup = req.getParameter("quizGroup");
+		int studyNo = Integer.parseInt(req.getParameter("studyNo"));
+		int quizGroup = Integer.parseInt(req.getParameter("quizGroup"));
 		
-		List<QuizVO> quizList = quizService.getQuizList(Integer.parseInt(quizGroup));
+		QuizVO quiz = new QuizVO();
+		quiz.setStudyNo(studyNo);
+		quiz.setQuizGroup(quizGroup);
+		List<QuizVO> quizList = quizService.getQuizList(quiz);
 
-		quizService.increaseViewcnt(Integer.parseInt(quizGroup));
+		quizService.increaseViewcnt(quizGroup);
 		
 		req.setAttribute("quizList", quizList);
 		

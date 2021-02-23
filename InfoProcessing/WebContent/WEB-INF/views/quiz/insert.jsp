@@ -33,8 +33,8 @@
 				</div>
 				<button class="btn btn-primary" type="button" onclick="addQuiz();">문제 추가하기</button>
 				<button class="btn btn-danger removeBtn" type="button" style="display:none;" onclick="removeQuiz();">문제 삭제</button>
-				<button class="btn btn-primary" type="button" onclick="insertQuiz();" style="float: right;">등록</button>
-				<button class="btn btn-primary" type="button" onclick="javascript:alert('저장버튼클릭');" style="float: right; margin-right:10px;">저장</button>
+				<button class="btn btn-danger" type="button" onclick="history.go(-1);" style="float: right;">취소</button>
+				<button class="btn btn-primary" type="button" onclick="insertQuiz();" style="float: right; margin-right:10px;">등록</button>
 			</div>
 			<!-- /content -->
 			

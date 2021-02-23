@@ -32,7 +32,7 @@
 						<ul class="list-group" style="clear:both;">
 						
 						<c:forEach items="${quizList }" var="quiz">
-							<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/detail.do?quizGroup=${quiz.quizGroup}';">
+							<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/detail.do?studyNo=${param.studyNo }&quizGroup=${quiz.quizGroup}';">
 								<span style="font-weight: bold;">${quiz.quizTitle}</span>
 								<div style="display: block; font-size: x-small;">
 									<span>${quiz.memId}</span>

@@ -74,7 +74,6 @@
 				<button class="btn btn-danger removeBtn" type="button" style="display:none;" onclick="removeQuiz();">문제 삭제</button>
 				<button class="btn btn-danger" type="button" onclick="history.go(-1);" style="float:right;">취소</button>
 				<button class="btn btn-primary" type="button" onclick="modifyQuiz();" style="float:right;margin-right:10px;">수정</button>
-				<button class="btn btn-primary" type="button" onclick="javascript:alert('저장버튼클릭');" style="float:right;margin-right:10px;">저장</button>
 			</div>
 			<!-- /content -->
 			
@@ -227,13 +226,13 @@ function modifyQuiz(){
 		quizList.push(quizObj);
 	}
 	$.ajax({
-		url:'<%= request.getContextPath() %>/quiz/modify.do?quizGroup=${param.quizGroup}',
+		url:'<%= request.getContextPath() %>/quiz/modify.do?studyNo=${param.studyNo}&quizGroup=${param.quizGroup}',
 		type:'post',
 		traditional:true,
 		data:{quizList:JSON.stringify(quizList)},
 		success:function(data){
-			alert('문제가 등록되었습니다.');
-			location.href="<%= request.getContextPath() %>/quiz/detail.do?quizGroup=${param.quizGroup}";
+			alert('문제가 수정되었습니다.');
+			location.href="<%= request.getContextPath() %>/quiz/detail.do?studyNo=${param.studyNo}&quizGroup=${param.quizGroup}";
 		},
 		error:function(xhr){
 			alert('서버 에러 발생');

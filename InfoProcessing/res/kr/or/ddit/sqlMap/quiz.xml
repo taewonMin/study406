@@ -24,6 +24,7 @@
 	<select id="createQuizGroupValue" resultClass="int">
 		select ifnull(max(quiz_group)+1,1)
 		from quiz
+		where study_no = #studyNo#
 	</select>
 	
 	<select id="selectQuizGroupList" resultClass="quiz">
@@ -53,14 +54,8 @@
 			   quiz_viewcnt as quizViewcnt,
 			   quiz_tag as quizTag
 		from quiz 
-		where quiz_group=#quizGroup#) A
-	</select>
-	
-	<select id="updateCheck" resultClass="int">
-		select count(*)
-		from quiz
-		where quiz_no = #quizNo#
-		and quiz_group = #quizGroup#
+		where quiz_group=#quizGroup#
+		and study_no = #studyNo#) A
 	</select>
 	
 	<insert id="insertQuiz">
@@ -98,5 +93,6 @@
 	<delete id="deleteQuiz">
 		delete from quiz
 		where quiz_group = #quizGroup#
+		and study_no = #studyNo#
 	</delete>
 </sqlMap>

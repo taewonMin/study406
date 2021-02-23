@@ -29,8 +29,8 @@ public class QuizDAOImpl implements IQuizDAO {
 	}
 	
 	@Override
-	public List<QuizVO> selectQuizList(SqlMapClient smc, int quizGroup) throws SQLException {
-		List<QuizVO> quizList = smc.queryForList("quiz.selectQuizList", quizGroup);
+	public List<QuizVO> selectQuizList(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		List<QuizVO> quizList = smc.queryForList("quiz.selectQuizList", quiz);
 		return quizList;
 	}
 	
@@ -52,8 +52,8 @@ public class QuizDAOImpl implements IQuizDAO {
 	}
 	
 	@Override
-	public int createQuizGroupValue(SqlMapClient smc) throws SQLException {
-		int cnt = (int) smc.queryForObject("quiz.createQuizGroupValue");
+	public int createQuizGroupValue(SqlMapClient smc, int studyNo) throws SQLException {
+		int cnt = (int) smc.queryForObject("quiz.createQuizGroupValue", studyNo);
 		return cnt;
 	}
 
@@ -68,21 +68,8 @@ public class QuizDAOImpl implements IQuizDAO {
 	}
 	
 	@Override
-	public boolean updateCheck(SqlMapClient smc, QuizVO quiz) throws SQLException {
-		
-		boolean result = false;
-		
-		int cnt = (int) smc.queryForObject("quiz.updateCheck",quiz);
-		
-		if(cnt > 0) {
-			result = true;
-		}
-		return result;
-	}
-	
-	@Override
-	public void deleteQuiz(SqlMapClient smc, int quizGroup) throws SQLException {
-		smc.delete("quiz.deleteQuiz", quizGroup);
+	public void deleteQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		smc.delete("quiz.deleteQuiz", quiz);
 	}
 
 }
