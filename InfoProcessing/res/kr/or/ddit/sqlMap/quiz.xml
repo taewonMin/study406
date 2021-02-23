@@ -57,7 +57,16 @@
 	
 	<insert id="insertQuiz">
 		insert into quiz
-		values(#quizId#,#quizGroup#,#quizNo#,#quizTitle#,#quizProb#,#quizAnswer#,#memId#,#subNo#,now(),0,#quizTag#)
+		(quiz_id,quize_group,quiz_no,quiz_title,quiz_prob,quiz_answer,mem_id,sub_no,quiz_regdate,quiz_viewcnt
+		<isNotEmpty property="quizTag">
+		,quiz_tag
+		</isNotEmpty>
+		)
+		values(#quizId#,#quizGroup#,#quizNo#,#quizTitle#,#quizProb#,#quizAnswer#,#memId#,#subNo#,now(),0
+		<isNotEmpty property="quizTag">
+			,#quizTag#
+		</isNotEmpty>
+		)
 	</insert>
 	
 	<update id="updateQuizViewcnt">
