@@ -9,7 +9,7 @@
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar -->
 		<div class="bg-light border-right" id="sidebar-wrapper">
-			<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>>
+			<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>
 		</div>
 		<!-- /#sidebar-wrapper -->
 		

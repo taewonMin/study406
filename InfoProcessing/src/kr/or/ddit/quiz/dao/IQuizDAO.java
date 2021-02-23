@@ -38,4 +38,6 @@ public interface IQuizDAO {
 	
 	// 문제 삭제
 	public void deleteQuiz(SqlMapClient smc, int quizGroup) throws SQLException;
+
+	public List<SubjectVO> getSubjectParentList(SqlMapClient smc)  throws SQLException;
 }

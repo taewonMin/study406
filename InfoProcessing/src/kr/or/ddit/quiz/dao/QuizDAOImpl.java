@@ -85,4 +85,10 @@ public class QuizDAOImpl implements IQuizDAO {
 		smc.delete("quiz.deleteQuiz", quizGroup);
 	}
 
+	@Override
+	public List<SubjectVO> getSubjectParentList(SqlMapClient smc) throws SQLException {
+		List<SubjectVO> subList = smc.queryForList("quiz.selectSubjectParentList");
+		return subList;
+	}
+
 }

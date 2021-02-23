@@ -4,6 +4,24 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="quiz">
+	<resultMap class="subject" id="subjectMap">
+		<result property="subNo" column="sub_no"/>
+		<result property="subCode" column="sub_code"/>
+		<result property="subName" column="sub_name"/>
+		<result property="subParentCode" column="sub_parent_code"/>
+		<result property="subParentName" column="subParentName"/>
+		<result property="subDescript" column="sub_descript"/>
+	</resultMap>
+
+		
+	<select id="selectSubjectList" resultMap="subjectMap">
+		select * from subject
+	</select>
+
+	<select id="selectSubjectParentList" resultMap="subjectMap">
+		select * from subject
+		 group by sub_parent_code
+	</select>
 
 	<select id="getSubject" resultClass="subject">
 		select sub_no as subNo
@@ -98,4 +116,5 @@
 		delete from quiz
 		where quiz_group = #quizGroup#
 	</delete>
+
 </sqlMap>
