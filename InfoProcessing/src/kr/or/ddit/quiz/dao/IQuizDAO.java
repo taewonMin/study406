@@ -10,7 +10,7 @@ import kr.or.ddit.quiz.vo.SubjectVO;
 
 public interface IQuizDAO {
 	// 문제 그룹 리스트 출력
-	public List<QuizVO> selectQuizGroupList(SqlMapClient smc) throws SQLException;
+	public List<QuizVO> selectQuizGroupList(SqlMapClient smc,int studyNo) throws SQLException;
 	
 	// 문제 리스트 출력
 	public List<QuizVO> selectQuizList(SqlMapClient smc, int quizGroup) throws SQLException;

@@ -12,6 +12,7 @@ public class QuizVO {
 	private int quizViewcnt;
 	private String quizTag;
 	private String memId;
+	private int studyNo;
 	
 	private String subParentName;
 	private String subName;
@@ -94,6 +95,12 @@ public class QuizVO {
 	}
 	public void setSubNo(String subNo) {
 		this.subNo = subNo;
+	}
+	public int getStudyNo() {
+		return studyNo;
+	}
+	public void setStudyNo(int studyNo) {
+		this.studyNo = studyNo;
 	}
 	
 }

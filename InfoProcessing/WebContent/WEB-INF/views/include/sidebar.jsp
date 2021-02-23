@@ -12,8 +12,7 @@
 		<a href="#" class="list-group-item list-group-item-action bg-light">+스터디그룹</a>
 		<div>
 			<ul class="nav flex-column">
-				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/quiz/list.do">1기</a></li>
-				<li class="nav-item"><a class="nav-link" href="#">2기</a></li>
+				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/quiz/list.do?study_no=1">1기</a></li>
 			</ul>
 		</div>
 		<a href="#" class="list-group-item list-group-item-action bg-light">익명게시판</a>

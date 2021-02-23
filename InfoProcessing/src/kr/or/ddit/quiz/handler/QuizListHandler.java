@@ -23,7 +23,8 @@ public class QuizListHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		String url = "/WEB-INF/views/quiz/list.jsp";
 		
-		List<QuizVO> quizList = quizService.getQuizGroupList();
+		int studyNo = Integer.parseInt(req.getParameter("studyNo"));
+		List<QuizVO> quizList = quizService.getQuizGroupList(studyNo);
 		
 		req.setAttribute("quizList", quizList);
 		

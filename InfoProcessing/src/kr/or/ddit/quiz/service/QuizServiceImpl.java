@@ -35,8 +35,8 @@ public class QuizServiceImpl implements IQuizService {
 	}
 	
 	@Override
-	public List<QuizVO> getQuizGroupList() throws SQLException {
-		List<QuizVO> quizList = quizDao.selectQuizGroupList(smc);
+	public List<QuizVO> getQuizGroupList(int studyNo) throws SQLException {
+		List<QuizVO> quizList = quizDao.selectQuizGroupList(smc,studyNo);
 		return quizList;
 	}
 	
