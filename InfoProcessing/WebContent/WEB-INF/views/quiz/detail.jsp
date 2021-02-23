@@ -1,90 +1,19 @@
 <%@page import="kr.or.ddit.quiz.vo.QuizVO"%>
 <%@page import="java.util.List"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-<title>정보처리기사 실기</title>
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous"></head>
-
-<!-- Bootstrap core CSS -->
-<link href="<%= request.getContextPath() %>/res/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- Custom styles for this template -->
-<link href="<%= request.getContextPath() %>/res/template/css/simple-sidebar.css" rel="stylesheet">
-<style type="text/css">
-.fa-home:before {
-    content: "\f015";
-    font-size: x-large;
-    color:black;
-    text-shadow:1px 1px 2px #000000;
-}
-	input[type=radio], input[type=checkbox] {
-	margin-right: 5px;
-}
-</style>
-
-
-</head>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
 	<div class="d-flex" id="wrapper">
-		<!-- Sidebar -->
-		<div class="bg-light border-right" id="sidebar-wrapper">
-			<div class="sidebar-heading">로그인<span  class="glyphicon glyphicon-log-in" style="cursor: pointer;"></span></div>
-			<div class="sidebar-heading" style="display: none;">로그아웃<span  class="glyphicon glyphicon-log-in" style="cursor: pointer;"></span></div>
-			<div class="list-group list-group-flush">
-				<a href="#" class="list-group-item list-group-item-action bg-light">이용안내</a>
-				<a href="#" class="list-group-item list-group-item-action bg-light">+정보게시판</a>
-				<div>
-					<ul class="nav flex-column">
-						<li class="nav-item"><a class="nav-link" href="#">1과목</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">2과목</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">3과목</a></li>
-					</ul>
-				</div>
-				<a href="#" class="list-group-item list-group-item-action bg-light">+스터디그룹</a>
-				<div>
-					<ul class="nav flex-column">
-						<li class="nav-item"><a class="nav-link" href="<%=request.getContextPath()%>/quiz/list.do">1기</a></li>
-						<li class="nav-item"><a class="nav-link" href="#">2기</a></li>
-					</ul>
-				</div>
-				<a href="#" class="list-group-item list-group-item-action bg-light">익명게시판</a>
-				<a href="#" class="list-group-item list-group-item-action bg-light">마이페이지</a>
-			</div>
-			
-		</div>
-		<!-- /#sidebar-wrapper -->
-		
-		<!-- Page Content -->
+		<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>
 		<div id="page-content-wrapper">
-			<nav class="navbar navbar-light bg-light border-bottom sticky-top">
-				<button class="btn btn-secondary" id="menu-toggle">메뉴</button>
-				
-				<h4 style="text-align: center; margin: 0px; cursor: pointer;" onclick="location.href='/'">406호의 모험</h4>
-				<div class="dropdown">
-					<button class="dropdown-toggle btn" data-toggle="dropdown" aria-expanded="false">
-						<span class="navbar-toggler-icon"></span>
-					</button>
-					<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item" href="#">Home</a>
-						<a class="dropdown-item" href="#">달력</a>
-						<a class="dropdown-item" href="#">etc</a>
-					</div>
-				</div>
-				
-			</nav>
+			<%@ include file="/WEB-INF/views/include/nav.jsp" %>
 			
+			<!-- content -->
 			<% List<QuizVO> quizList = (List<QuizVO>) request.getAttribute("quizList"); %>
-			<!-- 내용 -->
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
 					<h4 style="display: inline;"><%=quizList.get(0).getQuizTitle() %></h4>
@@ -124,30 +53,12 @@
 				<button class="btn btn-danger myBtn" type="button" onclick="remove_go();" style="float:right;display:none;">삭제</button>
 				<button class="btn btn-primary myBtn" type="button" onclick="location.href='modify.do?quizGroup=${param.quizGroup}';" style="float:right;margin-right:10px;display:none;">수정</button>
 			</div>
+			<!-- /content -->
 			
 		</div>
-		<!-- /#page-content-wrapper -->
 	</div>
-	
-	
-	
-<!-- /#wrapper -->
-<!-- jQeury 3.5.1 -->
-<script src="<%= request.getContextPath() %>/res/template/vendor/jquery/jquery.min.js"></script>
-<!-- Bootstrap 4.5.3 -->
-<script src="<%= request.getContextPath() %>/res/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-
-
-
-<!-- Menu Toggle Script -->
+<%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-</script>
-<script type="text/javascript">
 var memId = '${sessionScope.loginUser.memId}';
 
 if(memId==$('span#writer').text()){
