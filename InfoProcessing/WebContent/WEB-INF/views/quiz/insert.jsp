@@ -17,7 +17,7 @@
 					<div class="row" style="margin-top:20px;">
 					  	<div class="col-sm-1" style="text-align: center;margin-top: 5px;font-size: 1.2em;">제목</div>
 					  	<div class="col-sm-9">
-							<input type="text" class="form-control" id="title">
+							<input type="text" class="form-control" id="title" value="${title }회 모의고사" readonly="readonly">
 					  	</div>
 					</div>
 					<div class="row" style="margin-top:20px;">

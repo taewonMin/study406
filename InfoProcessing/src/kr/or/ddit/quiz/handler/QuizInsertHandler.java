@@ -31,6 +31,11 @@ public class QuizInsertHandler implements CommandHandler{
 		if(req.getMethod().equals("GET")) {
 			String url = "/WEB-INF/views/quiz/insert.jsp";
 			
+			int studyNo = Integer.parseInt(req.getParameter("studyNo"));
+			int quizGroup = quizService.createQuizGroupValue(studyNo);
+			
+			req.setAttribute("title", quizGroup);
+			
 			return url;
 		}else if(req.getMethod().equals("POST")) {
 			
@@ -46,6 +51,7 @@ public class QuizInsertHandler implements CommandHandler{
 					int quizGroup = quizService.createQuizGroupValue(studyNo);
 					
 					QuizVO quiz = new QuizVO();
+					quiz.setStudyNo(studyNo);
 					quiz.setQuizGroup(quizGroup);
 					quiz.setQuizNo(obj.getInt("quizNo"));
 					quiz.setQuizTitle(obj.getString("quizTitle"));
@@ -55,7 +61,6 @@ public class QuizInsertHandler implements CommandHandler{
 					quiz.setMemId(obj.getString("memId"));
 					String quizTag = obj.getString("quizTag");
 					quiz.setQuizTag(quizTag==null ? "" : quizTag);
-					quiz.setStudyNo(studyNo);
 					
 					quizService.regist(quiz);
 				}

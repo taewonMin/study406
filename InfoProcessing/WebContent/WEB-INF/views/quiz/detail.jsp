@@ -46,6 +46,7 @@
 						</div>
 					</c:forEach>						
 				</div>
+				<button class="btn btn-primary" type="button" onclick="history.go(-1);">목록</button>
 				<button class="btn btn-danger myBtn" type="button" onclick="remove_go();" style="float:right;display:none;">삭제</button>
 				<button class="btn btn-primary myBtn" type="button" onclick="location.href='modify.do?studyNo=${param.studyNo }&quizGroup=${param.quizGroup}';" style="float:right;margin-right:10px;display:none;">수정</button>
 			</div>
