@@ -8,7 +8,7 @@ import kr.or.ddit.quiz.vo.SubjectVO;
 
 public interface IQuizService {
 	// 문제 그룹 리스트 출력
-	public List<QuizVO> getQuizGroupList() throws SQLException;
+	public List<QuizVO> getQuizGroupList(int studyNo) throws SQLException;
 	
 	// 문제 리스트 출력
 	public List<QuizVO> getQuizList(int quizGroup) throws SQLException;

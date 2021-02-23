@@ -1,8 +1,8 @@
 -- --------------------------------------------------------
 -- 호스트:                          127.0.0.1
--- 서버 버전:                        10.5.8-MariaDB - mariadb.org binary distribution
--- 서버 OS:                        Win64
--- HeidiSQL 버전:                  11.0.0.5919
+-- 서버 버전:                        5.5.37 - MySQL Community Server (GPL)
+-- 서버 OS:                        Win32
+-- HeidiSQL 버전:                  9.5.0.5273
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,7 +18,7 @@ USE `info`;
 
 -- 테이블 info.board 구조 내보내기
 CREATE TABLE IF NOT EXISTS `board` (
-  `board_no` int(11) NOT NULL DEFAULT 0,
+  `board_no` int(11) NOT NULL DEFAULT '0',
   `board_group` varchar(50) NOT NULL DEFAULT '0',
   `board_title` varchar(100) DEFAULT NULL,
   `board_date` date DEFAULT NULL,
@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `member` (
   CONSTRAINT `FK_member_study` FOREIGN KEY (`study_no`) REFERENCES `study` (`study_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- 테이블 데이터 info.member:~1 rows (대략적) 내보내기
+-- 테이블 데이터 info.member:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `member` DISABLE KEYS */;
 INSERT INTO `member` (`mem_id`, `mem_pass`, `mem_name`, `study_no`) VALUES
 	('lalaru', '123', '김태원', 1),
@@ -76,21 +76,24 @@ CREATE TABLE IF NOT EXISTS `quiz` (
   `mem_id` varchar(50) NOT NULL,
   `sub_no` varchar(50) DEFAULT NULL,
   `quiz_regdate` date DEFAULT NULL,
-  `quiz_viewcnt` int(11) DEFAULT 0,
+  `quiz_viewcnt` int(11) DEFAULT '0',
   `quiz_tag` varchar(600) DEFAULT NULL,
+  `study_no` int(11) DEFAULT NULL,
   PRIMARY KEY (`quiz_id`),
   KEY `quiz_subjectCode_fk` (`sub_no`),
   KEY `FK_quiz_member` (`mem_id`),
+  KEY `FK_quiz_study` (`study_no`),
+  CONSTRAINT `FK_quiz_study` FOREIGN KEY (`study_no`) REFERENCES `study` (`study_no`),
   CONSTRAINT `FK_quiz_member` FOREIGN KEY (`mem_id`) REFERENCES `member` (`mem_id`),
   CONSTRAINT `quiz_subjectCode_fk` FOREIGN KEY (`sub_no`) REFERENCES `subject` (`sub_no`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- 테이블 데이터 info.quiz:~3 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `quiz` DISABLE KEYS */;
-INSERT INTO `quiz` (`quiz_id`, `quiz_group`, `quiz_no`, `quiz_title`, `quiz_prob`, `quiz_answer`, `mem_id`, `sub_no`, `quiz_regdate`, `quiz_viewcnt`, `quiz_tag`) VALUES
-	(1, 1, 3, '1회 모의고사', '리팩토링이란??', '유지보수', 'lalaru', 'P01S06', '2021-02-20', 17, '소프트웨어설계,화면설계'),
-	(2, 2, 1, '2번째 문제', '과연', '제발', 'lalaru', 'P01S06', '2021-02-20', 15, '하하,호호'),
-	(3, 2, 2, '2번째 문제', '소주\n', '막걸리', 'lalaru', 'P02S03', '2021-02-20', 15, 'gigi,hihi');
+INSERT INTO `quiz` (`quiz_id`, `quiz_group`, `quiz_no`, `quiz_title`, `quiz_prob`, `quiz_answer`, `mem_id`, `sub_no`, `quiz_regdate`, `quiz_viewcnt`, `quiz_tag`, `study_no`) VALUES
+	(1, 1, 3, '1회 모의고사', '리팩토링이란??', '유지보수', 'lalaru', 'P01S06', '2021-02-20', 18, '소프트웨어설계,화면설계', NULL),
+	(2, 2, 1, '2번째 문제', '과연', '제발', 'lalaru', 'P01S06', '2021-02-20', 16, '하하,호호', NULL),
+	(3, 2, 2, '2번째 문제', '소주\n', '막걸리', 'lalaru', 'P02S03', '2021-02-20', 16, 'gigi,hihi', NULL);
 /*!40000 ALTER TABLE `quiz` ENABLE KEYS */;
 
 -- 테이블 info.study 구조 내보내기
@@ -103,7 +106,7 @@ CREATE TABLE IF NOT EXISTS `study` (
 -- 테이블 데이터 info.study:~2 rows (대략적) 내보내기
 /*!40000 ALTER TABLE `study` DISABLE KEYS */;
 INSERT INTO `study` (`study_no`, `study_name`) VALUES
-	(0, '없음'),
+	(0, '기출'),
 	(1, '1기');
 /*!40000 ALTER TABLE `study` ENABLE KEYS */;
 
