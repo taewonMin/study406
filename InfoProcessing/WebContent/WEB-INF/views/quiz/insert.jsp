@@ -258,7 +258,7 @@ function insertQuiz(){
 					,quizProb:quizProb.val()
 					,quizAnswer:quizAnswer.val()
 					,subNo:pSubCode.val()+subCode.val()
-					,memId:'lalaru'
+					,memId:'${loginUser.memId}'
 					,quizTag:quizTag
 					}
 		quizList.push(quizObj);

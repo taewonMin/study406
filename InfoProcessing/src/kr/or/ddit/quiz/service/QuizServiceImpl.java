@@ -73,6 +73,16 @@ public class QuizServiceImpl implements IQuizService {
 	}
 
 	@Override
+	public void modify(QuizVO quiz) throws SQLException {
+		quizDao.updateQuiz(smc, quiz);
+	}
+	
+	@Override
+	public boolean modifyCheck(QuizVO quiz) throws SQLException {
+		return quizDao.updateCheck(smc,quiz);
+	}
+	
+	@Override
 	public void remove(int quizGroup) throws SQLException {
 		quizDao.deleteQuiz(smc, quizGroup);
 	}

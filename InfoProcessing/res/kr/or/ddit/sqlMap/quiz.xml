@@ -55,6 +55,13 @@
 		where quiz_group=#quizGroup#) A
 	</select>
 	
+	<select id="updateCheck" resultClass="int">
+		select count(*)
+		from quiz
+		where quiz_no = #quizNo#
+		and quiz_group = #quizGroup#
+	</select>
+	
 	<insert id="insertQuiz">
 		insert into quiz
 		(quiz_id,quize_group,quiz_no,quiz_title,quiz_prob,quiz_answer,mem_id,sub_no,quiz_regdate,quiz_viewcnt
@@ -73,6 +80,18 @@
 		update quiz
 		set quiz_viewcnt = quiz_viewcnt+1
 		where quiz_group = #quizGroup#
+	</update>
+	
+	<update id="updateQuiz">
+		update quiz
+		set quiz_title = #quizTitle#
+			,quiz_prob = #quizProb#
+			,quiz_answer = #quizAnswer#
+			,sub_no = #subNo#
+			,quiz_regdate = now()
+			,quiz_tag = #quizTag#
+		where quiz_group = #quizGroup#
+		and quiz_no = #quizNo#
 	</update>
 	
 	<delete id="deleteQuiz">

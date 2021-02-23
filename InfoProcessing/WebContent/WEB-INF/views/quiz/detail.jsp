@@ -2,6 +2,7 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -110,16 +111,12 @@
 						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
 						<textarea class="form-control answer_${quiz.quizNo }" style="width:100%; min-height:100px; margin:10px 0; background-color: white; display: none;" readonly="readonly">${quiz.quizAnswer }</textarea>
 						<div class="input-group" style="width:30%; margin-bottom:20px;">
-						<% 
-							String[] tagList = quiz.getQuizTag().split(",");
-							for(String tag : tagList){
-								pageContext.setAttribute("tag", tag);
-						%>
-							<span style='margin:10px 10px 0 0;font-weight:bold;color:#6495ed;'>#${tag }</span>
-						<%
-							}
-						%>
-						</div>
+						<c:if test="${quiz.quizTag.length() > 0 }">
+							<c:forEach items="${quiz.quizTag.split(\",\") }" var="tag">
+								<span style='margin:10px 10px 0 0;font-weight:bold;color:#6495ed;'>#${tag }</span>
+							</c:forEach>
+							</div>
+						</c:if>
 					<%
 					}
 					%>
