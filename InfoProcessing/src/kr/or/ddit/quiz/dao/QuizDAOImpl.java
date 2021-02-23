@@ -63,6 +63,24 @@ public class QuizDAOImpl implements IQuizDAO {
 	}
 
 	@Override
+	public void updateQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		smc.update("quiz.updateQuiz", quiz);
+	}
+	
+	@Override
+	public boolean updateCheck(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		
+		boolean result = false;
+		
+		int cnt = (int) smc.queryForObject("quiz.updateCheck",quiz);
+		
+		if(cnt > 0) {
+			result = true;
+		}
+		return result;
+	}
+	
+	@Override
 	public void deleteQuiz(SqlMapClient smc, int quizGroup) throws SQLException {
 		smc.delete("quiz.deleteQuiz", quizGroup);
 	}

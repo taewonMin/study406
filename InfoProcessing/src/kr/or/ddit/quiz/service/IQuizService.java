@@ -25,6 +25,12 @@ public interface IQuizService {
 	// 문제 조회수 증가
 	public void increaseViewcnt(int quizGroup) throws SQLException;
 	
+	// 문제 수정
+	public void modify(QuizVO quiz) throws SQLException;
+	
+	// 수정 여부 체크
+	public boolean modifyCheck(QuizVO quiz) throws SQLException;
+	
 	// 문제 삭제
 	public void remove(int quizGroup) throws SQLException;
 }

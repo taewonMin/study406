@@ -30,6 +30,12 @@ public interface IQuizDAO {
 	// 문제 조회수 증가
 	public void updateQuizViewcnt(SqlMapClient smc, int quizGroup) throws SQLException;
 	
+	// 문제 수정
+	public void updateQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
+	
+	// 수정 여부 체크
+	public boolean updateCheck(SqlMapClient smc, QuizVO quiz) throws SQLException;
+	
 	// 문제 삭제
 	public void deleteQuiz(SqlMapClient smc, int quizGroup) throws SQLException;
 }
