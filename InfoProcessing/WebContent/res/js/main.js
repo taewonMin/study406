@@ -11,3 +11,37 @@ $("#menu-toggle").click(function(e) {
 	e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
+
+// 태그 추가 (input 태그 id, 태그를 추가할 target)
+function addTag(inputId, target){
+	var input = $('#'+inputId);
+	if(input.val().trim() != ""){
+		var tag = "<span name='"+inputId+"' style='margin-right:10px;font-weight:bold;color:#6495ed;'>#"+input.val().replaceAll(" ", "")+"</span>";
+		$(target).append(tag);
+		input.val("");
+	}
+}
+
+//태그를 문자열로 변환 (tag의 name값)
+function getTagToString(tagName){
+	var tagList = $('span[name="'+tagName+'"]');
+	
+	var quizTag = "";
+	if(tagList.length > 0){
+		for(var j=0; j<tagList.length; j++){
+			quizTag += tagList.eq(j).text().substr(1);
+			if(j < tagList.length-1){
+				quizTag += ",";
+			}
+		}
+	}
+	
+	return quizTag;
+}
+
+// 태그 입력시 enter로 받기
+function checkEnter(inputId, target){
+	if(event.keyCode == 13){
+		addTag(inputId, target);
+	}
+}
