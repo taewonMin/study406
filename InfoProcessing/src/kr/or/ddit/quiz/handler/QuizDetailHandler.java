@@ -34,7 +34,6 @@ public class QuizDetailHandler implements CommandHandler {
 		quizService.increaseViewcnt(quizGroup);
 		
 		req.setAttribute("quizList", quizList);
-		
 		return url;
 	}
 

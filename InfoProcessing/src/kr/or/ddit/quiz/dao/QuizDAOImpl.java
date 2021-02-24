@@ -41,6 +41,12 @@ public class QuizDAOImpl implements IQuizDAO {
 	}
 
 	@Override
+	public List<QuizVO> selectQuizSolveList(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		List<QuizVO> quizList = smc.queryForList("quiz.selectQuizSolveList", quiz);
+		return quizList;
+	}
+	
+	@Override
 	public void insertQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
 		smc.insert("quiz.insertQuiz", quiz);
 	}

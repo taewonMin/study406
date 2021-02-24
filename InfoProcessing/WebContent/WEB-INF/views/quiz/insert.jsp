@@ -164,13 +164,12 @@ function insertQuiz(){
 					,subNo:pSubCode.val()+subCode.val()
 					,memId:'${loginUser.memId}'
 					,quizTag:quizTag
-					,studyNo:${param.studyNo}
 					}
 		quizList.push(quizObj);
 	}
 	
 	$.ajax({
-		url:'<%= request.getContextPath() %>/quiz/insert.do',
+		url:'<%= request.getContextPath() %>/quiz/insert.do?studyNo=${param.studyNo}',
 		type:'post',
 		traditional:true,
 		data:{quizList:JSON.stringify(quizList)},

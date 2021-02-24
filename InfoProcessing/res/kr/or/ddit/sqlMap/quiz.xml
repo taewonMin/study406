@@ -4,6 +4,23 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="quiz">
+	<resultMap class="quiz" id="quizMap">
+		<result property="quizId" column="quiz_id"/>
+		<result property="quizGroup" column="quiz_group"/>
+		<result property="quizNo" column="quiz_no"/>
+		<result property="quizTitle" column="quiz_title"/>
+		<result property="quizProb" column="quiz_prob"/>
+		<result property="quizAnswer" column="quiz_answer"/>
+		<result property="memId" column="mem_id"/>
+		<result property="subNo" column="sub_no"/>
+		<result property="quizRegdate" column="quiz_regdate"/>
+		<result property="quizViewcnt" column="quiz_viewcnt"/>
+		<result property="quizTag" column="quiz_tag"/>
+		<result property="studyNo" column="study_no"/>
+		<result property="subParentName" column="sub_parent_name"/>
+		<result property="subName" column="sub_name"/>
+	</resultMap>
+	
 	<resultMap class="subject" id="subjectMap">
 		<result property="subNo" column="sub_no"/>
 		<result property="subCode" column="sub_code"/>
@@ -13,7 +30,6 @@
 		<result property="subDescript" column="sub_descript"/>
 	</resultMap>
 
-		
 	<select id="selectSubjectList" resultMap="subjectMap">
 		select * from subject
 	</select>
@@ -45,35 +61,37 @@
 		where study_no = #studyNo#
 	</select>
 	
-	<select id="selectQuizGroupList" resultClass="quiz">
-		select quiz_group as quizGroup,
-				 quiz_title as quizTitle,
-				 quiz_regdate as quizRegdate,
-				 quiz_viewcnt as quizViewcnt,
-				 mem_id
-		from quiz
-		where study_no = #studyNo#
-		group by quiz_group
-		order by quiz_group desc
+	<select id="selectQuizGroupList" resultMap="quizMap">
+		select A.*, sub_parent_name, sub_name
+		from (select *
+			from quiz
+			where study_no = #studyNo#
+			group by quiz_group
+			order by quiz_group desc) A, subject
+		where subject.sub_no = A.sub_no
 	</select>
 	
-	<select id="selectQuizList" resultClass="quiz">
-		select * 
-			,(select sub_parent_name from subject where sub_no = A.subNo) as subParentName
-			,(select sub_name from subject where sub_no = A.subNo) as subName
-		from (select quiz_group as quizGroup,
-			   quiz_no as quizNo,
-			   quiz_title as quizTitle,
-			   quiz_prob as quizProb,
-			   quiz_answer as quizAnswer,
-			   mem_id as memId,
-			   sub_no as subNo,
-			   quiz_regdate as quizRegdate,
-			   quiz_viewcnt as quizViewcnt,
-			   quiz_tag as quizTag
-		from quiz 
-		where quiz_group=#quizGroup#
-		and study_no = #studyNo#) A
+	<select id="selectQuizList" resultMap="quizMap">
+		select A.*, sub_name, sub_parent_name
+		from (select *
+				from quiz 
+				where quiz_group=#quizGroup#
+				and study_no = #studyNo#) A, subject
+		where subject.sub_no = A.sub_no
+	</select>
+	
+	<select id="selectQuizSolveList">
+		select a.*,b.sub_name,b.sub_parent_name
+		  from quiz a
+		 inner join subject b 
+		    on a.sub_no = b.sub_no
+		 where a.study_no = #studyNo#
+		   and a.quiz_group = #quizGroup#
+	   <dynamic prepend="and sub_parent_code in">
+			<iterate property="quizSubCode" open="(" close=")" conjunction=",">
+				#quizSubCode[]#
+			</iterate>
+	   </dynamic>
 	</select>
 	
 	<insert id="insertQuiz">

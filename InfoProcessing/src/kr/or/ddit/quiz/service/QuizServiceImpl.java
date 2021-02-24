@@ -51,6 +51,12 @@ public class QuizServiceImpl implements IQuizService {
 		List<SubjectVO> subList = quizDao.getSubject(smc, subParentCode);
 		return subList;
 	}
+	
+	@Override
+	public List<QuizVO> getQuizSolveList(QuizVO quiz) throws SQLException {
+		List<QuizVO> quizList = quizDao.selectQuizSolveList(smc, quiz);
+		return quizList;
+	}
 
 	@Override
 	public void regist(QuizVO quiz) throws SQLException {

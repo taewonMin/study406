@@ -42,13 +42,12 @@ public class QuizInsertHandler implements CommandHandler{
 			JSONArray jsonArray = JSONArray.fromObject(req.getParameter("quizList"));
 			
 			try {
+				int studyNo = Integer.parseInt(req.getParameter("studyNo"));
+				int quizGroup = quizService.createQuizGroupValue(studyNo);
 				
 				for(int i=0; i<jsonArray.size(); i++) {
 					
 					JSONObject obj = (JSONObject)jsonArray.get(i);
-					
-					int studyNo = obj.getInt("studyNo");
-					int quizGroup = quizService.createQuizGroupValue(studyNo);
 					
 					QuizVO quiz = new QuizVO();
 					quiz.setStudyNo(studyNo);
