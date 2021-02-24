@@ -24,5 +24,7 @@ public interface IBoardDAO {
 
 	public void removeBoard(SqlMapClient smc, int boardNo)  throws SQLException;
 
+	public String getSubjectName(SqlMapClient smc, String boardGroup)  throws SQLException;
+
 	
 }

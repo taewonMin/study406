@@ -1,4 +1,3 @@
-
 package kr.or.ddit.common.vo;
 
 public class SearchPagingVO extends PagingVO{
@@ -6,6 +5,36 @@ public class SearchPagingVO extends PagingVO{
 	private String keyword;
 	private String searchType;
 	private String boardGroup;
+
+	private int studyNo;
+	private int subNo;
+	private String quizGroup;
+	private String quizTag;
+	
+	public String getQuizGroup() {
+		return quizGroup;
+	}
+	public void setQuizGroup(String quizGroup) {
+		this.quizGroup = quizGroup;
+	}
+	public int getStudyNo() {
+		return studyNo;
+	}
+	public void setStudyNo(int studyNo) {
+		this.studyNo = studyNo;
+	}
+	public String getQuizTag() {
+		return quizTag;
+	}
+	public void setQuizTag(String quizTag) {
+		this.quizTag = quizTag;
+	}
+	public int getSubNo() {
+		return subNo;
+	}
+	public void setSubNo(int subNo) {
+		this.subNo = subNo;
+	}
 	
 	public String getKeyword() {
 		return keyword;

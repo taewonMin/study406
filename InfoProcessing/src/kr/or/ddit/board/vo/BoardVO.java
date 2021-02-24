@@ -6,10 +6,11 @@ public class BoardVO {
 	private int boardNo; // 게시글 번호
 	private String boardTitle; // 게시글 제목
 	private Date boardDate; // 등록 날짜
-	private int boardCnt; // 조회 수
+	private int boardCnt =0; // 조회 수
 	private String boardGroup;
 	private String memId;	// 작성자
 	private String boardContent;
+	private String boardTag;
 	
 	public String getBoardContent() {
 		return boardContent;
@@ -53,6 +54,11 @@ public class BoardVO {
 	public void setMemId(String memId) {
 		this.memId = memId;
 	}
-	
+	public String getBoardTag() {
+		return boardTag;
+	}
+	public void setBoardTag(String boardTag) {
+		this.boardTag = boardTag;
+	}
 }
 

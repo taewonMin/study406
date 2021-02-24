@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.ddit.common.vo.SearchPagingVO;
 import kr.or.ddit.quiz.vo.QuizVO;
 import kr.or.ddit.quiz.vo.SubjectVO;
 
@@ -40,4 +41,6 @@ public interface IQuizDAO {
 	public void deleteQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
 
 	public List<SubjectVO> getSubjectParentList(SqlMapClient smc)  throws SQLException;
+
+	public List<QuizVO> searchQuiz(SqlMapClient smc, SearchPagingVO search) throws SQLException;
 }

@@ -13,6 +13,7 @@
 		<result property="boardDate" column="BOARD_DATE"/>
 		<result property="memId" column="MEM_ID"/>
 		<result property="boardCnt" column="BOARD_CNT"/>
+		<result property="boardTag" column="BOARD_TAG"/>
 	</resultMap>
 
 	<select id="selectBoardList" resultMap="boardMap">
@@ -26,7 +27,6 @@
 			</isNotEmpty>
 		</isNotEmpty>
 		 order by board_no desc
-		 limit #firstRecNo# , #lastRecNo#
 	</select>
 	
 	<select id="getBoardListCnt" resultClass="int">
@@ -45,9 +45,9 @@
 		select max(board_no) from board
 	</select>
 	
-	<insert id="inserBoard">
-		INSERT INTO BOARD(board_no,board_group,board_title,board_content,board_date,mem_id)
-		VALUES(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#)
+	<insert id="insertBoard">
+		insert into board(board_no,board_group,board_title,board_content,board_date,mem_id,board_cnt)
+		values(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#,#boardCnt#)
 	</insert>
 	
 	<select id="getBoard" resultMap="boardMap">
@@ -67,4 +67,10 @@
 		delete from board 
 		 where board_no = #boardNo#
 	</delete>
+	
+	<select id="getSubjectName" resultClass="String">
+		select distinct sub_parent_name
+		  from subject
+		 where sub_parent_code = #boardGroup#
+	</select>
 </sqlMap>

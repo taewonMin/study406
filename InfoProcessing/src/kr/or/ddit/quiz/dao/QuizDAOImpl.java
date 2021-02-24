@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
+import kr.or.ddit.common.vo.SearchPagingVO;
 import kr.or.ddit.quiz.vo.QuizVO;
 import kr.or.ddit.quiz.vo.SubjectVO;
 
@@ -82,6 +83,12 @@ public class QuizDAOImpl implements IQuizDAO {
 	public List<SubjectVO> getSubjectParentList(SqlMapClient smc) throws SQLException {
 		List<SubjectVO> subList = smc.queryForList("quiz.selectSubjectParentList");
 		return subList;
+	}
+
+	@Override
+	public List<QuizVO> searchQuiz(SqlMapClient smc, SearchPagingVO search) throws SQLException {
+		List<QuizVO> quizList = smc.queryForList("quiz.searchQuiz",search);
+		return quizList;
 	}
 
 }

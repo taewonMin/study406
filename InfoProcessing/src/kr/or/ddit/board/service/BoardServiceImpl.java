@@ -67,6 +67,12 @@ public class BoardServiceImpl implements IBoardService{
 		boardDao.removeBoard(smc,boardNo);
 	}
 
+	@Override
+	public String getSubjectName(String boardGroup) throws SQLException {
+		String sbujectName= boardDao.getSubjectName(smc,boardGroup);
+		return sbujectName;
+	}
+
 
 	
 }

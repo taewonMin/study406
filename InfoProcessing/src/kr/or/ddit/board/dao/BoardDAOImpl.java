@@ -33,7 +33,7 @@ public class BoardDAOImpl implements IBoardDAO{
 	}
 	@Override
 	public void insertBoard(SqlMapClient smc, BoardVO board) throws SQLException {
-		smc.insert("board.inserBoard", board);
+		smc.insert("board.insertBoard", board);
 	}
 	
 	@Override
@@ -62,6 +62,14 @@ public class BoardDAOImpl implements IBoardDAO{
 	@Override
 	public void removeBoard(SqlMapClient smc, int boardNo) throws SQLException {
 		smc.delete("board.removeBoard",boardNo);
+	}
+	@Override
+	public String getSubjectName(SqlMapClient smc, String boardGroup) throws SQLException {
+		
+		
+		String subjectName = smc.queryForObject("board.getSubjectName",boardGroup)+"";
+		
+		return subjectName;
 	}
 
 }
