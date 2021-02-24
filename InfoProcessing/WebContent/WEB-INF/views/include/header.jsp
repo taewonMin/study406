@@ -19,5 +19,9 @@
 	input[type=radio], input[type=checkbox] {
 	margin-right: 5px;
 }
+.dropdown-toggle::after{
+	display: none;
+
+}
 </style>
 </head>

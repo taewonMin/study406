@@ -3,6 +3,7 @@ package kr.or.ddit.quiz.service;
 import java.sql.SQLException;
 import java.util.List;
 
+import kr.or.ddit.common.vo.SearchPagingVO;
 import kr.or.ddit.quiz.vo.QuizVO;
 import kr.or.ddit.quiz.vo.SubjectVO;
 
@@ -33,4 +34,7 @@ public interface IQuizService {
 	
 	// 문제 상위
 	public List<SubjectVO> getSubjectParentList() throws SQLException;
+
+	public List<QuizVO> getQuizSearchList(SearchPagingVO search) throws SQLException;
+
 }

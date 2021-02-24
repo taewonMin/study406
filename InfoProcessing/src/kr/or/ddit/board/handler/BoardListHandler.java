@@ -37,11 +37,10 @@ public class BoardListHandler implements CommandHandler{
 		paging.setTotalCount(boardService.getBoardListCnt(paging));
 		
 		boardService.getBoardGroupList(paging);
-		
 		List<BoardVO> boardList = boardService.getBoardGroupList(paging);
+		String subjectName = boardService.getSubjectName(boardGroup);
 		request.setAttribute("boardList", boardList);
-		
+		request.setAttribute("subjectName", subjectName);
 		return url;
 	}
-
 }

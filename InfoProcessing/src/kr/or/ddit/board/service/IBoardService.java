@@ -21,4 +21,6 @@ public interface IBoardService {
 	public void updateBoard(BoardVO board) throws SQLException;
 
 	public void removeBoard(int boardNo) throws SQLException;
+
+	public String getSubjectName(String boardGroup) throws SQLException;
 }

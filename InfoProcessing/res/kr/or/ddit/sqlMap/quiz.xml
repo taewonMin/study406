@@ -4,6 +4,7 @@
 			"http://ibatis.apache.org/dtd/sql-map-2.dtd">
 
 <sqlMap namespace="quiz">
+	
 	<resultMap class="subject" id="subjectMap">
 		<result property="subNo" column="sub_no"/>
 		<result property="subCode" column="sub_code"/>
@@ -12,7 +13,18 @@
 		<result property="subParentName" column="subParentName"/>
 		<result property="subDescript" column="sub_descript"/>
 	</resultMap>
-
+	
+	<resultMap class="quiz" id="quizMap">
+		<result column="quiz_no" property="quizNo"/>
+		<result column="quiz_title" property="quizTitle"/>
+		<result column="quiz_prob" property="quizProb"/>
+		<result column="quiz_answer" property="quizAnswer"/>
+		<result column="mem_id" property="memId"/>
+		<result column="sub_no" property="subNo"/>
+		<result column="quiz_regdate" property="quizRegdate"/>
+		<result column="quiz_viewcnt" property="quizViewcnt"/>
+		<result column="quiz_tag" property="quizTag"/>
+	</resultMap>
 		
 	<select id="selectSubjectList" resultMap="subjectMap">
 		select * from subject
@@ -113,5 +125,8 @@
 		where quiz_group = #quizGroup#
 		and study_no = #studyNo#
 	</delete>
-
+	
+	<select id="searchQuiz" resultMap="quizMap">
+		
+	</select>
 </sqlMap>
