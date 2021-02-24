@@ -10,7 +10,7 @@ import kr.or.ddit.quiz.service.IQuizService;
 import kr.or.ddit.quiz.service.QuizServiceImpl;
 import kr.or.ddit.quiz.vo.QuizVO;
 
-public class QuizListHandler implements CommandHandler {
+public class QuizQuizListHandler implements CommandHandler {
 
 	private IQuizService quizService = QuizServiceImpl.getInstance();
 	
@@ -24,6 +24,9 @@ public class QuizListHandler implements CommandHandler {
 		String url = "/WEB-INF/views/quiz/list.jsp";
 		
 		int studyNo = Integer.parseInt(req.getParameter("studyNo"));
+		
+		
+		
 		List<QuizVO> quizList = quizService.getQuizGroupList(studyNo);
 		
 		req.setAttribute("quizList", quizList);

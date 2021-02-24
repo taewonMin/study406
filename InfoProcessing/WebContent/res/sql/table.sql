@@ -11,7 +11,6 @@
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 
-
 -- info 데이터베이스 구조 내보내기
 CREATE DATABASE IF NOT EXISTS `info` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci */;
 USE `info`;
@@ -22,6 +21,8 @@ CREATE TABLE IF NOT EXISTS `board` (
   `board_group` varchar(50) NOT NULL DEFAULT '0',
   `board_title` varchar(100) DEFAULT NULL,
   `board_date` date DEFAULT NULL,
+  `board_content` varchar(3000) DEFAULT NULL,
+  `board_tag` varchar(100) DEFAULT NULL,
   `board_cnt` int(11) DEFAULT NULL,
   `mem_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`board_no`),
@@ -136,7 +137,6 @@ INSERT INTO `subject` (`sub_no`, `sub_parent_code`, `sub_parent_name`, `sub_code
 	('P04S10', 'P04', '프로그래밍 언어 활용', 'S10', '응용 SW 기초 기술 활용', NULL),
 	('P05S09', 'P05', '정보시스템 구축 관리', 'S09', '소프트웨어 개발 보안 구축', NULL);
 /*!40000 ALTER TABLE `subject` ENABLE KEYS */;
-
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
