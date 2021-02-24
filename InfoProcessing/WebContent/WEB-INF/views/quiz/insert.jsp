@@ -70,8 +70,8 @@
 		</div>
 	</div>
 	<div class="input-group" style="width:30%; margin-bottom:20px;">
-		<input class="form-control" type="text" id="tag_{{quizNo}}" name="tag" onKeypress="checkEnter('{{quizNo}}');" placeholder="태그를 추가하세요"/>
-		<button class="btn btn-primary" type="button" onclick="addTag('{{quizNo}}');">태그 추가</button>
+		<input class="form-control" type="text" id="tag_{{quizNo}}" name="tag" onKeypress="checkEnter('tag_{{quizNo}}','div.tagList_{{quizNo}}');" placeholder="태그를 추가하세요"/>
+		<button class="btn btn-primary" type="button" onclick="addTag('tag_{{quizNo}}','div.tagList_{{quizNo}}');">태그 추가</button>
 	</div>
 </div>
 </script>
@@ -140,7 +140,7 @@ function insertQuiz(){
 		var quizAnswer = $('textarea[name="quizAnswer"]').eq(i);
 		var pSubCode = $('#subject_'+(i+1));
 		var subCode = $('select[name="subCode"]').eq(i);
-		var tagList = $('span[name="tag_'+(i+1)+'"]');
+		var quizTag = getTagToString('tag_'+(i+1));
 		
 		if(quizProb.val().trim() == ""){
 			alert("문제의 내용을 입력하세요.");
@@ -156,15 +156,6 @@ function insertQuiz(){
 			alert('과목을 선택하세요.');
 			pSubCode.focus();
 			return;
-		}
-		var quizTag = "";
-		if(tagList.length > 0){
-			for(var j=0; j<tagList.length; j++){
-				quizTag += tagList.eq(j).text().substr(1);
-				if(j < tagList.length-1){
-					quizTag += ",";
-				}
-			}
 		}
 		quizObj = {quizNo:i+1
 					,quizTitle:quizTitle.val()
@@ -206,20 +197,6 @@ function subjectChange(obj){
 	});
 }
 
-function addTag(id){
-	var input = $('input#tag_'+id);
-	if(input.val().trim() != ""){
-		var keywordTag = "<span name='tag_"+id+"' style='margin-right:10px;font-weight:bold;color:#6495ed;'>#"+input.val().replaceAll(" ", "")+"</span>";
-		$('.tagList_'+id).append(keywordTag);
-		input.val("");
-	}
-}
-
-function checkEnter(id){
-	if(event.keyCode == 13){
-		addTag(id);
-	}
-}
 </script>
 </body>
 </html>
