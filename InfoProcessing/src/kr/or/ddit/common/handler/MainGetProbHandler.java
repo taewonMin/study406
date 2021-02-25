@@ -24,7 +24,6 @@ public class MainGetProbHandler implements CommandHandler {
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
 		int studyNo = Integer.parseInt(request.getParameter("studyNo"));
-		System.out.println(studyNo);
 		try {
 			
 			List<QuizVO> quizList = quizService.getQuizGroupList(studyNo);

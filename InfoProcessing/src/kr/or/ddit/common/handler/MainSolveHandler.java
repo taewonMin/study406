@@ -22,7 +22,16 @@ public class MainSolveHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url = "/WEB-INF/views/common/solveProb.jsp";
+		
+		String url = "";
+		
+		String quizNum = request.getParameter("quizNum");
+		if(quizNum.equals("1")) {	// 한문제씩 풀기
+			url = "/WEB-INF/views/common/solveOneProb.jsp";
+		}else {	// 한꺼번에 풀기
+			url = "/WEB-INF/views/common/solveProb.jsp";
+		}
+		
 		
 		QuizVO quiz = new QuizVO();
 		
