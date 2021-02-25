@@ -34,7 +34,7 @@ public class BoardModifyHandler implements CommandHandler{
 			board.setBoardContent(boardContent);
 			board.setBoardTitle(boardTitle);
 			boardService.updateBoard(board);
-			url = request.getContextPath()+"/board/detail.do?boardNo="+boardNo;
+			url = request.getContextPath()+"/board/detail.do?boardNo="+boardNo+"&from=modify";
 		}
 		
 		return url;

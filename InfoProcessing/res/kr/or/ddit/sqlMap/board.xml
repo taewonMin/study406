@@ -73,4 +73,31 @@
 		  from subject
 		 where sub_parent_code = #boardGroup#
 	</select>
+	
+	<select id="selectBoardSearchList" resultMap="boardMap">
+		
+		select * from board
+		
+		  <isEqual property="searchType" compareValue="all">
+		 where board_title like CONCAT('%',#keyword#,'%')
+		    or board_content like CONCAT('%',#keyword#,'%')
+		    or board_tag like CONCAT('%',#keyword#,'%')
+		  </isEqual>
+		  <isEqual property="searchType" compareValue="board_title">
+		  where board_title like CONCAT('%',#keyword#,'%')
+		  </isEqual>
+		  <isEqual property="searchType" compareValue="mem_id">
+		  where mem_id like CONCAT('%',#keyword#,'%')
+		  </isEqual>
+		  <isEqual property="searchType" compareValue="board_content">
+		  where board_content like 'CONCAT('%',#keyword#,'%')
+		  </isEqual>
+		  <isEqual property="searchType" compareValue="board_tag">
+		  where board_tag like CONCAT('%',#keyword#,'%')
+
+		  </isEqual>
+		  
+	</select>
+	
+	
 </sqlMap>

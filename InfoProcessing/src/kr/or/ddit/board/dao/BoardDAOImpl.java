@@ -71,5 +71,10 @@ public class BoardDAOImpl implements IBoardDAO{
 		
 		return subjectName;
 	}
+	@Override
+	public List<BoardVO> selectBoardSearchList(SqlMapClient smc, SearchPagingVO search) throws SQLException {
+		List<BoardVO> boardList = smc.queryForList("board.selectBoardSearchList",search);
+		return boardList;
+	}
 
 }

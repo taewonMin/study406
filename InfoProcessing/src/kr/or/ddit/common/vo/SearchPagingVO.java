@@ -54,8 +54,5 @@ public class SearchPagingVO extends PagingVO{
 	public void setBoardGroup(String boardGroup) {
 		this.boardGroup = boardGroup;
 	}
-	
-
-
 
 }

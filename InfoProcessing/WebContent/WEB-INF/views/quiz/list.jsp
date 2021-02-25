@@ -38,7 +38,6 @@
 									<span>${quiz.memId}</span>
 									<span>${quiz.quizRegdate}</span>
 									<span>조회 ${quiz.quizViewcnt}</span>
-									<span style="float: right">...</span>
 								</div>
 							</li>
 						</c:forEach>

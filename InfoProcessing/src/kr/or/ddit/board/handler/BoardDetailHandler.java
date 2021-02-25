@@ -1,7 +1,5 @@
 package kr.or.ddit.board.handler;
 
-import java.util.List;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -9,7 +7,6 @@ import kr.or.ddit.board.service.BoardServiceImpl;
 import kr.or.ddit.board.service.IBoardService;
 import kr.or.ddit.board.vo.BoardVO;
 import kr.or.ddit.common.handler.CommandHandler;
-import kr.or.ddit.common.vo.SearchPagingVO;
 
 
 public class BoardDetailHandler implements CommandHandler{
@@ -29,11 +26,10 @@ public class BoardDetailHandler implements CommandHandler{
 		BoardVO board = boardService.getBoard(boardNo);
 		request.setAttribute("board", board);
 		
-		int my = response.getStatus();
-		System.out.println(my+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
-		board.setBoardCnt(board.getBoardCnt()+1);
-		boardService.updateBoard(board);
-		
+		if(request.getParameter("from") == null) {
+			board.setBoardCnt(board.getBoardCnt()+1);
+			boardService.updateBoard(board);
+		}
 		
 		return url;
 	}
