@@ -18,21 +18,19 @@
 				</div>
 				<hr>
 				<div class="prob-body">
-					<!-- handlebars -->
-					
-					<c:forEach items="${quizList }" var="quiz">
+				
+					<c:forEach var="num" begin="0" end="${quizList.size()-1 }">
+						<c:set var="quiz" value="${quizList.get(num) }" />
 						<div class="row" style="margin-bottom:10px">
-							<div class="col-sm-1" style="margin-top: 5px;">
-								<h5 style="display:inline-block">${quiz.quizNo}번</h5>
-							</div>
 							<div class="col-sm-3">
 								<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
 								<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 							</div>
 						</div>
-						<p style="margin-bottom:10px;">${quiz.quizProb }</p>
+						<strong style="margin-right:5px;">${num+1 }.</strong>
+						<strong>${quiz.quizProb }</strong><br><br>
 						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration:none;" onclick="openAnswer(this);">정답보기</a>
-						<p class="answer_${quiz.quizNo }" style="margin:10px 0;display:none;">${quiz.quizAnswer }</p>
+						<strong class="answer_${quiz.quizNo }" style="margin:10px 0;display:none;">${quiz.quizAnswer }</strong>
 						<div class="input-group" style="margin-bottom:20px;">
 						
 							<c:if test="${quiz.quizTag.length() > 0 }">
@@ -56,16 +54,16 @@
 <script>
 var memId = '${sessionScope.loginUser.memId}';
 
-if(memId==$('span#writer').text()){
+if(memId=='${quizList.get(0).memId}'){
 	$('button.myBtn').css('display','block');
 }
 
 function openAnswer(obj){
 	if($(obj).text()=="정답보기"){
-		$('p.'+$(obj).attr("class")).css("display","block");
+		$('strong.'+$(obj).attr("class")).css("display","block");
 		$(obj).text("감추기");
 	}else{
-		$('p.'+$(obj).attr("class")).css("display","none");
+		$('strong.'+$(obj).attr("class")).css("display","none");
 		$(obj).text("정답보기");
 	}
 }

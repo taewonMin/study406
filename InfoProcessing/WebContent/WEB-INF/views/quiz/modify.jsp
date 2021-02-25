@@ -32,13 +32,14 @@
 				<div class="prob-body">
 					<!-- handlebars -->
 					
-					<c:forEach items="${quizList }" var="quiz">
+					<c:forEach var="num" begin="0" end="${quizList.size()-1 }">
+						<c:set var="quiz" value="${quizList.get(num) }" />
 						<div id="quiz_${quiz.quizNo}">
 							<div class="row" style="margin-bottom:10px">
 								<div class="col-sm-1" style="text-align: center;margin-top: 5px;">
 									<h5 style="display:inline-block">${quiz.quizNo}번</h5>
 								</div>
-								<div class="col-sm-3">
+								<div class="col-sm-3" style="margin-bottom:5px;">
 									<select class="form-control" id="subject_${quiz.quizNo}" name="parentCode" onChange="subjectChange(this);">
 										<option value="default">--과목 선택--</option>
 										<option value="P01" ${quiz.subNo.substring(0,3) eq 'P01' ? 'selected':''}>[1과목] 소프트웨어 설계</option>
@@ -57,14 +58,14 @@
 								<div class="col-sm-12 tagList_${quiz.quizNo}">
 									<c:if test="${quiz.quizTag.length() > 0 }">
 										<c:forEach items="${quiz.quizTag.split(\",\") }" var="tag">
-											<span style='margin:10px 10px 0 0;font-weight:bold;color:#6495ed;'>#${tag }</span>
+											<span class="tag" name="tag_${num+1 }" style='margin:10px 10px 0 0;font-weight:bold;color:#6495ed;' onclick="removeTag(this);">#${tag }</span>
 										</c:forEach>
 									</c:if>
 								</div>
 							</div>
 							<div class="input-group" style="margin-bottom:20px;">
 								<input class="form-control" type="text" id="tag_${quiz.quizNo}" name="tag" onKeypress="checkEnter('${quiz.quizNo}');" placeholder="태그를 추가하세요"/>
-								<button class="btn btn-primary" type="button" onclick="addTag('${quiz.quizNo}');">태그 추가</button>
+								<button class="btn btn-primary" type="button" onclick="addTag('tag_${quiz.quizNo}','div.tagList_${quiz.quizNo}');">태그 추가</button>
 							</div>
 						</div>
 					</c:forEach>
@@ -108,9 +109,9 @@
 		<div class="col-sm-12 tagList_{{quizNo}}">
 		</div>
 	</div>
-	<div class="input-group" style="width:30%; margin-bottom:20px;">
+	<div class="input-group" style="margin-bottom:20px;">
 		<input class="form-control" type="text" id="tag_{{quizNo}}" name="tag" onKeypress="checkEnter('{{quizNo}}');" placeholder="태그를 추가하세요"/>
-		<button class="btn btn-primary" type="button" onclick="addTag('{{quizNo}}');">태그 추가</button>
+		<button class="btn btn-primary" type="button" onclick="addTag('tag_{{quizNo}}','div.tagList_{{quizNo}}');">태그 추가</button>
 	</div>
 </div>
 </script>
@@ -189,7 +190,7 @@ function modifyQuiz(){
 		var quizAnswer = $('textarea[name="quizAnswer"]').eq(i);
 		var pSubCode = $('#subject_'+(i+1));
 		var subCode = $('select[name="subCode"]').eq(i);
-		var tagList = $('span[name="tag_'+(i+1)+'"]');
+		var quizTag = getTagToString('tag_'+(i+1));
 		
 		if(quizProb.val().trim() == ""){
 			alert("문제의 내용을 입력하세요.");
@@ -205,15 +206,6 @@ function modifyQuiz(){
 			alert('과목을 선택하세요.');
 			pSubCode.focus();
 			return;
-		}
-		var quizTag = "";
-		if(tagList.length > 0){
-			for(var j=0; j<tagList.length; j++){
-				quizTag += tagList.eq(j).text().substr(1);
-				if(j < tagList.length-1){
-					quizTag += ",";
-				}
-			}
 		}
 		quizObj = {quizNo:i+1
 					,quizTitle:quizTitle.val()
@@ -251,21 +243,6 @@ function subjectChange(obj){
 			$('.'+tagId+' select').remove();
 		}
 	});
-}
-
-function addTag(id){
-	var input = $('input#tag_'+id);
-	if(input.val().trim() != ""){
-		var keywordTag = "<span name='tag_"+id+"' style='margin-right:10px;font-weight:bold;color:#6495ed;'>#"+input.val().replaceAll(" ", "")+"</span>";
-		$('.tagList_'+id).append(keywordTag);
-		input.val("");
-	}
-}
-
-function checkEnter(id){
-	if(event.keyCode == 13){
-		addTag(id);
-	}
 }
 </script>
 </body>

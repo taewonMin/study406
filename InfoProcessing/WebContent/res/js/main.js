@@ -16,9 +16,17 @@ $("#menu-toggle").click(function(e) {
 function addTag(inputId, target){
 	var input = $('#'+inputId);
 	if(input.val().trim() != ""){
-		var tag = "<span name='"+inputId+"' style='margin-right:10px;font-weight:bold;color:#6495ed;'>#"+input.val().replaceAll(" ", "")+"</span>";
+		var tag = "<span name='"+inputId+"' style='margin-right:10px;font-weight:bold;color:#6495ed;' onclick='removeTag(this);'>#"+input.val().replaceAll(" ", "")+"</span>";
 		$(target).append(tag);
 		input.val("");
+	}
+}
+
+// 태그 클릭시 삭제
+function removeTag(obj){
+	var check = confirm("태그를 삭제하시겠습니까?");
+	if(check){
+		$(obj).remove();
 	}
 }
 

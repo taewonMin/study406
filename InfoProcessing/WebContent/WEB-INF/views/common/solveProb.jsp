@@ -72,6 +72,9 @@
 									<div class="col-sm-2" style="margin-top:5px;">
 										<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
 										<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
+										<c:if test="${quiz.zzim != 0 }">
+											<span class="badge badge-warning">찜</span>
+										</c:if>
 									</div>
 								</div>
 								<strong style="margin-right:5px;">${num+1 }.</strong>
