@@ -145,6 +145,18 @@
 	</delete>
 	
 	<select id="searchQuiz" resultMap="quizMap2">
-		
+		select * from quiz
+		<isEqual property="searchType" compareValue="quiz_prob">
+		  where quiz_prob like CONCAT('%',#keyword#,'%')
+		</isEqual>
+		<isEqual property="searchType" compareValue="mem_id">
+		  where mem_id like CONCAT('%',#keyword#,'%')
+		</isEqual>
+		<isEqual property="searchType" compareValue="quiz_answer">
+		  where quiz_answer like CONCAT('%',#keyword#,'%')
+		</isEqual>
+		<isEqual property="searchType" compareValue="quiz_tag">
+		  where quiz_tag like CONCAT('%',#keyword#,'%')
+		</isEqual>
 	</select>
 </sqlMap>

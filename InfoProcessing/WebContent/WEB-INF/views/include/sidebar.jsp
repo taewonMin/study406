@@ -15,7 +15,7 @@
 				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/quiz/list.do?studyNo=1">1기</a></li>
 			</ul>
 		</div>
-		<a href="#" class="list-group-item list-group-item-action bg-light">익명게시판</a>
+		<a href="#" class="list-group-item list-group-item-action bg-light">마이페이지</a>
 		<a href="<%=request.getContextPath() %>/quiz/searchForm.do" class="list-group-item list-group-item-action bg-light">문제 검색</a>
 	</div>
 </div>

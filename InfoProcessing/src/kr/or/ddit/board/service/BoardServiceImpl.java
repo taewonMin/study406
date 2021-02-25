@@ -50,10 +50,7 @@ public class BoardServiceImpl implements IBoardService{
 
 	@Override
 	public BoardVO getBoard(int boardNo) throws SQLException {
-		
 		BoardVO board = boardDao.getBoard(smc,boardNo);
-		
-		
 		return board;
 	}
 
@@ -71,6 +68,12 @@ public class BoardServiceImpl implements IBoardService{
 	public String getSubjectName(String boardGroup) throws SQLException {
 		String sbujectName= boardDao.getSubjectName(smc,boardGroup);
 		return sbujectName;
+	}
+
+	@Override
+	public List<BoardVO> getBoardList(SearchPagingVO search) throws SQLException {
+		List<BoardVO> boardList = boardDao.selectBoardSearchList(smc, search);
+		return boardList;
 	}
 
 

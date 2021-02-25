@@ -26,5 +26,7 @@ public interface IBoardDAO {
 
 	public String getSubjectName(SqlMapClient smc, String boardGroup)  throws SQLException;
 
+	public List<BoardVO> selectBoardSearchList(SqlMapClient smc, SearchPagingVO search) throws SQLException;
+
 	
 }

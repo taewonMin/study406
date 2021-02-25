@@ -1,9 +1,15 @@
 <%@page import="kr.or.ddit.board.vo.BoardVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<% String boardContent = ((BoardVO)request.getAttribute("board")).getBoardContent().replaceAll(System.lineSeparator(), "<br>"); 
+	pageContext.setAttribute("boardContent", boardContent);
+%>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
+
 	<div class="d-flex" id="wrapper">
 		<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>
 		<!-- Page Content -->
@@ -22,7 +28,7 @@
 				</div>
 				<hr>
 				<div>
-					<div>${board.boardContent} </div>
+					<div>${boardContent} </div>
 				</div>
 			</div>
 		</div>
