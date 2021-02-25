@@ -94,14 +94,17 @@
 	</select>
 	
 	<select id="selectQuizSolveList" resultMap="quizMap">
-		select d.*, ifnull(c.zzim, 0) as zzim
+		select d.*,
+			   e.sub_parent_name,
+			   e.sub_name,
+			   ifnull(c.zzim, 0) as zzim
 		  from (select b.quiz_id, 1 as zzim
 				  from quiz a
 				 inner join my_quiz b
 				    on a.quiz_id = b.quiz_id
 				 where b.mem_id = #memId#) c
-		 right join quiz d
-			on c.quiz_id = d.quiz_id
+		 right join quiz d on c.quiz_id = d.quiz_id
+		 inner join subject e on e.sub_no = d.sub_no
 		 where d.study_no = #studyNo#
 		   and d.quiz_group = #quizGroup#
 	   <dynamic prepend="and sub_parent_code in">
@@ -109,6 +112,7 @@
 				#quizSubCode[]#
 			</iterate>
 	   </dynamic>
+	     order by d.sub_no
 	</select>
 	
 	<insert id="insertQuiz">
@@ -123,6 +127,11 @@
 			,#quizTag#
 		</isNotEmpty>
 		)
+	</insert>
+	
+	<insert id="insertMyQuiz">
+		insert into my_quiz(mem_id, quiz_id)
+		values(#memId#,#quizId#)
 	</insert>
 	
 	<update id="updateQuizViewcnt">
@@ -147,6 +156,12 @@
 		delete from quiz
 		where quiz_group = #quizGroup#
 		and study_no = #studyNo#
+	</delete>
+	
+	<delete id="deleteMyQuiz">
+		delete from my_quiz
+		where mem_id = #memId#
+		and quiz_id = #quizId#
 	</delete>
 	
 	<select id="searchQuiz" resultMap="quizMap2">

@@ -37,7 +37,6 @@ public class MainSolveHandler implements CommandHandler {
 		quiz.setQuizGroup(quizGroup);
 		
 		String memId = ((MemberVO)request.getSession().getAttribute("loginUser")).getMemId();
-		System.out.println(memId);
 		quiz.setMemId(memId);
 		
 		try {
