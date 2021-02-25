@@ -69,7 +69,7 @@
 		<div class="col-sm-12 tagList_{{quizNo}}">
 		</div>
 	</div>
-	<div class="input-group" style="width:30%; margin-bottom:20px;">
+	<div class="input-group" style="margin-bottom:20px;">
 		<input class="form-control" type="text" id="tag_{{quizNo}}" name="tag" onKeypress="checkEnter('tag_{{quizNo}}','div.tagList_{{quizNo}}');" placeholder="태그를 추가하세요"/>
 		<button class="btn btn-primary" type="button" onclick="addTag('tag_{{quizNo}}','div.tagList_{{quizNo}}');">태그 추가</button>
 	</div>

@@ -22,17 +22,12 @@
 					
 					<c:forEach items="${quizList }" var="quiz">
 						<div class="row" style="margin-bottom:10px">
-							<div class="col-sm-1" style="text-align: center;margin-top: 5px;">
-								<h5 style="display:inline-block">${quiz.quizNo}번</h5>
-							</div>
-							<div class="col-sm-3">
-								<input class="form-control" style="background-color: white;" readonly="readonly" value="${quiz.subParentName }">
-							</div>
-							<div class="col-sm-3">
-								<input class="form-control" style="background-color: white;" readonly="readonly" value="${quiz.subName}">
+							<div class="col-sm-2" style="margin-top:5px;">
+								<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
+								<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 							</div>
 						</div>
-						<textarea class="form-control" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px; background-color: white;" readonly="readonly">${quiz.quizProb }</textarea>
+						<p style="margin-bottom:10px;">${quiz.quizProb }</p>
 						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
 						<textarea class="form-control answer_${quiz.quizNo }" style="width:100%; min-height:100px; margin:10px 0; background-color: white; display: none;" readonly="readonly">${quiz.quizAnswer }</textarea>
 						<div class="input-group" style="width:30%; margin-bottom:20px;">
@@ -46,9 +41,7 @@
 						</div>
 					</c:forEach>						
 				</div>
-				<button class="btn btn-primary" type="button" onclick="history.go(-1);">목록</button>
-				<button class="btn btn-danger myBtn" type="button" onclick="remove_go();" style="float:right;display:none;">삭제</button>
-				<button class="btn btn-primary myBtn" type="button" onclick="location.href='modify.do?studyNo=${param.studyNo }&quizGroup=${param.quizGroup}';" style="float:right;margin-right:10px;display:none;">수정</button>
+				<button class="btn btn-primary" type="button" onclick="location.href='<%=request.getContextPath()%>/main.do';">목록</button>
 			</div>
 			<!-- /content -->
 			
@@ -56,6 +49,15 @@
 	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
+function openAnswer(obj){
+	if($(obj).text()=="정답보기"){
+		$('textarea.'+$(obj).attr("class")).css("display","block");
+		$(obj).text("감추기");
+	}else{
+		$('textarea.'+$(obj).attr("class")).css("display","none");
+		$(obj).text("정답보기");
+	}
+}
 </script>
 </body>
 </html>

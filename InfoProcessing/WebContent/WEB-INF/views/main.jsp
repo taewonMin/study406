@@ -21,8 +21,8 @@ table tr td {
 					<table class="table table-bordered">
 						<tr><th colspan="2" style="text-align: center; background-color: powderblue;">문제 형식</th></tr>		
 						<tr class="">
-							<td><input class="" type="radio" name="quizNum" id="oneNum"><label for="oneNum">한문제씩 풀기</label></td>
-							<td><input class="" type="radio" name="quizNum" id="multiNum" checked="checked"><label for="multiNum">한꺼번에 풀기</label></td>
+							<td><input class="" type="radio" name="quizNum" id="oneNum" value="1"><label for="oneNum">한문제씩 풀기</label></td>
+							<td><input class="" type="radio" name="quizNum" id="multiNum" checked="checked" value="0"><label for="multiNum">한꺼번에 풀기</label></td>
 						</tr>
 		
 						<tr class="">
@@ -70,7 +70,7 @@ table tr td {
 							</td>
 							<td colspan="2">
 								<select class="form-control probList" name="testProbGroup">
-									<option>--스터디 그룹 선택--</option>
+									<option value="default">--스터디 그룹 선택--</option>
 								</select>
 							</td>
 						</tr>
@@ -88,6 +88,12 @@ table tr td {
 
 <script>
 function solveProb(){
+	// 기출문제
+	if($('input[name="quizType"]:checked').val()==0){
+		alert('기출문제 데이터 없음');
+		return;
+	}
+	
 	if($('input[name="quizSubCode"]:checked').length==0){
 		alert("과목을 하나 이상 선택하세요.");
 		return;

@@ -92,7 +92,7 @@
 		where subject.sub_no = A.sub_no
 	</select>
 	
-	<select id="selectQuizSolveList">
+	<select id="selectQuizSolveList" resultMap="quizMap">
 		select a.*,b.sub_name,b.sub_parent_name
 		  from quiz a
 		 inner join subject b 
