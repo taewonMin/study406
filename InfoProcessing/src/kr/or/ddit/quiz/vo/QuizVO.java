@@ -17,8 +17,15 @@ public class QuizVO {
 	private String subParentName;
 	private String subName;
 	private String[] quizSubCode;
+	private int zzim;
 	
 	
+	public int getZzim() {
+		return zzim;
+	}
+	public void setZzim(int zzim) {
+		this.zzim = zzim;
+	}
 	public String[] getQuizSubCode() {
 		return quizSubCode;
 	}

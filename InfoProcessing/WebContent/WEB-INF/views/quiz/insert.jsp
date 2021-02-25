@@ -33,7 +33,7 @@
 				</div>
 				<button class="btn btn-primary" type="button" onclick="addQuiz();">문제 추가하기</button>
 				<button class="btn btn-danger removeBtn" type="button" style="display:none;" onclick="removeQuiz();">문제 삭제</button>
-				<button class="btn btn-danger" type="button" onclick="history.go(-1);" style="float: right;">취소</button>
+						<button class="btn btn-danger" type="button" onclick="history.go(-1);" style="float: right;">취소</button>
 				<button class="btn btn-primary" type="button" onclick="insertQuiz();" style="float: right; margin-right:10px;">등록</button>
 			</div>
 			<!-- /content -->
@@ -51,7 +51,7 @@
 			<h5 style="display:inline-block">{{quizNo}}번</h5>
 		</div>
 		<div class="col-sm-3">
-			<select class="form-control" id="subject_{{quizNo}}" name="parentCode" onChange="subjectChange(this);">
+			<select class="form-control" style="margin-bottom:5px" id="subject_{{quizNo}}" name="parentCode" onChange="subjectChange(this);">
 				<option value="default">--과목 선택--</option>
 				<option value="P01">[1과목] 소프트웨어 설계</option>
 				<option value="P02">[2과목] 소프트웨어 개발</option>

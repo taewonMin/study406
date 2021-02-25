@@ -13,8 +13,8 @@
 			<!-- content -->
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
-					<h4 style="display: inline;">${quizList.get(0).quizTitle}</h4>
-					<span id="writer">${quizList.get(0).memId}</span>
+					<h4>${quizList.get(0).quizTitle}</h4>
+					<span id="writer">작성자 : ${quizList.get(0).memId}</span>
 				</div>
 				<hr>
 				<div class="prob-body">
@@ -22,7 +22,7 @@
 					
 					<c:forEach items="${quizList }" var="quiz">
 						<div class="row" style="margin-bottom:10px">
-							<div class="col-sm-1" style="text-align: center;margin-top: 5px;">
+							<div class="col-sm-1" style="margin-top: 5px;">
 								<h5 style="display:inline-block">${quiz.quizNo}번</h5>
 							</div>
 							<div class="col-sm-3">
@@ -30,9 +30,9 @@
 								<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 							</div>
 						</div>
-						<textarea class="form-control" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px; background-color: white;" readonly="readonly">${quiz.quizProb }</textarea>
-						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
-						<textarea class="form-control answer_${quiz.quizNo }" style="width:100%; min-height:100px; margin:10px 0; background-color: white; display: none;" readonly="readonly">${quiz.quizAnswer }</textarea>
+						<p style="margin-bottom:10px;">${quiz.quizProb }</p>
+						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration:none;" onclick="openAnswer(this);">정답보기</a>
+						<p class="answer_${quiz.quizNo }" style="margin:10px 0;display:none;">${quiz.quizAnswer }</p>
 						<div class="input-group" style="margin-bottom:20px;">
 						
 							<c:if test="${quiz.quizTag.length() > 0 }">
@@ -62,10 +62,10 @@ if(memId==$('span#writer').text()){
 
 function openAnswer(obj){
 	if($(obj).text()=="정답보기"){
-		$('textarea.'+$(obj).attr("class")).css("display","block");
+		$('p.'+$(obj).attr("class")).css("display","block");
 		$(obj).text("감추기");
 	}else{
-		$('textarea.'+$(obj).attr("class")).css("display","none");
+		$('p.'+$(obj).attr("class")).css("display","none");
 		$(obj).text("정답보기");
 	}
 }

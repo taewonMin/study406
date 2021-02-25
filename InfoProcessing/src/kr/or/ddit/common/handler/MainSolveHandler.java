@@ -1,12 +1,12 @@
 package kr.or.ddit.common.handler;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import kr.or.ddit.member.vo.MemberVO;
 import kr.or.ddit.quiz.service.IQuizService;
 import kr.or.ddit.quiz.service.QuizServiceImpl;
 import kr.or.ddit.quiz.vo.QuizVO;
@@ -23,15 +23,7 @@ public class MainSolveHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		
-		String url = "";
-		
-		String quizNum = request.getParameter("quizNum");
-		if(quizNum.equals("1")) {	// 한문제씩 풀기
-			url = "/WEB-INF/views/common/solveOneProb.jsp";
-		}else {	// 한꺼번에 풀기
-			url = "/WEB-INF/views/common/solveProb.jsp";
-		}
-		
+		String url = "/WEB-INF/views/common/solveProb.jsp";
 		
 		QuizVO quiz = new QuizVO();
 		
@@ -44,10 +36,21 @@ public class MainSolveHandler implements CommandHandler {
 		quiz.setStudyNo(studyNo);
 		quiz.setQuizGroup(quizGroup);
 		
+		String memId = ((MemberVO)request.getSession().getAttribute("loginUser")).getMemId();
+		System.out.println(memId);
+		quiz.setMemId(memId);
+		
 		try {
 			List<QuizVO> quizList = quizService.getQuizSolveList(quiz);
 			
 			request.setAttribute("quizList", quizList);
+			
+			// quizNum : 0 -> 한꺼번에 풀기
+			// quizNum : 1 -> 한 문제씩 풀기
+			request.setAttribute("quizNum", Integer.parseInt(request.getParameter("quizNum")));
+			// quizAnswer : 0 -> 다 풀고 정답보기
+			// quizAnswer : 1 -> 정답보면서 풀기
+			request.setAttribute("quizAnswer", Integer.parseInt(request.getParameter("quizAnswer")));
 		}catch(SQLException e) {
 			e.printStackTrace();
 			url=null;
