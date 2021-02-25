@@ -26,16 +26,14 @@
 								<h5 style="display:inline-block">${quiz.quizNo}번</h5>
 							</div>
 							<div class="col-sm-3">
-								<input class="form-control" style="background-color: white;" readonly="readonly" value="${quiz.subParentName }">
-							</div>
-							<div class="col-sm-3">
-								<input class="form-control" style="background-color: white;" readonly="readonly" value="${quiz.subName}">
+								<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
+								<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 							</div>
 						</div>
 						<textarea class="form-control" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px; background-color: white;" readonly="readonly">${quiz.quizProb }</textarea>
 						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
 						<textarea class="form-control answer_${quiz.quizNo }" style="width:100%; min-height:100px; margin:10px 0; background-color: white; display: none;" readonly="readonly">${quiz.quizAnswer }</textarea>
-						<div class="input-group" style="width:30%; margin-bottom:20px;">
+						<div class="input-group" style="margin-bottom:20px;">
 						
 							<c:if test="${quiz.quizTag.length() > 0 }">
 								<c:forEach items="${quiz.quizTag.split(\",\") }" var="tag">
