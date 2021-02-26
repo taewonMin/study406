@@ -53,3 +53,40 @@ function checkEnter(inputId, target){
 		addTag(inputId, target);
 	}
 }
+
+//quizId : quizId(int)
+//obj : this -> zzim 속성이 부여된 tag
+//target : 찜 뱃지를 append할 부모 tag
+function zzim(quizId,obj,target){
+	var zzimChk = $(obj).attr("zzim");
+	var chk;
+	if(zzimChk=="true"){
+		chk = confirm('찜 하시겠습니까?');
+	}else{
+		chk = confirm('찜을 취소하시겠습니까?');
+	}
+	
+	if(!chk){
+		return;
+	}
+	
+	$.ajax({
+		url:contextPath+'/main/zzim.do',
+		type:'post',
+		data:{quizId:quizId,zzimChk:zzimChk},
+		success:function(data){
+			if(zzimChk=="true"){
+				$(target).append('<span class="badge badge-warning">찜</span>');
+				$(obj).attr("zzim","false");
+				$(obj).text("찜취소");
+			}else{
+				$(target+' .badge').remove();
+				$(obj).attr("zzim","true");
+				$(obj).text("찜하기");
+			}
+		},
+		error:function(error){
+			alert('서버 에러');
+		}
+	});
+}
