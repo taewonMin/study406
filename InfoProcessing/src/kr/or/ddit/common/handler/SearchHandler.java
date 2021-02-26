@@ -28,28 +28,24 @@ public class SearchHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		String url=null;
+		String url="/WEB-INF/views/common/searchList.jsp";;
+		
 		String keyword =request.getParameter("keyword");
-		String boardGroup =request.getParameter("boardGroup");
 		String kind =request.getParameter("kind");
 		String searchType =request.getParameter("searchType");
 		SearchPagingVO search = new SearchPagingVO();
 		search.setKeyword(keyword);
-		search.setBoardGroup(boardGroup);
 		search.setSearchType(searchType);
-		
-		Map<String, Object> dataMap = new HashMap<String, Object>();
+		search.setKind(kind);
 		
 		if(kind.equals("게시글")) {
 			List<BoardVO> boardList = boardService.getBoardList(search);
-			dataMap.put("boardList", boardList);
+			request.setAttribute("boardList", boardList);
 		}else {
 			List<QuizVO> quizList = quizService.getQuizSearchList(search);
-			dataMap.put("quizList", quizList);
+			request.setAttribute("quizList", quizList);
 		}
-		
-		
-		JsonResolver.view(response, dataMap);
+		request.setAttribute("search", search);
 		
 		return url;
 	}
