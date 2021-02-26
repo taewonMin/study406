@@ -43,4 +43,10 @@ public interface IQuizDAO {
 	public List<SubjectVO> getSubjectParentList(SqlMapClient smc)  throws SQLException;
 
 	public List<QuizVO> searchQuiz(SqlMapClient smc, SearchPagingVO search) throws SQLException;
+	
+	// 찜하기
+	public void insertMyQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
+	
+	// 찜취소
+	public void deleteMyQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
 }

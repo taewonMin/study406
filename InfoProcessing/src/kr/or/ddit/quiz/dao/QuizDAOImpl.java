@@ -91,4 +91,14 @@ public class QuizDAOImpl implements IQuizDAO {
 		return quizList;
 	}
 
+	@Override
+	public void insertMyQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		smc.insert("quiz.insertMyQuiz",quiz);
+	}
+
+	@Override
+	public void deleteMyQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		smc.delete("quiz.deleteMyQuiz",quiz);
+	}
+
 }

@@ -100,4 +100,14 @@ public class QuizServiceImpl implements IQuizService {
 		return quizList;
 	}
 
+	@Override
+	public void zzimDo(QuizVO quiz) throws SQLException {
+		quizDao.insertMyQuiz(smc, quiz);
+	}
+
+	@Override
+	public void zzimCancel(QuizVO quiz) throws SQLException {
+		quizDao.deleteMyQuiz(smc, quiz);
+	}
+
 }

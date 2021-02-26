@@ -19,6 +19,7 @@
 		<result property="studyNo" column="study_no"/>
 		<result property="subParentName" column="sub_parent_name"/>
 		<result property="subName" column="sub_name"/>
+		<result property="zzim" column="zzim"/>
 	</resultMap>
 	
 	<resultMap class="subject" id="subjectMap">
@@ -74,7 +75,7 @@
 	</select>
 	
 	<select id="selectQuizGroupList" resultMap="quizMap">
-		select A.*, sub_parent_name, sub_name
+		select A.*, sub_parent_name, sub_name, 0 as zzim
 		from (select *
 			from quiz
 			where study_no = #studyNo#
@@ -84,7 +85,7 @@
 	</select>
 	
 	<select id="selectQuizList" resultMap="quizMap">
-		select A.*, sub_name, sub_parent_name
+		select A.*, sub_name, sub_parent_name, 0 as zzim
 		from (select *
 				from quiz 
 				where quiz_group=#quizGroup#
@@ -93,17 +94,25 @@
 	</select>
 	
 	<select id="selectQuizSolveList" resultMap="quizMap">
-		select a.*,b.sub_name,b.sub_parent_name
-		  from quiz a
-		 inner join subject b 
-		    on a.sub_no = b.sub_no
-		 where a.study_no = #studyNo#
-		   and a.quiz_group = #quizGroup#
+		select d.*,
+			   e.sub_parent_name,
+			   e.sub_name,
+			   ifnull(c.zzim, 0) as zzim
+		  from (select b.quiz_id, 1 as zzim
+				  from quiz a
+				 inner join my_quiz b
+				    on a.quiz_id = b.quiz_id
+				 where b.mem_id = #memId#) c
+		 right join quiz d on c.quiz_id = d.quiz_id
+		 inner join subject e on e.sub_no = d.sub_no
+		 where d.study_no = #studyNo#
+		   and d.quiz_group = #quizGroup#
 	   <dynamic prepend="and sub_parent_code in">
 			<iterate property="quizSubCode" open="(" close=")" conjunction=",">
 				#quizSubCode[]#
 			</iterate>
 	   </dynamic>
+	     order by d.sub_no
 	</select>
 	
 	<insert id="insertQuiz">
@@ -118,6 +127,11 @@
 			,#quizTag#
 		</isNotEmpty>
 		)
+	</insert>
+	
+	<insert id="insertMyQuiz">
+		insert into my_quiz(mem_id, quiz_id)
+		values(#memId#,#quizId#)
 	</insert>
 	
 	<update id="updateQuizViewcnt">
@@ -142,6 +156,12 @@
 		delete from quiz
 		where quiz_group = #quizGroup#
 		and study_no = #studyNo#
+	</delete>
+	
+	<delete id="deleteMyQuiz">
+		delete from my_quiz
+		where mem_id = #memId#
+		and quiz_id = #quizId#
 	</delete>
 	
 	<select id="searchQuiz" resultMap="quizMap2">

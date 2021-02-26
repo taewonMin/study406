@@ -4,8 +4,8 @@
 <html lang="en">
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
-table tr td {
-	width: 20%;
+table tr td{
+	vertical-align: middle !important;
 }
 </style>
 <body>
@@ -16,18 +16,18 @@ table tr td {
 			
 			<!-- content -->
 			<div class="container-fluid">
-				<h1 class="mt-4" align="center">정보처리기사 실기</h1>
+				<h2 class="mt-4" align="center">정보처리기사 실기</h2>
 				<form role="conditionForm" action="main/solve.do" method="post" class="form-group">
 					<table class="table table-bordered">
 						<tr><th colspan="2" style="text-align: center; background-color: powderblue;">문제 형식</th></tr>		
 						<tr class="">
-							<td><input class="" type="radio" name="quizNum" id="oneNum" value="1"><label for="oneNum">한문제씩 풀기</label></td>
-							<td><input class="" type="radio" name="quizNum" id="multiNum" checked="checked" value="0"><label for="multiNum">한꺼번에 풀기</label></td>
+							<td><input class="" type="radio" name="quizNum" id="oneNum" checked="checked" value="1"><label for="oneNum">한문제씩 풀기</label></td>
+							<td><input class="" type="radio" name="quizNum" id="multiNum" value="0"><label for="multiNum">한꺼번에 풀기</label></td>
 						</tr>
 		
 						<tr class="">
-							<td><input class="" type="radio" name="quizAnswer" id="noAns"><label for="noAns" >다 풀고 정답보기</label></td>
-							<td><input class="" type="radio" name="quizAnswer" id="yesAns" checked="checked"><label for="yesAns">정답 보면서 풀기</label></td>
+							<td><input class="" type="radio" name="quizAnswer" id="noAns" value="0"><label for="noAns" >다 풀고 정답보기</label></td>
+							<td><input class="" type="radio" name="quizAnswer" id="yesAns" checked="checked" value="1"><label for="yesAns">정답 보면서 풀기</label></td>
 						</tr>
 					</table>
 					
@@ -36,20 +36,20 @@ table tr td {
 								
 						<tr class="">
 							<td colspan="5">
-								<input type="radio" name="quizType" class="" id="prevType" checked="checked" onclick="changeQuizType(this);" value="0"><label style="width: 50%" for="prevType">기출문제</label>
-								<input type="radio" name="quizType" class="" id="exeType" onclick="changeQuizType(this);" value="1"><label for="exeType">연습문제</label>
+								<input type="radio" name="quizType" class="" id="prevType" onclick="changeQuizType(this);" value="0"><label style="width: 50%" for="prevType">기출문제</label>
+								<input type="radio" name="quizType" class="" id="exeType" checked="checked" onclick="changeQuizType(this);" value="1"><label for="exeType">연습문제</label>
 							</td>
 						</tr>
 
 						<tr class="" align="center">
-							<td><input type="checkbox" name="quizSubCode" class="" id="sub1" checked="checked" value="P01"><label for="sub1">1과목</label></td>
-							<td><input type="checkbox" name="quizSubCode" class="" id="sub2" checked="checked" value="P02"><label for="sub2">2과목</label></td>
-							<td><input type="checkbox" name="quizSubCode" class="" id="sub3" checked="checked" value="P03"><label for="sub3">3과목</label></td>
-							<td><input type="checkbox" name="quizSubCode" class="" id="sub4" checked="checked" value="P04"><label for="sub4">4과목</label></td>
-							<td><input type="checkbox" name="quizSubCode" class="" id="sub5" checked="checked" value="P05"><label for="sub5">5과목</label></td>
+							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub1" checked="checked" value="P01"><label for="sub1">1과목</label></td>
+							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub2" checked="checked" value="P02"><label for="sub2">2과목</label></td>
+							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub3" checked="checked" value="P03"><label for="sub3">3과목</label></td>
+							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub4" checked="checked" value="P04"><label for="sub4">4과목</label></td>
+							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub5" checked="checked" value="P05"><label for="sub5">5과목</label></td>
 						</tr>
 						
-						<tr class="preProb">
+						<tr class="preProb" style="display:none;">
 							<td colspan="2" align="center">회차 선택</td>
 							<td colspan="3">
 								<select class="form-control" name="preProbGroup" >
@@ -59,12 +59,12 @@ table tr td {
 								</select>
 							</td>
 						</tr>
-						<tr class="testProb" style="display:none;">
+						<tr class="testProb">
 							<td colspan="1" align="center">회차 선택</td>
 							<td colspan="2" >
 								<select class="form-control" name="studyNo" onchange="changeGroup(this);">
 									<option value="default">--스터디 그룹 선택--</option>
-									<option value="1">1기</option>
+									<option value="1" selected>1기</option>
 									<option value="2">2기</option>
 								</select>
 							</td>
@@ -87,6 +87,8 @@ table tr td {
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
+changeGroup(document.getElementsByTagName("select")[1]);
+
 function solveProb(){
 	// 기출문제
 	if($('input[name="quizType"]:checked').val()==0){

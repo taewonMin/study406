@@ -39,5 +39,10 @@ public interface IQuizService {
 	public List<SubjectVO> getSubjectParentList() throws SQLException;
 
 	public List<QuizVO> getQuizSearchList(SearchPagingVO search) throws SQLException;
-
+	
+	// 찜하기
+	public void zzimDo(QuizVO quiz) throws SQLException;
+	
+	// 찜취소
+	public void zzimCancel(QuizVO quiz) throws SQLException;
 }
