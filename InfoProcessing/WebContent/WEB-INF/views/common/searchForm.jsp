@@ -30,8 +30,7 @@
 			
 			<!-- content -->
 			<div class="container-fluid">
-				<form action="list.do" role="form" name="myForm"class="form" style="margin-top: 10px;">
-					<input type="hidden" name="boardGroup" value="${param.boardGroup }">
+				<form action="searchList.do" role="form" name="myForm"class="form" style="margin-top: 10px;" method="get">
 					<input type="hidden" name="kind" value="게시글" id="kind">
 					<input type="hidden" name="searchType" value="all" id="searchType">
 					<div id="keyword" class="card-tools" style="">
@@ -65,7 +64,7 @@
 									<option value="quiz_prob">문 제</option>
 									<option value="quiz_answer">해 설</option>
 									<option value="mem_id" >작성자</option>
-									<option value="board_tag">태 그</option>
+									<option value="quiz_tag">태 그</option>
 								</select>
 							</div>
 						</div>
@@ -80,34 +79,6 @@
 	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
-function search_go(){
-	var data = {
-			boardGroup:$("input[name=boardGroup]").val(),
-			kind:$("input[name=kind]").val(),
-			searchType:$("input[name=searchType]").val(),
-			keyword:$("input[name=keyword]").val()
-	}
-	
-	$.ajax({
-		url:'<%=request.getContextPath()%>/common/search.do',
-		data:data,
-		success:function(data){
-			console.log(data);
-			printData(data);
-			showSelect();
-		},
-		error:function(xhr){
-			console.log(xhr);
-		}
-	});
-}
-
-var submitAction = function(e) {
-	e.preventDefault();
-    e.stopPropagation();
-    search_go();
-};
-$('form[role="form"]').bind('submit', submitAction);
 
 function switchActive(obj){
 	if($(obj).attr("class").indexOf("type-on") > 0) return;
@@ -129,39 +100,6 @@ function showSelect(){
 	}
 }
 
-function printData(list){
-	var resHtml = '<ul class="list-group" style="clear:both; padding: 10px;">';
-	if(list.quizList){
-		$('#quizCnt').text("  "+list.quizList.length + " 건");
-		for (var i = 0 ; i < list.quizList.length ; i++) {
-			var quiz = list.quizList[i];
-			var url = 'location.href="/quiz/detail.do?studyNo="+quiz.studyNo+"&quizGroup="+quiz.quizGroup+'"';
-			
-			resHtml +=  '<li class="list-group-item quizItem" onclick="javascript:'+url+';>'
-						+'<span style="font-weight: bold;">'+quiz.quizTitle+'</span>'
-						+'<div style="display: block; font-size: x-small;">'
-						+'<span>'+quiz.memId+'</span>'
-						+'<span>'+quiz.quizRegdate+'</span>'
-						+'<span>조회 '+ quiz.quizViewcnt+'</span>'
-		}
-	}else if(list.boardList){
-		$('#boardCnt').text(list.boardList.length  + " 건");
-		for (var i = 0 ; i < list.boardList.length ; i++) {
-			var board = list.boardList[i];
-			var url = 'location.href="/board/detail.do?board='+board.boardNo+"&boardGorup="+board.boardGroup+'"';
-			
-			resHtml +=  '<li class="list-group-item quizItem" onclick="javascript:'+url+';>'
-						+'<span style="font-weight: bold;">'+board.boardTitle+'</span>'
-						+'<div style="display: block; font-size: x-small;">'
-						+'<span>'+board.memId+'</span>'
-						+'<span>'+board.boardDate+'</span>'
-						+'<span>조회 '+ board.boardCnt+'</span>'
-		}
-		
-	}
-	resHtml += '</ul>';
-	$('#list').html(resHtml);
-}
 	
 </script>
 </body>

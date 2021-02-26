@@ -5,6 +5,7 @@ public class SearchPagingVO extends PagingVO{
 	private String keyword;
 	private String searchType;
 	private String boardGroup;
+	private String kind;
 
 	private int studyNo;
 	private int subNo;
@@ -53,6 +54,12 @@ public class SearchPagingVO extends PagingVO{
 	}
 	public void setBoardGroup(String boardGroup) {
 		this.boardGroup = boardGroup;
+	}
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		this.kind = kind;
 	}
 
 }
