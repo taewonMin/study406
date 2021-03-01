@@ -71,7 +71,7 @@
 						</div>
 						<div id="list" style="clear: both;">
 							<c:if test="${not empty quizList }">
-								<ul>
+								<ul style="padding: 0; margin-top: 10px;">
 									<c:forEach items="${quizList }" var="quiz">
 										<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/detail.do?studyNo=${quiz.studyNo }&quizGroup=${quiz.quizGroup }'">
 											<span style="font-weight: bold;">${quiz.quizTitle }</span>
@@ -85,7 +85,7 @@
 								</ul>
 							</c:if>
 							<c:if test="${not empty boardList }">
-								<ul>
+								<ul style="padding: 0; margin-top: 10px;">
 									<c:forEach items="${boardList }" var="board">
 										<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/board/detail.do?boardGroup=${board.boardGroup }&boardNo=${board.boardNo }'">
 											<span style="font-weight: bold;">${board.boardTitle }</span>
