@@ -8,7 +8,7 @@
 </head>
 <body>
 <form action="login.do" method="post">
-	<h1>로그인 폼</h1>
+	<h1>로그인 화면</h1>
 	아이디:<input type="text" name="memId" value="lalaru"><br>
 	비밀번호:<input type="password" name="memPass" value="123"><br>
 	<button type="submit">로그인</button>

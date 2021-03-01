@@ -34,7 +34,7 @@
 					<input type="hidden" name="kind" value="게시글" id="kind">
 					<input type="hidden" name="searchType" value="all" id="searchType">
 					<div id="keyword" class="card-tools" style="">
-						<input  class="form-control" type="text" name="keyword" placeholder="검색어를 입력하세요." value="" style="margin-bottom: 10px;"/>
+						<input  class="form-control" type="text" name="keyword" required="required" placeholder="검색어를 입력하세요." value="" style="margin-bottom: 10px;"/>
 						<button class="btn btn-light form-control" type="submit"><i class="fa fa-fw fa-search"></i></button>
 					</div>	
 				</form>

@@ -11,6 +11,18 @@
 		cursor: pointer;
 	    background-color: #f0f8ff;
 	}
+	@media(max-width:400px) {
+		#addBtn{
+		    padding: .25rem .5rem;
+		    font-size: .875rem;
+		    line-height: 1.5;
+		    border-radius: .2rem;
+		}
+		#headTitle{
+			font-size: 1.25rem;
+		}
+	
+     }
 </style>
 <body>
 	<div class="d-flex" id="wrapper">
@@ -21,10 +33,10 @@
 			<!-- 내용 -->
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
-					<h4 style="display: inline;">정보 게시판 - ${subjectName }</h4>
-					<button class="btn btn-warning" style="float: right;" onclick="location.href = 'insert.do?boardGroup=${param.boardGroup}'">글등록</button>
+					<h4 id="headTitle" style="display: inline;"><strong>정보 게시판 </strong><span style="font-size: 0.8em">/${subjectName }</span></h4>
+					<button id="addBtn" class="btn btn-warning" style="float: right;" onclick="location.href = 'insert.do?boardGroup=${param.boardGroup}'">글등록</button>
 				</div>
-				<hr>
+				<hr style="clear: both;">
 				<div>
 					<ul class="list-group" style="clear:both;" id="boardList">
 					<c:forEach var="board" items="${boardList }">
