@@ -49,6 +49,7 @@
 						<div class="serach-header" style="margin-top: 10px; displaly: ${search.kind == '게시글' ? 'block' : 'none'};"  id="boardSelect">
 							<span id="boardCnt"></span>
 							<div style="float: right;">
+							
 								<select class="form-control-sm" onchange="javascript:$('#searchType').val(this.value);" style="border: 0">
 									<option value="all" ${search.kind eq '게시글' and search.searchType eq 'all' ? 'selected' : '' }>전체</option>
 									<option value="board_title" ${search.kind eq '게시글' and search.searchType eq 'board_title' ? 'selected' : '' }>제 목</option>
@@ -56,6 +57,7 @@
 									<option value="board_content" ${search.kind eq '게시글' and search.searchType eq 'board_content' ? 'selected' : '' }>내 용</option>
 									<option value="board_tag" ${search.kind eq '게시글' and search.searchType eq 'board_tag' ? 'selected' : '' }>태그</option>
 								</select>
+								
 							</div>
 						</div>
 						<div class="serach-header" style="margin-top: 10px; display: ${search.kind eq '문제' ? 'block' : 'none'};" id="quizSelect">
