@@ -14,17 +14,19 @@
 			
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
-					<h4>${board.boardTitle }</h4>
-					<div style="text-align: right;">
-						<span>작성자 : ${board.memId }</span>
-						<span>조회수 : ${board.boardCnt }</span>
+					<h4 style="display: inline;">${board.boardTitle }</h4>
+					<div style="float: right;">
 						<a href="javascript:location.href ='modify.do?boardNo=${board.boardNo }'" class="btn btn-success">수정</a>
 						<a href="javascript:location.href ='remove.do?boardNo=${board.boardNo }'" class="btn btn-danger">삭제</a>
 					</div>
 				</div>
-				<hr>
+				<hr style="clear: both;">
 				<div>
-					<div>${board.boardContent} </div>
+					<div style="float: right;">
+						<span>작성자 : ${board.memId }</span>
+						<span>조회수 : ${board.boardCnt }</span>
+					</div>
+					<div style="clear: both;">${board.boardContent} </div>
 				</div>
 			</div>
 		</div>
