@@ -40,7 +40,7 @@ public class MainSolveHandler implements CommandHandler {
 		quiz.setMemId(memId);
 		
 		try {
-			List<QuizVO> quizList = quizService.getQuizSolveList(quiz);
+			List<QuizVO> quizList = quizService.getQuizList(quiz);
 			
 			request.setAttribute("quizList", quizList);
 			

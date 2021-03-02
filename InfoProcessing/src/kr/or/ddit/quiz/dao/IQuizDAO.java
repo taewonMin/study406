@@ -19,9 +19,6 @@ public interface IQuizDAO {
 	// 과목 정보 가져오기
 	public List<SubjectVO> getSubject(SqlMapClient smc, String subParentCode) throws SQLException;
 	
-	// 문제 풀이 리스트 가져오기
-	public List<QuizVO> selectQuizSolveList(SqlMapClient smc, QuizVO quiz) throws SQLException;
-	
 	// 문제 등록
 	public void insertQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
 	
