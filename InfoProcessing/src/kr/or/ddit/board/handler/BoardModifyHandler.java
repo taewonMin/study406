@@ -30,9 +30,11 @@ public class BoardModifyHandler implements CommandHandler{
 		if(request.getMethod().equals("POST")) {
 			String boardContent = request.getParameter("boardContent");
 			String boardTitle = request.getParameter("boardTitle");
+			String boardTag = request.getParameter("boardTag");
 			BoardVO board = boardService.getBoard(boardNo);
 			board.setBoardContent(boardContent);
 			board.setBoardTitle(boardTitle);
+			board.setBoardTag(boardTag);
 			boardService.updateBoard(board);
 			url = request.getContextPath()+"/board/detail.do?boardNo="+boardNo+"&from=modify";
 		}

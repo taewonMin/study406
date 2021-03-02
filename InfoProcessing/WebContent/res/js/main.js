@@ -16,7 +16,7 @@ $("#menu-toggle").click(function(e) {
 function addTag(inputId, target){
 	var input = $('#'+inputId);
 	if(input.val().trim() != ""){
-		var tag = "<span name='"+inputId+"' style='margin-right:10px;font-weight:bold;color:#6495ed;' onclick='removeTag(this);'>#"+input.val().replaceAll(" ", "")+"</span>";
+		var tag = "<span name='"+inputId+"' style='cursor:pointer;margin-right:10px;font-weight:bold;color:#6495ed;' onclick='removeTag(this);'>#"+input.val().replaceAll(" ", "")+"</span>";
 		$(target).append(tag);
 		input.val("");
 	}
@@ -45,6 +45,10 @@ function getTagToString(tagName){
 	}
 	
 	return quizTag;
+}
+
+function setTag(targetId){
+	$(targetId).val(getTagToString('boardTag'));
 }
 
 // 태그 입력시 enter로 받기
