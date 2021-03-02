@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <div class="bg-light border-right" id="sidebar-wrapper">
-	<div class="sidebar-heading">로그아웃<span  class="glyphicon glyphicon-log-in" style="cursor: pointer;"></span></div>
+	<div class="sidebar-heading" onclick="location.href='<%=request.getContextPath()%>/common/logout.do';">로그아웃<span  class="glyphicon glyphicon-log-in" style="cursor: pointer;"></span></div>
 	<div class="list-group list-group-flush">
 		<a href="#" class="list-group-item list-group-item-action bg-light">이용안내</a>
 		<a href="#" class="list-group-item list-group-item-action bg-light">+정보게시판</a>
