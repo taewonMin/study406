@@ -2,18 +2,18 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body style="background-color: #f0f8ff;">
-<div style="text-align: center;">
+<div style="text-align: center; margin-top:150px;">
 	<form action="login.do" method="post">
-		<div>
-			<h1>로그인</h1>
-			아이디:<input type="text" name="memId" value="lalaru"><br>
-			비밀번호:<input type="password" name="memPass" value="123"><br>
-			<button type="submit">로그인</button>
+		<div style="background-color: white; width: 70%; display: inline-block; padding:20px; border-radius: 15px;">
+			<div style="text-align: left;">
+				<label for="memId"><strong>ID:</strong></label>
+				<input class="form-control" type="text" name="memId" id="memId"value="lalaru"><br>
+				<label for="password"><strong>Password:</strong></label>
+				<input class="form-control" type="password" name="memPass" id="password" value="123"><br>
+			</div>
+			<button class="btn btn-info" type="submit" style="width:100%;">Login</button>
 		</div>
 	</form>
 </div>
