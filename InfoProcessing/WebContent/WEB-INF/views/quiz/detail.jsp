@@ -1,3 +1,4 @@
+<%@page import="kr.or.ddit.quiz.vo.QuizVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -31,7 +32,7 @@
 							</div>
 						</div>
 						<strong style="margin-right:5px;">${num+1 }.</strong>
-						<strong>${quiz.quizProb }</strong><br><br>
+						<strong style="white-space: pre-line;">${quiz.quizProb }</strong><br><br>
 						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration:none;" onclick="openAnswer(this);">정답보기</a>
 						<c:if test="${quiz.zzim==0 }">
 							<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a>
@@ -39,7 +40,7 @@
 						<c:if test="${quiz.zzim!=0 }">
 							<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a>
 						</c:if>
-						<strong class="answer_${quiz.quizNo }" style="margin:10px 0;display:none;">${quiz.quizAnswer }</strong>
+						<strong class="answer_${quiz.quizNo }" style="margin:10px 0;display:none;white-space: pre-line;">${quiz.quizAnswer }</strong>
 						<div class="input-group" style="margin-bottom:20px;">
 						
 							<c:if test="${quiz.quizTag.length() > 0 }">
