@@ -9,7 +9,6 @@
 <html lang="en">
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <body>
-
 	<div class="d-flex" id="wrapper">
 		<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>
 		<!-- Page Content -->

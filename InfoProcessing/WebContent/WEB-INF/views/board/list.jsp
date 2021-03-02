@@ -33,7 +33,7 @@
 			<!-- 내용 -->
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
-					<h4 id="headTitle" style="display: inline;"><strong>정보 게시판 </strong><span style="font-size: 0.8em">/${subjectName }</span></h4>
+					<h4 id="headTitle" style="display: inline;"><strong>정보 게시판 </strong><span style="font-size: 0.8em">/ ${subjectName }</span></h4>
 					<button id="addBtn" class="btn btn-warning" style="float: right;" onclick="location.href = 'insert.do?boardGroup=${param.boardGroup}'">글등록</button>
 				</div>
 				<hr style="clear: both;">
