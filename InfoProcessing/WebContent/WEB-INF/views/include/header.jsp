@@ -9,6 +9,10 @@
 <link href="<%= request.getContextPath() %>/res/template/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="<%= request.getContextPath() %>/res/template/css/simple-sidebar.css" rel="stylesheet">
+<!-- Google Font: Source Sans Pro -->
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+<!-- include summernote css/js -->
+<link rel="stylesheet" href="<%=request.getContextPath() %>/res/bootstrap/plugins/summernote/summernote.min.css" rel="stylesheet">
 <style type="text/css">
 .fa-home:before {
     content: "\f015";

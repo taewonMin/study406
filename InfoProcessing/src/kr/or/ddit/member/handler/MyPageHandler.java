@@ -23,7 +23,7 @@ public class MyPageHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		String url = "/WEB-INF/views/common/myPage.jsp";
 		
-		String memId = ((MemberVO)req.getSession().getAttribute("loginUser")).getMemId();
+		String memId = req.getParameter("memId");
 		
 		try {
 			MemberVO member = ims.getMember(memId);

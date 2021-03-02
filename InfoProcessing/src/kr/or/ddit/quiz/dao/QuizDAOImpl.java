@@ -95,4 +95,10 @@ public class QuizDAOImpl implements IQuizDAO {
 		smc.delete("quiz.deleteMyQuiz",quiz);
 	}
 
+	@Override
+	public QuizVO getQuiz(SqlMapClient smc, int quizId) throws SQLException {
+		QuizVO quiz = (QuizVO)smc.queryForObject("quiz.getQuiz",quizId);
+		return quiz;
+	}
+
 }

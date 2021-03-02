@@ -1,1 +1,2 @@
-select * from board
+select *     
+from quiz

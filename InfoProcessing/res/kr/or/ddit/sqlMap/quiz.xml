@@ -32,6 +32,7 @@
 	</resultMap>
 
 	<resultMap class="quiz" id="quizMap2">
+		<result column="quiz_id" property="quizId"/>
 		<result column="quiz_no" property="quizNo"/>
 		<result column="quiz_title" property="quizTitle"/>
 		<result column="quiz_prob" property="quizProb"/>
@@ -41,6 +42,8 @@
 		<result column="quiz_regdate" property="quizRegdate"/>
 		<result column="quiz_viewcnt" property="quizViewcnt"/>
 		<result column="quiz_tag" property="quizTag"/>
+		<result column="quiz_group" property="quizGroup"/>
+		<result column="study_no" property="studyNo"/>
 	</resultMap>
 		
 	<select id="selectSubjectList" resultMap="subjectMap">
@@ -156,7 +159,8 @@
 	</delete>
 	
 	<select id="searchQuiz" resultMap="quizMap2">
-		select * from quiz
+		select * 
+		 from quiz
 		<isEqual property="searchType" compareValue="quiz_prob">
 		  where quiz_prob like CONCAT('%',#keyword#,'%')
 		</isEqual>
@@ -170,4 +174,20 @@
 		  where quiz_tag like CONCAT('%',#keyword#,'%')
 		</isEqual>
 	</select>
+	
+	<select id="getQuiz" resultMap="quizMap">
+		select d.*,
+			   e.sub_parent_name,
+			   e.sub_name,
+			   ifnull(c.zzim, 0) as zzim
+		  from (select b.quiz_id, 1 as zzim
+				  from quiz a
+				 inner join my_quiz b
+				    on a.quiz_id = b.quiz_id
+				 where b.mem_id = #memId#) c
+		 right join quiz d on c.quiz_id = d.quiz_id
+		 inner join subject e on e.sub_no = d.sub_no
+		 where d.quiz_id = #quizId#
+	</select>
+	
 </sqlMap>

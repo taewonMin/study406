@@ -11,6 +11,7 @@ public class BoardVO {
 	private String memId;	// 작성자
 	private String boardContent;
 	private String boardTag;
+	private String memName;
 	
 	public String getBoardContent() {
 		return boardContent;
@@ -59,6 +60,12 @@ public class BoardVO {
 	}
 	public void setBoardTag(String boardTag) {
 		this.boardTag = boardTag;
+	}
+	public String getMemName() {
+		return memName;
+	}
+	public void setMemName(String memName) {
+		this.memName = memName;
 	}
 }
 

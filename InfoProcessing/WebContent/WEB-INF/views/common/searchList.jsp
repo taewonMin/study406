@@ -75,7 +75,7 @@
 							<c:if test="${not empty quizList }">
 								<ul style="padding: 0; margin-top: 10px;">
 									<c:forEach items="${quizList }" var="quiz">
-										<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/detail.do?studyNo=${quiz.studyNo }&quizGroup=${quiz.quizGroup }'">
+										<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/select.do?quizId=${quiz.quizId }'">
 											<span style="font-weight: bold;">${quiz.quizTitle }</span>
 											<div style="display: block; font-size: x-small;">
 												<span>${quiz.memId } </span>
