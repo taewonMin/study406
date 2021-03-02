@@ -3,6 +3,20 @@
 
 <script>
 var contextPath = "<%=request.getContextPath()%>"; 
+function summernote_start(content){
+	content.summernote({
+		placeholder:'여기에 내용을 적으세요.',
+		height:500,
+		disableResizeEditor: true,
+		useProtocol:false,
+		popover: {
+		      link: [['link', ['linkDialogShow', 'unlink']]],
+		      table: [['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']], ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]],
+		      air: [['color', ['color']], ['font', ['bold', 'underline', 'clear']], ['para', ['ul', 'paragraph']], ['table', ['table']], ['insert', ['link', 'picture']], ['view', ['fullscreen', 'codeview']]]
+		    }
+	});
+	
+}
 </script>
 <!-- jQeury 3.5.1 -->
 <script src="<%= request.getContextPath() %>/res/template/vendor/jquery/jquery.min.js"></script>
@@ -11,3 +25,5 @@ var contextPath = "<%=request.getContextPath()%>";
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Menu Toggle Script -->
 <script src="<%= request.getContextPath() %>/res/js/main.js"></script>
+<!-- Summernote -->
+<script src="<%= request.getContextPath() %>/res/bootstrap/plugins/summernote/summernote-bs4.min.js"></script>

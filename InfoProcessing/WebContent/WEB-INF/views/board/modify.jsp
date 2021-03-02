@@ -27,11 +27,11 @@
 				<hr>
 				<div class="content">
 					<form action="modify.do" class="form" method="post" id="boardForm">
-						<input type="text" class="form-control" id="boardTitle" name="boardTitle" placeholder="제목을 입력해 주세요" value="${board.boardTitle }">
+						<input type="text" class="form-control" id="boardTitle" name="boardTitle" style="margin-bottom: 10px;" placeholder="제목을 입력해 주세요" value="${board.boardTitle }">
 						<input type="hidden" name="memId" value="lalaru">
 						<input type="hidden" name="boardNo" value="${board.boardNo }">
 						<input type="hidden" name="boardGroup" value="${param.boardGroup}">
-						<textarea rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요">${board.boardContent }</textarea>
+						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요">${board.boardContent }</textarea>
 					</form>
 					<input type="button" class="btn btn-danger" onclick="history.back();" style="float: right;" value="취소">
 					<input type="button" class="btn btn-primary" onclick="modify_go();" style="float: right;" value="등록">
@@ -44,6 +44,9 @@
 function modify_go(){
 	var form = $('#boardForm');
 	form.submit();
+}
+window.onload = function(){
+	summernote_start($('#content'));
 }
 </script>
 </body>

@@ -20,13 +20,11 @@
 				<hr>
 				<div class="content">
 					<form action="insert.do" class="form" method="post" id="boardForm">
-						<input type="text" class="form-control" id="boardTitle" name="boardTitle" placeholder="제목을 입력해 주세요">
+						<input type="text" class="form-control" id="boardTitle" name="boardTitle" placeholder="제목을 입력해 주세요" style="margin-bottom: 10px;">
 						<input type="hidden" name="memId" value="lalaru">
 						<input type="hidden" name="boardGroup" value="${param.boardGroup}">
-						<textarea rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
+						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
 					</form>
-					<input type="button" class="btn btn-danger" onclick="history.back();" style="float: right;" value="취소">
-					<input type="button" class="btn btn-primary" onclick="insert_go();" style="float: right;" value="등록">
 				</div>				
 			</div>
 			<!-- /내용 -->
@@ -40,6 +38,10 @@ function insert_go(){
 	var form = $('#boardForm');
 	form.submit();
 }
+window.onload = function(){
+	summernote_start($('#content'));
+}
+
 </script>
 
 </body>
