@@ -27,6 +27,12 @@
 						<span>조회수 : ${board.boardCnt }</span>
 					</div>
 					<div style="clear: both;">${board.boardContent} </div>
+					<hr>
+					<c:if test="${board.boardTag.length() > 0 }">
+						<c:forEach items="${board.boardTag.split(\",\") }" var="tag">
+							<span style='margin:10px 10px 0 0;font-weight:bold;color:#6495ed;'>#${tag }</span>
+						</c:forEach>
+					</c:if>					
 				</div>
 			</div>
 		</div>

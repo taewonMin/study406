@@ -31,12 +31,14 @@ public class BoardInsertHandler implements CommandHandler {
 			String boardTitle = req.getParameter("boardTitle");
 			String memId = req.getParameter("memId");
 			String boardContent = req.getParameter("boardContent");
+			String boardTag = req.getParameter("boardTag");
 			BoardVO board = new BoardVO();
 			board.setBoardGroup(boardGroup);
 			board.setBoardTitle(boardTitle);
 			board.setMemId(memId);
 			board.setBoardContent(boardContent);
 			board.setBoardCnt(0);
+			board.setBoardTag(boardTag);
 			boardService.insertBoard(board);
 		}
 		

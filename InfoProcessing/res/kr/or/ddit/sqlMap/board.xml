@@ -46,8 +46,8 @@
 	</select>
 	
 	<insert id="insertBoard">
-		insert into board(board_no,board_group,board_title,board_content,board_date,mem_id,board_cnt)
-		values(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#,#boardCnt#)
+		insert into board(board_no,board_group,board_title,board_content,board_date,mem_id,board_cnt,board_tag)
+		values(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#,#boardCnt#,#boardTag#)
 	</insert>
 	
 	<select id="getBoard" resultMap="boardMap">
@@ -59,7 +59,8 @@
 		update board 
 		   set board_title = #boardTitle#,
 		   	   board_content = #boardContent#,
-		   	   board_cnt = #boardCnt#
+		   	   board_cnt = #boardCnt#,
+		   	   board_tag = #boardTag#
 		 where board_no = #boardNo#	
 	</update>
 	
