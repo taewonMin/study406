@@ -85,15 +85,6 @@
 	</select>
 	
 	<select id="selectQuizList" resultMap="quizMap">
-		select A.*, sub_name, sub_parent_name, 0 as zzim
-		from (select *
-				from quiz 
-				where quiz_group=#quizGroup#
-				and study_no = #studyNo#) A, subject
-		where subject.sub_no = A.sub_no
-	</select>
-	
-	<select id="selectQuizSolveList" resultMap="quizMap">
 		select d.*,
 			   e.sub_parent_name,
 			   e.sub_name,
