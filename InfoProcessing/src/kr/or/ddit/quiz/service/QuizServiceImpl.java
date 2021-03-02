@@ -110,4 +110,10 @@ public class QuizServiceImpl implements IQuizService {
 		return quiz;
 	}
 
+	@Override
+	public List<QuizVO> getZzimQuiz(String memId) throws SQLException {
+		List<QuizVO> quizList = quizDao.zzimQuiz(smc, memId);
+		return quizList;
+	}
+
 }

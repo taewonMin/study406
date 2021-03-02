@@ -48,5 +48,7 @@ public interface IQuizDAO {
 	public void deleteMyQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
 
 	public QuizVO getQuiz(SqlMapClient smc, int quizId) throws SQLException;
+
+	public List<QuizVO> zzimQuiz(SqlMapClient smc, String memId) throws SQLException;
 	
 }

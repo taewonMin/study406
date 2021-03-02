@@ -34,7 +34,7 @@
 						<input type="hidden" name="boardGroup" value="${param.boardGroup}">
 						<input type="hidden" name="boardTag" value="" id="targetTag">
 						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요">${board.boardContent }</textarea>
-						<div class="input-group" style="margin-bottom:20px;">
+						<div class="input-group" style="margin-bottom:20px; margin-top: 10px;">
 							<input class="form-control" type="text" id="boardTag" onKeypress="checkEnter('boardTag','div.tagList');" placeholder="태그를 추가하세요"/>
 							<button class="btn btn-success" type="button" onclick="addTag('boardTag','div.tagList');">태그 추가</button>
 						</div>						

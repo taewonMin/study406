@@ -101,4 +101,10 @@ public class QuizDAOImpl implements IQuizDAO {
 		return quiz;
 	}
 
+	@Override
+	public List<QuizVO> zzimQuiz(SqlMapClient smc, String memId) throws SQLException {
+		List<QuizVO> quizList = smc.queryForList("quiz.zzimQuiz",memId);
+		return quizList;
+	}
+
 }

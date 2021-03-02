@@ -76,6 +76,22 @@ public class BoardServiceImpl implements IBoardService{
 		return boardList;
 	}
 
+	@Override
+	public List<BoardVO> getZzimBoard(String memId) throws SQLException {
+		List<BoardVO> boardList = boardDao.zzimBoardList(smc, memId);
+		return boardList;
+	}
+
+	@Override
+	public void zzimDo(BoardVO board) throws SQLException {
+		boardDao.insertMyBoard(smc, board);
+	}
+
+	@Override
+	public void zzimCancel(BoardVO board) throws SQLException {
+		boardDao.deleteMyBoard(smc, board);
+	}
+
 
 	
 }

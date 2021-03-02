@@ -28,5 +28,10 @@ public interface IBoardDAO {
 
 	public List<BoardVO> selectBoardSearchList(SqlMapClient smc, SearchPagingVO search) throws SQLException;
 
+	public List<BoardVO> zzimBoardList(SqlMapClient smc, String memId) throws SQLException;
+
+	public void insertMyBoard(SqlMapClient smc, BoardVO board) throws SQLException;
+
+	public void deleteMyBoard(SqlMapClient smc, BoardVO board) throws SQLException;
 	
 }

@@ -190,4 +190,17 @@
 		 where d.quiz_id = #quizId#
 	</select>
 	
-</sqlMap>
+	<select id="zzimQuiz" resultMap="quizMap">
+		select a.*,b.sub_parent_name,b.sub_name 
+		  from (
+			 		select quiz.*
+					  from quiz
+					 inner join my_quiz
+					    on quiz.quiz_id = my_quiz.quiz_id
+					 where my_quiz.mem_id = #memId#
+				) a
+		inner join subject b
+		  on a.sub_no = b.sub_no
+	</select>
+	
+</sqlMap> 

@@ -59,22 +59,37 @@ public class BoardDAOImpl implements IBoardDAO{
 	public void updateBoard(SqlMapClient smc, BoardVO board) throws SQLException {
 		smc.update("board.modifyBoard",board);
 	}
+	
 	@Override
 	public void removeBoard(SqlMapClient smc, int boardNo) throws SQLException {
+		smc.delete("board.deleteAllMyBoard",boardNo);
 		smc.delete("board.removeBoard",boardNo);
 	}
+	
 	@Override
 	public String getSubjectName(SqlMapClient smc, String boardGroup) throws SQLException {
-		
-		
 		String subjectName = smc.queryForObject("board.getSubjectName",boardGroup)+"";
-		
 		return subjectName;
 	}
+	
 	@Override
 	public List<BoardVO> selectBoardSearchList(SqlMapClient smc, SearchPagingVO search) throws SQLException {
 		List<BoardVO> boardList = smc.queryForList("board.selectBoardSearchList",search);
 		return boardList;
+	}
+	
+	@Override
+	public List<BoardVO> zzimBoardList(SqlMapClient smc, String memId) throws SQLException {
+		List<BoardVO> boardList = smc.queryForList("board.zzimBoard",memId);
+		return boardList;
+	}
+	@Override
+	public void insertMyBoard(SqlMapClient smc, BoardVO board) throws SQLException {
+		smc.insert("board.insertMyBoard",board);		
+	}
+	@Override
+	public void deleteMyBoard(SqlMapClient smc, BoardVO board) throws SQLException {
+		smc.delete("board.deleteMyBoard",board);		
 	}
 
 }

@@ -12,6 +12,7 @@ public class BoardVO {
 	private String boardContent;
 	private String boardTag;
 	private String memName;
+	private int boardZzim;
 	
 	public String getBoardContent() {
 		return boardContent;
@@ -66,6 +67,12 @@ public class BoardVO {
 	}
 	public void setMemName(String memName) {
 		this.memName = memName;
+	}
+	public int getBoardZzim() {
+		return boardZzim;
+	}
+	public void setBoardZzim(int boardZzim) {
+		this.boardZzim = boardZzim;
 	}
 }
 

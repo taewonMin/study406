@@ -69,15 +69,46 @@ function zzim(quizId,obj,target){
 	}else{
 		chk = confirm('찜을 취소하시겠습니까?');
 	}
-	
+	if(!chk){
+		return;
+	}
+	$.ajax({
+		url:contextPath+'/main/zzim.do',
+		type:'post',
+		data:{quizId:quizId,zzimChk:zzimChk},
+		success:function(data){
+			if(zzimChk=="true"){
+				$(target).append('<span class="badge badge-warning">찜</span>');
+				$(obj).attr("zzim","false");
+				$(obj).text("찜취소");
+			}else{
+				$(target+' .badge').remove();
+				$(obj).attr("zzim","true");
+				$(obj).text("찜하기");
+			}
+		},
+		error:function(error){
+			alert('서버 에러');
+		}
+	});
+}
+
+function zzim_board(boardNo,obj,target){
+	var zzimChk = $(obj).attr("zzim");
+	var chk;
+	if(zzimChk=="true"){
+		chk = confirm('찜 하시겠습니까?');
+	}else{
+		chk = confirm('찜을 취소하시겠습니까?');
+	}
 	if(!chk){
 		return;
 	}
 	
 	$.ajax({
-		url:contextPath+'/main/zzim.do',
+		url:contextPath+'/member/zzimBoard.do',
 		type:'post',
-		data:{quizId:quizId,zzimChk:zzimChk},
+		data:{boardNo:boardNo,zzimChk:zzimChk},
 		success:function(data){
 			if(zzimChk=="true"){
 				$(target).append('<span class="badge badge-warning">찜</span>');

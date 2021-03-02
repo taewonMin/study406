@@ -22,4 +22,10 @@ public interface IBoardService {
 	public String getSubjectName(String boardGroup) throws SQLException;
 
 	public List<BoardVO> getBoardList(SearchPagingVO search) throws SQLException;
+
+	public List<BoardVO> getZzimBoard(String memId) throws SQLException;
+
+	public void zzimDo(BoardVO board) throws SQLException;
+
+	public void zzimCancel(BoardVO board) throws SQLException;
 }

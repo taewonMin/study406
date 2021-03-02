@@ -9,7 +9,6 @@
 		<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>
 		<div id="page-content-wrapper">
 			<%@ include file="/WEB-INF/views/include/nav.jsp" %>
-			
 			<!-- 내용 -->
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
@@ -26,13 +25,12 @@
 						<input type="hidden" name="boardTag" value="" id="targetTag">
 						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
 						
-						<div class="input-group" style="margin-bottom:20px;">
+						<div class="input-group" style="margin-bottom:20px; margin-top: 10px;">
 							<input class="form-control" type="text" id="boardTag" onKeypress="checkEnter('boardTag','div.tagList');" placeholder="태그를 추가하세요"/>
 							<button class="btn btn-success" type="button" onclick="addTag('boardTag','div.tagList');">태그 추가</button>
 						</div>						
 						<div class="tagList"></div>
 					</form>
-					
 				</div>				
 			</div>
 			<!-- /내용 -->

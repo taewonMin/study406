@@ -44,4 +44,6 @@ public interface IQuizService {
 	public void zzimCancel(QuizVO quiz) throws SQLException;
 
 	public QuizVO getQuiz(int quizId) throws SQLException;
+
+	public List<QuizVO> getZzimQuiz(String memId) throws SQLException;
 }
