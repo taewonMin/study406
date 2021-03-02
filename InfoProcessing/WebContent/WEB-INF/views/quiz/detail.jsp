@@ -22,7 +22,7 @@
 					<c:forEach var="num" begin="0" end="${quizList.size()-1 }">
 						<c:set var="quiz" value="${quizList.get(num) }" />
 						<div class="row" style="margin-bottom:10px">
-							<div class="col-sm-3" id="quizInfo_${quiz.quizId }">
+							<div class="col-sm-3" id="quizInfo_${quiz.quizId }" style="color:blue;">
 								<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
 								<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 								<c:if test="${quiz.zzim != 0 }">
@@ -49,6 +49,7 @@
 							</c:if>
 							
 						</div>
+						<hr>
 					</c:forEach>						
 				</div>
 				<button class="btn btn-primary" type="button" onclick="history.go(-1);">목록</button>

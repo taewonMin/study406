@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import kr.or.ddit.common.handler.CommandHandler;
+import kr.or.ddit.member.vo.MemberVO;
 import kr.or.ddit.quiz.service.IQuizService;
 import kr.or.ddit.quiz.service.QuizServiceImpl;
 import kr.or.ddit.quiz.vo.QuizVO;
@@ -30,6 +31,8 @@ public class QuizModifyHandler implements CommandHandler {
 		
 		int quizGroup = Integer.parseInt(request.getParameter("quizGroup"));
 		int studyNo = Integer.parseInt(request.getParameter("studyNo"));
+		String memId = ((MemberVO)request.getSession().getAttribute("loginUser")).getMemId();
+		String[] quizSubCode = {"P01","P02","P03","P04","P05"};
 		
 		if(request.getMethod().equals("GET")) {
 			
@@ -38,6 +41,8 @@ public class QuizModifyHandler implements CommandHandler {
 			QuizVO quiz = new QuizVO();
 			quiz.setStudyNo(studyNo);
 			quiz.setQuizGroup(quizGroup);
+			quiz.setMemId(memId);
+			quiz.setQuizSubCode(quizSubCode);
 			
 			List<QuizVO> quizList = quizService.getQuizList(quiz);
 			

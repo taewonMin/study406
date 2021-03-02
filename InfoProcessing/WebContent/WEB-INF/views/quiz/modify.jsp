@@ -4,6 +4,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
+<style>
+@media(max-width:400px) {
+	div.uitlBtn{
+		margin-top: 20px;
+	}
+	div.uitlBtn button#modifyBtn{
+		float: left !important;
+	}
+}
+</style>
 <body>
 	<div class="d-flex" id="wrapper">
 		<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>
@@ -14,18 +24,14 @@
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
 					<h4 style="display: inline;">문제 수정</h4>
-					<span style="float:right; margin-right:5%;">최대 문제 수 : 15<br>현재 문제 수 : <span class="quizCnt">${quizList.size() }</span></span>
-					<div class="row" style="margin-top:20px;">
-					  	<div class="col-sm-1" style="text-align: center;margin-top: 5px;font-size: 1.2em;">제목</div>
-					  	<div class="col-sm-9">
-							<input type="text" class="form-control" id="title" value="${quizList.get(0).quizTitle }" readonly="readonly">
-					  	</div>
+					<span style="float:right; margin-right:5%;">최대 문제 수 : 20<br>현재 문제 수 : <span class="quizCnt">${quizList.size() }</span></span>
+					<div style="margin-top:20px;">
+						<label for="title" style="margin-top: 5px;"><strong>제목:</strong></label>
+						<input type="text" class="form-control" id="title" value="${quizList.get(0).quizTitle }" readonly="readonly">
 					</div>
-					<div class="row" style="margin-top:20px;">
-					  	<div class="col-sm-1" style="text-align: center;margin-top: 5px;font-size: 1.2em;">작성자</div>
-					  	<div class="col-sm-2">
-							<input type="text" class="form-control" style="background-color: white;" id="writer" readonly="readonly" value="${quizList.get(0).memId }">
-					  	</div>
+					<div style="margin-top:20px;">
+						<label for="writer" style="margin-top: 5px;"><strong>작성자:</strong></label>
+						<input type="text" class="form-control" id="writer" readonly="readonly" value="${quizList.get(0).memId }">
 					</div>
 				</div>
 				<hr>
@@ -71,10 +77,16 @@
 					</c:forEach>
 					
 				</div>
-				<button class="btn btn-primary" type="button" onclick="addQuiz();">문제 추가하기</button>
-				<button class="btn btn-danger removeBtn" type="button" style="display:none;" onclick="removeQuiz();">문제 삭제</button>
-				<button class="btn btn-danger" type="button" onclick="history.go(-1);" style="float:right;">취소</button>
-				<button class="btn btn-primary" type="button" onclick="modifyQuiz();" style="float:right;margin-right:10px;">수정</button>
+				<div class="row">
+					<div class="col-sm-6">
+						<button class="btn btn-primary" type="button" onclick="addQuiz();">문제 추가하기</button>
+						<button class="btn btn-danger removeBtn" type="button" style="display:none;" onclick="removeQuiz();">문제 삭제</button>
+					</div>
+					<div class="col-sm-6 uitlBtn">
+						<button class="btn btn-danger" type="button" onclick="history.go(-1);" style="float:right;">취소</button>
+						<button class="btn btn-primary" id="modifyBtn" type="button" onclick="modifyQuiz();" style="float:right;margin-right:10px;">수정</button>
+					</div>
+				</div>
 			</div>
 			<!-- /content -->
 			
@@ -137,8 +149,8 @@ if(${quizList.size()} > 0){
 
 var quiz = {quizNo: ${quizList.size()}+1};
 function addQuiz(){
-	if(quiz.quizNo > 15){
-		alert("문제는 최대 15개까지만 등록할 수 있습니다.");
+	if(quiz.quizNo > 20){
+		alert("문제는 최대 20개까지만 등록할 수 있습니다.");
 		return;
 	}
 	printData(quiz, $('.prob-body'), $('#quiz-template'));

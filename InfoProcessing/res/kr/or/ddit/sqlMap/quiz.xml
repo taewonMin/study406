@@ -103,7 +103,7 @@
 				#quizSubCode[]#
 			</iterate>
 	   </dynamic>
-	     order by d.sub_no
+	     order by d.quiz_no
 	</select>
 	
 	<insert id="insertQuiz">

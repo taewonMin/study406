@@ -16,5 +16,6 @@
 		</div>
 		<a href="#" class="list-group-item list-group-item-action bg-light">마이페이지</a>
 		<%-- <a href="<%=request.getContextPath() %>/quiz/searchForm.do" class="list-group-item list-group-item-action bg-light">문제 검색</a> --%>
+		<h5 style="margin:15px;">${loginUser.memId }</h5>
 	</div>
 </div>
