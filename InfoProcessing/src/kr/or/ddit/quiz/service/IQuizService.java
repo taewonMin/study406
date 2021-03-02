@@ -42,4 +42,6 @@ public interface IQuizService {
 	
 	// 찜취소
 	public void zzimCancel(QuizVO quiz) throws SQLException;
+
+	public QuizVO getQuiz(int quizId) throws SQLException;
 }

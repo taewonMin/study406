@@ -104,4 +104,10 @@ public class QuizServiceImpl implements IQuizService {
 		quizDao.deleteMyQuiz(smc, quiz);
 	}
 
+	@Override
+	public QuizVO getQuiz(int quizId) throws SQLException {
+		QuizVO quiz = quizDao.getQuiz(smc,quizId);
+		return quiz;
+	}
+
 }

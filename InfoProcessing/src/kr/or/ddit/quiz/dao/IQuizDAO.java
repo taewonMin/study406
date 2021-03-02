@@ -46,4 +46,7 @@ public interface IQuizDAO {
 	
 	// 찜취소
 	public void deleteMyQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
+
+	public QuizVO getQuiz(SqlMapClient smc, int quizId) throws SQLException;
+	
 }
