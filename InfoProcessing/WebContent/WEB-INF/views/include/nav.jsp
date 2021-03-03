@@ -2,7 +2,6 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <nav class="navbar navbar-light bg-light border-bottom sticky-top">
 	<button class="btn btn-secondary" id="menu-toggle">메뉴</button>
-	<div class="dropdown"><i class="fa fa-arrow-left" onclick="history.go(-1)" style="cursor: pointer;"></i></div>
 	<h4 style="text-align: center; margin: 0px; cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/main.do';">406호의 모험</h4>
 	<div class="dropdown">
 <!-- 		<button class="dropdown-toggle btn" data-toggle="dropdown" aria-expanded="false">
@@ -16,3 +15,4 @@
 		<button class="btn btn-primary form-control" type="button" style="float: right;" onclick="javascript:location.href='<%=request.getContextPath()%>/common/searchForm.do'"><i class="fa fa-fw fa-search"></i></button>
 	</div>
 </nav>
+<i class="fa fa-arrow-left" onclick="history.go(-1)" style="cursor: pointer; display: block; margin: 10px;"></i>
