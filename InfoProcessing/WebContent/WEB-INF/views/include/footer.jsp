@@ -9,11 +9,7 @@ function summernote_start(content){
 		height:500,
 		disableResizeEditor: true,
 		useProtocol:false,
-		popover: {
-		      link: [['link', ['linkDialogShow', 'unlink']]],
-		      table: [['add', ['addRowDown', 'addRowUp', 'addColLeft', 'addColRight']], ['delete', ['deleteRow', 'deleteCol', 'deleteTable']]],
-		      air: [['color', ['color']], ['font', ['bold', 'underline', 'clear']], ['para', ['ul', 'paragraph']], ['table', ['table']], ['insert', ['link', 'picture']], ['view', ['fullscreen', 'codeview']]]
-		    }
+		toolbar: []
 	});
 	
 }
