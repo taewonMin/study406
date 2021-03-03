@@ -45,6 +45,27 @@
 		<result column="quiz_group" property="quizGroup"/>
 		<result column="study_no" property="studyNo"/>
 	</resultMap>
+	
+	<resultMap class="quiz" id="quizMap3">
+		<result property="quizId" column="quiz_id"/>
+		<result property="quizGroup" column="quiz_group"/>
+		<result property="quizNo" column="quiz_no"/>
+		<result property="quizTitle" column="quiz_title"/>
+		<result property="quizProb" column="quiz_prob"/>
+		<result property="quizAnswer" column="quiz_answer"/>
+		<result property="memId" column="mem_id"/>
+		<result property="subNo" column="sub_no"/>
+		<result property="quizRegdate" column="quiz_regdate"/>
+		<result property="quizViewcnt" column="quiz_viewcnt"/>
+		<result property="quizTag" column="quiz_tag"/>
+		<result property="studyNo" column="study_no"/>
+		<result property="subParentName" column="sub_parent_name"/>
+		<result property="subName" column="sub_name"/>
+	</resultMap>	
+	
+	
+	
+	
 		
 	<select id="selectSubjectList" resultMap="subjectMap">
 		select * from subject
@@ -190,7 +211,7 @@
 		 where d.quiz_id = #quizId#
 	</select>
 	
-	<select id="zzimQuiz" resultMap="quizMap">
+	<select id="zzimQuiz" resultMap="quizMap3">
 		select a.*,b.sub_parent_name,b.sub_name 
 		  from (
 			 		select quiz.*
