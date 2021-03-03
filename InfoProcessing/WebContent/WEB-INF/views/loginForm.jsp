@@ -24,9 +24,9 @@
 		<div  class="myform" style="background-color: white; display: inline-block; padding:20px; border-radius: 15px;">
 			<div style="text-align: left;">
 				<label for="memId"><strong>ID:</strong></label>
-				<input class="form-control" type="text" name="memId" id="memId"value="lalaru"><br>
+				<input class="form-control" type="text" name="memId" id="memId"value="admin"><br>
 				<label for="password"><strong>Password:</strong></label>
-				<input class="form-control" type="password" name="memPass" id="password" value="123"><br>
+				<input class="form-control" type="password" name="memPass" id="password" value="admin"><br>
 			</div>
 			<button class="btn btn-info" type="submit" style="width:100%;">Login</button>
 		</div>

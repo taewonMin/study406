@@ -24,6 +24,6 @@ function summernote_start(content){
 <script src="<%= request.getContextPath() %>/res/template/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <!-- Menu Toggle Script -->
-<script src="<%= request.getContextPath() %>/res/js/main.js"></script>
+<script src="<%= request.getContextPath() %>/res/js/main.js?v=2"></script>
 <!-- Summernote -->
 <script src="<%= request.getContextPath() %>/res/bootstrap/plugins/summernote/summernote-bs4.min.js"></script>

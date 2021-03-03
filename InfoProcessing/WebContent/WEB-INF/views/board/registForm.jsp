@@ -20,7 +20,7 @@
 				<div class="content">
 					<form action="insert.do" class="form" method="post" id="boardForm" onsubmit="setTag('#targetTag')">
 						<input type="text" class="form-control" id="boardTitle" name="boardTitle" placeholder="제목을 입력해 주세요" style="margin-bottom: 10px;">
-						<input type="hidden" name="memId" value="lalaru">
+						<input type="hidden" name="memId" value="${loginUser.memId }">
 						<input type="hidden" name="boardGroup" value="${param.boardGroup}">
 						<input type="hidden" name="boardTag" value="" id="targetTag">
 						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요"></textarea>

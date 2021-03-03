@@ -1,10 +1,10 @@
 setBoardMenu();
 function setBoardMenu(){
-	var resHTML = '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P01">1과목</a></li>';
-	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P02">2과목</a></li>';
-	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P03">3과목</a></li>';
-	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P04">4과목</a></li>';
-	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P05">5과목</a></li>';
+	var resHTML = '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P01">1. 소프트웨어 설계</a></li>';
+	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P02">2. 소프트웨어 개발</a></li>';
+	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P03">3. 데이터베이스 구축</a></li>';
+	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P04">4. 프로그래밍 언어 활용</a></li>';
+	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P05">5. 정보시스템 구축 관리</a></li>';
 	$("#info_board").append(resHTML);
 }
 $("#menu-toggle").click(function(e) {

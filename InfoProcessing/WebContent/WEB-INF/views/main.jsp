@@ -7,16 +7,24 @@
 table tr td{
 	vertical-align: middle !important;
 }
+
+div.container-fluid{
+	width:60%;
+}
+@media(max-width:400px){
+	div.container-fluid{
+		width:100%;
+	}
+}
 </style>
 <body>
 	<div class="d-flex" id="wrapper">
 		<%@ include file="/WEB-INF/views/include/sidebar.jsp" %>
 		<div id="page-content-wrapper">
 			<%@ include file="/WEB-INF/views/include/nav.jsp" %>
-			
 			<!-- content -->
 			<div class="container-fluid">
-				<h2 class="mt-4" align="center">정보처리기사 실기</h2>
+				<h2 class="mt-4" align="center" style="margin-top: 30px;">정보처리기사 실기</h2>
 				<form role="conditionForm" action="main/solve.do" method="post" class="form-group">
 					<table class="table table-bordered">
 						<tr><th colspan="2" style="text-align: center; background-color: powderblue;">문제 형식</th></tr>		
