@@ -26,8 +26,8 @@
 					</div>
 					<c:if test="${loginUser.memId eq board.memId }">
 					<div style="float: right;">
-						<a href="javascript:location.href ='modify.do?boardNo=${board.boardNo }'" class="btn btn-success">수정</a>
-						<a href="javascript:location.href ='remove.do?boardNo=${board.boardNo }'" class="btn btn-danger">삭제</a>
+						<a href="javascript:location.href ='modify.do?boardNo=${board.boardNo }'"  class="btn btn-success">수정</a>
+						<a href="javascript:checkConfirm()" class="btn btn-danger">삭제</a>
 					</div>
 					</c:if>
 				</div>
@@ -58,4 +58,10 @@
 	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 </body>
+<script type="text/javascript">
+function checkConfirm(){
+	if(!confirm("정말 삭제하시겠습니까?")) return false;
+	location.href ='remove.do?boardNo=${board.boardNo }';
+}
+</script>
 </html>

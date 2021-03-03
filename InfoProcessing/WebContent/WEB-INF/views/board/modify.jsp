@@ -28,7 +28,7 @@
 				<hr>
 				<div class="content">
 					<form action="modify.do" class="form" method="post" id="boardForm" onsubmit="setTag('#targetTag')">
-						<input type="text" class="form-control" id="boardTitle" name="boardTitle" style="margin-bottom: 10px;" placeholder="제목을 입력해 주세요" value="${board.boardTitle }">
+						<input type="text" class="form-control" id="boardTitle" name="boardTitle" style="margin-bottom: 10px;" required="required" placeholder="제목을 입력해 주세요" value="${board.boardTitle }">
 						<input type="hidden" name="memId" value="${loginUser.memId }">
 						<input type="hidden" name="boardNo" value="${board.boardNo }">
 						<input type="hidden" name="boardGroup" value="${param.boardGroup}">
