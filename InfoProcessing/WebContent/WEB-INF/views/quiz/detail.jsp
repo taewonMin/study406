@@ -23,7 +23,7 @@
 					<c:forEach var="num" begin="0" end="${quizList.size()-1 }">
 						<c:set var="quiz" value="${quizList.get(num) }" />
 						<div class="row" style="margin-bottom:10px">
-							<div class="col-sm-3" id="quizInfo_${quiz.quizId }" style="color:blue;">
+							<div class="col-sm-12" id="quizInfo_${quiz.quizId }" style="color:blue;">
 								<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
 								<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 								<c:if test="${quiz.zzim != 0 }">
@@ -32,7 +32,7 @@
 							</div>
 						</div>
 						<strong style="margin-right:5px;">${num+1 }.</strong>
-						<strong style="white-space: pre-line;">${quiz.quizProb }</strong><br><br>
+						<div style="font-weight:bold; display:inline-block;margin-bottom:20px;">${quiz.quizProb }</div><br>
 						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration:none;" onclick="openAnswer(this);">정답보기</a>
 						<c:if test="${quiz.zzim==0 }">
 							<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a>
@@ -40,7 +40,7 @@
 						<c:if test="${quiz.zzim!=0 }">
 							<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a>
 						</c:if>
-						<strong class="answer_${quiz.quizNo }" style="margin:10px 0;display:none;white-space: pre-line;">${quiz.quizAnswer }</strong>
+						<div style="font-weight:bold; display:inline-block;margin-bottom:20px;">${quiz.quizAnswer }</div>
 						<div class="input-group" style="margin-bottom:20px;">
 						
 							<c:if test="${quiz.quizTag.length() > 0 }">
