@@ -2,6 +2,7 @@
 <%@ page trimDirectiveWhitespaces="true" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html lang="en">
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
@@ -47,7 +48,7 @@
 					</ul>
 					<div id="searchList">
 						<div class="serach-header" style="margin-top: 10px; display: ${search.kind eq '게시글' ? 'block' : 'none'};"  id="boardSelect">
-							<span id="boardCnt"></span>
+							<span id="boardCnt">${fn:length(boardList) } 건</span>
 							<div style="float: right;">
 							
 								<select class="form-control-sm" onchange="javascript:$('#searchType').val(this.value);" style="border: 0">
@@ -61,7 +62,7 @@
 							</div>
 						</div>
 						<div class="serach-header" style="margin-top: 10px; display: ${search.kind eq '문제' ? 'block' : 'none'};" id="quizSelect">
-							<span id="quizCnt"></span>
+							<span id="quizCnt">${fn:length(quizList) } 건</span>
 							<div style="float: right;" >
 								<select class="form-control-sm" onchange="javascript:$('#searchType').val(this.value);" style="border: 0">
 									<option value="quiz_prob">내 용</option>
