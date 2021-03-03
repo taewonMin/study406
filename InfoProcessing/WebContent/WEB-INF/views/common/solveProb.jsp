@@ -23,7 +23,7 @@
 							<c:set var="quiz" value="${quizList.get(num) }" />
 							<div class="quizItem" style="display:none;">
 								<div class="row" style="margin-bottom:10px">
-									<div class="col-sm-2" id="quizInfo_${quiz.quizId }" style="margin-top:5px;">
+									<div class="col-sm-12" id="quizInfo_${quiz.quizId }" style="color:blue;">
 										<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
 										<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 										<c:if test="${quiz.zzim != 0 }">
@@ -31,8 +31,8 @@
 										</c:if>
 									</div>
 								</div>
-								<strong style="margin-right:5px;">${num+1 }.</strong>
-								<strong>${quiz.quizProb }</strong><br><br>
+								<strong style="font-size: 1.2em;">${num+1 }.</strong>
+								<div style="font-weight:bold;">${quiz.quizProb }</div>
 								<c:if test="${quizAnswer==1 }">
 									<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
 								</c:if>
@@ -42,8 +42,11 @@
 								<c:if test="${quiz.zzim!=0 }">
 									<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a><br><br>
 								</c:if>
-								<strong class="answer_${quiz.quizNo }" style="margin-bottom:20px;display: none;color:#6495ed;">${quiz.quizAnswer }</strong>
+								<div class="answer_${quiz.quizNo }" style="font-weight:bold;display:none;margin-bottom:40px;color:#6495ed;">${quiz.quizAnswer }</div>
 							</div>
+						<c:if test="${quizNum==0 }">
+							<hr>
+						</c:if>
 						</c:forEach>
 						<c:if test="${quizNum==1 }">
 							<button class="btn btn-primary" style="display:none;font-family: cursive;" id="prevBtn" type="button" onclick="prev_go();">&lt;</button>
@@ -77,9 +80,9 @@
 										</c:if>
 									</div>
 								</div>
-								<strong style="margin-right:5px;">${num+1 }.</strong>
-								<strong>${quiz.quizProb }</strong><br><br>
-								<strong style="color:#6495ed;">${quiz.quizAnswer }</strong>
+								<strong style="font-size: 1.2em;">${num+1 }.</strong>
+								<div style="font-weight:bold;">${quiz.quizProb }</div>
+								<div style="font-weight:bold;margin-top:20px;color:#6495ed;">${quiz.quizAnswer }</div>
 							</div>
 						</c:forEach>
 					</div>
@@ -140,10 +143,10 @@ function next_go(){
 
 function openAnswer(obj){
 	if($(obj).text()=="정답보기"){
-		$('strong.'+$(obj).attr("class")).css("display","block");
+		$('div.'+$(obj).attr("class")).css("display","block");
 		$(obj).text("감추기");
 	}else{
-		$('strong.'+$(obj).attr("class")).css("display","none");
+		$('div.'+$(obj).attr("class")).css("display","none");
 		$(obj).text("정답보기");
 	}
 }

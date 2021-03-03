@@ -30,7 +30,7 @@
 					</div>
 					<div style="margin-top:20px;">
 					  	<label for="writer" style="margin-top: 5px;"><strong>작성자:</strong></label>
-						<input type="text" class="form-control" id="writer" readonly="readonly" value="${sessionScope.loginUser.memId }">
+						<input type="text" class="form-control" id="writer" readonly="readonly" value="${sessionScope.loginUser.memName }">
 					</div>
 				</div>
 				<hr>
@@ -75,10 +75,10 @@
 		<div class="col-sm-3 subject_{{quizNo}}" style="display:none;">
 		</div>
 	</div>
-	<textarea class="form-control quizContent" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="문제 내용을 입력하세요."></textarea>
-	<textarea class="form-control" name="quizAnswer" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="정답을 입력하세요."></textarea>
+	<textarea class="quizProb" name="quizProb" style="margin-bottom:20px;"></textarea>
+	<textarea class="quizAnswer" name="quizAnswer"></textarea>
 	<div class="row" style="margin-bottom:10px;">
-		<div class="col-sm-12 tagList_{{quizNo}}">
+		<div class="col-sm-12 tagList_{{quizNo}}" style="margin-top:10px;">
 		</div>
 	</div>
 	<div class="input-group" style="margin-bottom:20px;">
@@ -107,6 +107,18 @@ function addQuiz(){
 	$('span.quizCnt').text(quiz.quizNo);
 	
 	$('button.removeBtn').css("display","inline-block");
+	
+	$('textarea.quizProb').eq(quiz.quizNo-1).summernote({
+		height:100,
+		placeholder:'문제를 입력하세요.',
+		toolbar: []
+	});
+	
+	$('textarea.quizAnswer').eq(quiz.quizNo-1).summernote({
+		height:100,
+		placeholder:'정답을 입력하세요.',
+		toolbar: []
+	});
 	
 	quiz.quizNo += 1;
 }
