@@ -22,7 +22,6 @@ public class MainGetProbHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		
 		int studyNo = Integer.parseInt(request.getParameter("studyNo"));
 		try {
 			

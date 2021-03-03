@@ -28,9 +28,8 @@ public class MainSolveHandler implements CommandHandler {
 		QuizVO quiz = new QuizVO();
 		
 		String[] quizSubCode = request.getParameterValues("quizSubCode");
-		int quizType = Integer.parseInt(request.getParameter("quizType"));
-		int studyNo = quizType == 0 ? 0 : Integer.parseInt(request.getParameter("studyNo"));
-		int quizGroup = quizType == 0 ? Integer.parseInt(request.getParameter("preProbGroup")) : Integer.parseInt(request.getParameter("testProbGroup")); 
+		int studyNo = Integer.parseInt(request.getParameter("studyNo"));
+		int quizGroup = Integer.parseInt(request.getParameter("testProbGroup")); 
 		
 		quiz.setQuizSubCode(quizSubCode);
 		quiz.setStudyNo(studyNo);

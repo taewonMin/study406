@@ -42,13 +42,6 @@ div.container-fluid{
 					<table class="table table-bordered">
 						<tr><th colspan="5" style="text-align: center; background-color: powderblue;">문제 종류</th></tr>		
 								
-						<tr class="">
-							<td colspan="5">
-								<input type="radio" name="quizType" class="" id="prevType" onclick="changeQuizType(this);" value="0"><label style="width: 50%" for="prevType">기출문제</label>
-								<input type="radio" name="quizType" class="" id="exeType" checked="checked" onclick="changeQuizType(this);" value="1"><label for="exeType">연습문제</label>
-							</td>
-						</tr>
-
 						<tr class="" align="center">
 							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub1" checked="checked" value="P01"><label for="sub1">1과목</label></td>
 							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub2" checked="checked" value="P02"><label for="sub2">2과목</label></td>
@@ -57,34 +50,24 @@ div.container-fluid{
 							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub5" checked="checked" value="P05"><label for="sub5">5과목</label></td>
 						</tr>
 						
-						<tr class="preProb" style="display:none;">
-							<td colspan="2" align="center">회차 선택</td>
-							<td colspan="3">
-								<select class="form-control" name="preProbGroup" >
-									<option value="1">2020년 실기 1회</option>
-									<option value="2">2020년 실기 2회</option>
-									<option value="3">2020년 실기 3회</option>
-								</select>
-							</td>
-						</tr>
 						<tr class="testProb">
 							<td colspan="1" align="center">회차 선택</td>
 							<td colspan="2" >
 								<select class="form-control" name="studyNo" onchange="changeGroup(this);">
-									<option value="default">--스터디 그룹 선택--</option>
-									<option value="1" selected>1기</option>
+									<option disabled="disabled">--스터디 그룹 선택--</option>
+									<option value="0" selected>기출</option>
+									<option value="1">1기</option>
 									<option value="2">2기</option>
 								</select>
 							</td>
 							<td colspan="2">
 								<select class="form-control probList" name="testProbGroup">
-									<option value="default">--스터디 그룹 선택--</option>
 								</select>
 							</td>
 						</tr>
 					</table>
 					<div style="text-align: right;">
-						<button type="button" class="btn btn-primary" onclick="solveProb();">문제 풀기</button>					
+						<button type="submit" class="btn btn-primary" onclick="solveProb();">문제 풀기</button>					
 					</div>
 				</form>
 			</div>
@@ -95,45 +78,20 @@ div.container-fluid{
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
-changeGroup(document.getElementsByTagName("select")[1]);
+changeGroup(document.getElementsByTagName("select")[0]);
 
 function solveProb(){
-	// 기출문제
-	if($('input[name="quizType"]:checked').val()==0){
-		alert('기출문제 데이터 없음');
-		return;
-	}
-	
 	if($('input[name="quizSubCode"]:checked').length==0){
 		alert("과목을 하나 이상 선택하세요.");
 		return;
 	}
-	if($('input[name="quizType"]:checked').val()==1){
-		if($('select[name="studyNo"]').val()=='default'){
-			alert("스터디 그룹을 선택하세요.");
-			$('select[name="studyNo"]').focus();
-			return;
-		}
-		if($('select[name="testProbGroup"]').val()=='default'){
-			alert("스터디 그룹을 선택하세요.");
-			$('select[name="testProbGroup"]').focus();
-			return;
-		}
+	
+	if($('select[name="testProbGroup"]').val()=='default'){
+		alert("스터디 그룹을 선택하세요.");
+		$('select[name="testProbGroup"]').focus();
+		return;
 	}
 	
-	var form = $('form[role="conditionForm"]');
-	form.submit();
-}
-
-function changeQuizType(obj){
-	var type = obj.value;
-	if(type == 1){
-		$('tr.preProb').css('display','none');
-		$('tr.testProb').css('display','contents');
-	}else{
-		$('tr.preProb').css('display','contents');
-		$('tr.testProb').css('display','none');
-	}
 }
 
 function changeGroup(obj){
@@ -158,7 +116,7 @@ function changeGroup(obj){
 					$('select.probList').append(option);
 				}
 			}else{
-				var option = $('<option value="default">--스터디 그룹 선택--</option>');
+				var option = $('<option value="default">회차 선택</option>');
 				$('select.probList').append(option);
 			}
 		},

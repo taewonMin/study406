@@ -32,7 +32,7 @@
 									</div>
 								</div>
 								<strong style="font-size: 1.2em;">${num+1 }.</strong>
-								<div style="font-weight:bold;">${quiz.quizProb }</div>
+								<div style="font-weight:bold;margin-bottom:40px;">${quiz.quizProb }</div>
 								<c:if test="${quizAnswer==1 }">
 									<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
 								</c:if>
