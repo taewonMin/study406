@@ -15,15 +15,17 @@
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
 					<h4 style="display: inline;">${board.boardTitle }</h4>
-					<div id="zzim_badge">
+					<div id="zzim_badge" style="display: inline;">
 					<c:if test="${board.boardZzim != 0 }">
 						<span class="badge badge-warning">찜</span>
 					</c:if>					
 					</div>
+					<c:if test="${loginUser.memId eq board.memId }">
 					<div style="float: right;">
 						<a href="javascript:location.href ='modify.do?boardNo=${board.boardNo }'" class="btn btn-success">수정</a>
 						<a href="javascript:location.href ='remove.do?boardNo=${board.boardNo }'" class="btn btn-danger">삭제</a>
 					</div>
+					</c:if>
 				</div>
 				<hr style="clear: both;">
 				<div>
@@ -40,7 +42,7 @@
 					</c:if>
 					<div>
 						<c:if test="${board.boardZzim==0 }">
-							<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim_board(${board.boardNo},this,'#zzim_badge');">찜하기</a>
+							<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim_board(${board.boardNo},this,'#zzim_badge');"><strong>찜하기</strong></a>
 						</c:if>
 						<c:if test="${board.boardZzim!=0 }">
 							<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim_board(${board.boardNo},this,'#zzim_badge');">찜취소</a>
