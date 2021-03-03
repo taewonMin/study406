@@ -31,9 +31,9 @@ public class QuizInsertHandler implements CommandHandler{
 		if(req.getMethod().equals("GET")) {
 			String url = "/WEB-INF/views/quiz/insert.jsp";
 			
-//			int studyNo = Integer.parseInt(req.getParameter("studyNo"));
+			int studyNo = Integer.parseInt(req.getParameter("studyNo"));
 			// 기출문제 등록용
-			int studyNo = 0;
+//			int studyNo = 0;
 			int quizGroup = quizService.createQuizGroupValue(studyNo);
 			
 			req.setAttribute("title", quizGroup);

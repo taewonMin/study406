@@ -58,10 +58,10 @@
 								<div class="col-sm-3 subject_${quiz.quizNo}" style="display:none;">
 								</div>
 							</div>
-							<textarea class="form-control" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="문제 내용을 입력하세요.">${quiz.quizProb }</textarea>
-							<textarea class="form-control" name="quizAnswer" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="정답을 입력하세요.">${quiz.quizAnswer }</textarea>
+							<textarea class="form-control quizProb" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="문제 내용을 입력하세요.">${quiz.quizProb }</textarea>
+							<textarea class="form-control quizAnswer" name="quizAnswer" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="정답을 입력하세요.">${quiz.quizAnswer }</textarea>
 							<div class="row" style="margin-bottom:10px;">
-								<div class="col-sm-12 tagList_${quiz.quizNo}">
+								<div class="col-sm-12 tagList_${quiz.quizNo}" style="margin-top:10px;">
 									<c:if test="${quiz.quizTag.length() > 0 }">
 										<c:forEach items="${quiz.quizTag.split(\",\") }" var="tag">
 											<span class="tag" name="tag_${num+1 }" style='margin-right:10px;font-weight:bold;color:#6495ed;' onclick='removeTag(this);'>#${tag }</span>
@@ -115,8 +115,8 @@
 		<div class="col-sm-3 subject_{{quizNo}}" style="display:none;">
 		</div>
 	</div>
-	<textarea class="form-control" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="문제 내용을 입력하세요."></textarea>
-	<textarea class="form-control" name="quizAnswer" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="정답을 입력하세요."></textarea>
+	<textarea class="form-control quizProb" name="quizProb" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="문제 내용을 입력하세요."></textarea>
+	<textarea class="form-control quizAnswer" name="quizAnswer" style="width:100%; min-height:100px; margin-bottom:10px;" placeholder="정답을 입력하세요."></textarea>
 	<div class="row" style="margin-bottom:10px;">
 		<div class="col-sm-12 tagList_{{quizNo}}">
 		</div>
@@ -137,6 +137,12 @@
 </script>
 
 <script>
+window.onload = function(){
+	$('textarea').summernote({
+		height:100,
+		toolbar: []
+	});
+};
 //과목 상세 코드 초기화
 for(var i=1; i<${quizList.size()}+1; i++){
 	var obj = document.getElementById("subject_"+i);
@@ -157,6 +163,18 @@ function addQuiz(){
 	$('span.quizCnt').text(quiz.quizNo);
 	
 	$('button.removeBtn').css("display","inline-block");
+	
+	$('textarea.quizProb').eq(quiz.quizNo-1).summernote({
+		height:100,
+		placeholder:'문제를 입력하세요.',
+		toolbar: []
+	});
+	
+	$('textarea.quizAnswer').eq(quiz.quizNo-1).summernote({
+		height:100,
+		placeholder:'정답을 입력하세요.',
+		toolbar: []
+	});
 	
 	quiz.quizNo += 1;
 }

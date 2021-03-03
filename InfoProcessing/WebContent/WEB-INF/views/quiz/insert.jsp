@@ -30,7 +30,7 @@
 					</div>
 					<div style="margin-top:20px;">
 					  	<label for="writer" style="margin-top: 5px;"><strong>작성자:</strong></label>
-						<input type="text" class="form-control" id="writer" readonly="readonly" value="${sessionScope.loginUser.memId }">
+						<input type="text" class="form-control" id="writer" readonly="readonly" value="${sessionScope.loginUser.memName }">
 					</div>
 				</div>
 				<hr>
@@ -78,7 +78,7 @@
 	<textarea class="quizProb" name="quizProb" style="margin-bottom:20px;"></textarea>
 	<textarea class="quizAnswer" name="quizAnswer"></textarea>
 	<div class="row" style="margin-bottom:10px;">
-		<div class="col-sm-12 tagList_{{quizNo}}">
+		<div class="col-sm-12 tagList_{{quizNo}}" style="margin-top:10px;">
 		</div>
 	</div>
 	<div class="input-group" style="margin-bottom:20px;">
