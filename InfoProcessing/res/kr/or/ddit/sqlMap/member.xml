@@ -9,6 +9,7 @@
 		SELECT 	 mem_id as memId
 				,mem_pass as memPass
 				,mem_name as memName
+				,study_no as studyNo
 		  FROM member
 		  where mem_id = #memId#
 	</select>

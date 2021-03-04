@@ -22,7 +22,9 @@
 				<div class="container-fluid" style="padding: 20px;">
 					<div class="header">
 						<h4 style="display: inline;">스터디룸 - 1기</h4>
-						<button class="btn btn-primary" type="button" onclick="location.href='<%= request.getContextPath()%>/quiz/insert.do?studyNo=${param.studyNo }';" style="float: right;">문제등록</button>
+						<c:if test="${loginUser.studyNo == param.studyNo }">
+							<button class="btn btn-primary" type="button" onclick="location.href='<%= request.getContextPath()%>/quiz/insert.do?studyNo=${param.studyNo }';" style="float: right;">문제등록</button>
+						</c:if>
 					</div>
 					
 					<hr>

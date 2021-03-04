@@ -30,7 +30,6 @@ public class LoginHandler implements CommandHandler {
 		
 		try {
 			MemberVO member = memberService.login(memId, memPass);
-			
 			// 로그인 성공
 			session.setAttribute("loginUser", member);
 			
