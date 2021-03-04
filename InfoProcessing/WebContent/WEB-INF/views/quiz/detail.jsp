@@ -36,10 +36,10 @@
 						<div style="margin-top: 20px;">
 							<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration:none;" onclick="openAnswer(this);">정답보기</a>
 							<c:if test="${quiz.zzim==0 }">
-								<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a>
+								<button type="button" class="btn" zzim="true" style="background-color:#ffc107;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</button>
 							</c:if>
 							<c:if test="${quiz.zzim!=0 }">
-								<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a>
+								<button type="button" class="btn" zzim="false" style="border:1px solid #ffc107;color:#ff9807;background-color:white;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</button>
 							</c:if>
 						</div>
 						<div class="answer_${quiz.quizNo }" style="display:none;margin-top:20px;">${quiz.quizAnswer }</div>

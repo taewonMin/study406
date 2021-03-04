@@ -80,10 +80,12 @@ function zzim(quizId,obj,target){
 			if(zzimChk=="true"){
 				$(target).append('<span class="badge badge-warning">찜</span>');
 				$(obj).attr("zzim","false");
+				$(obj).css({"background-color":"white","color":"#ff9807","border":"1px solid #ffc107"});
 				$(obj).text("찜취소");
 			}else{
 				$(target+' .badge').remove();
 				$(obj).attr("zzim","true");
+				$(obj).css({"background-color":"#ffc107","color":"black"}); 
 				$(obj).text("찜하기");
 			}
 		},
@@ -124,4 +126,31 @@ function zzim_board(boardNo,obj,target){
 			alert('서버 에러');
 		}
 	});
+}
+
+// 세부 과목 변경 메서드
+function subjectChange(obj){
+	var tagId = $(obj).attr("id");
+	$.get('<%=request.getContextPath()%>/subject/list.do?studyNo=${param.studyNo}',{subParentCode:obj.value},function(subList){
+		if(subList.length > 0){
+			$('.'+tagId).css("display","block");
+			printData(subList,$('.'+tagId),$('#subject-template'),'.'+tagId+' select');
+		}else{
+			$('.'+tagId).css("display","none");
+			$('.'+tagId+' select').remove();
+		}
+	});
+}
+
+// handlebars
+function printData(data, target, templateObject, removeClass){
+	
+	var template = Handlebars.compile(templateObject.html());
+	
+	var html = template(data);
+	
+	if(removeClass){
+		$(removeClass).remove();
+	}
+	target.append(html);
 }

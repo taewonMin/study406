@@ -134,18 +134,6 @@ function removeQuiz(){
 	}
 }
 
-function printData(data, target, templateObject, removeClass){
-	
-	var template = Handlebars.compile(templateObject.html());
-	
-	var html = template(data);
-	
-	if(removeClass){
-		$(removeClass).remove();
-	}
-	target.append(html);
-}
-
 function insertQuiz(){
 	var quizTitle = $('#title');
 	if(quizTitle.val().trim() == ""){
@@ -203,19 +191,6 @@ function insertQuiz(){
 		},
 		error:function(xhr){
 			alert('서버 에러 발생');
-		}
-	});
-}
-
-function subjectChange(obj){
-	var tagId = $(obj).attr("id");
-	$.get('<%=request.getContextPath()%>/subject/list.do?studyNo=${param.studyNo}',{subParentCode:obj.value},function(subList){
-		if(subList.length > 0){
-			$('.'+tagId).css("display","block");
-			printData(subList,$('.'+tagId),$('#subject-template'),'.'+tagId+' select');
-		}else{
-			$('.'+tagId).css("display","none");
-			$('.'+tagId+' select').remove();
 		}
 	});
 }

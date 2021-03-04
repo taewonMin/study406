@@ -32,16 +32,16 @@
 									</div>
 								</div>
 								<strong>${num+1 }.</strong>
-								<div style="font-weight:bold;display:inline;">${quiz.quizProb }</div>
+								<div id="quizProb_${quiz.quizNo }" style="font-weight:bold;display:inline;">${quiz.quizProb }</div>
 								<div style="margin-top:20px;">
 									<c:if test="${quizAnswer==1 }">
 										<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
 									</c:if>
 									<c:if test="${quiz.zzim==0 }">
-										<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a><br><br>
+										<button type="button" class="btn" zzim="true" style="background-color:#ffc107;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</button><br><br>
 									</c:if>
 									<c:if test="${quiz.zzim!=0 }">
-										<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a><br><br>
+										<button type="button" class="btn" zzim="false" style="border:1px solid #ffc107;color:#ff9807;background-color:white;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</button><br><br>
 									</c:if>
 								</div>
 								<div class="answer_${quiz.quizNo }" style="font-weight:bold;display:none;margin-bottom:40px;color:#6495ed;">${quiz.quizAnswer }</div>
@@ -98,6 +98,13 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
+window.onload = function(){
+	for(var i=1; i<${quizList.size()}; i++){
+		$('div#quizProb_'+i+' p').eq(0).css('display','inline');
+		$('div#quizProb_'+i+' p').eq(1).css('margin-top','20px');
+	}
+}
+
 if(${quizNum}==1){	// 한문제씩 풀기
 	$('div.quizItem').eq(0).css('display','block');
 	if(${quizList.size()} == 1){
