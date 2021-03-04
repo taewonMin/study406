@@ -31,16 +31,18 @@
 								</c:if>
 							</div>
 						</div>
-						<strong style="font-size: 1.2em;">${num+1 }.</strong>
-						<div style="font-weight:bold;">${quiz.quizProb }</div>
-						<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration:none;" onclick="openAnswer(this);">정답보기</a>
-						<c:if test="${quiz.zzim==0 }">
-							<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a>
-						</c:if>
-						<c:if test="${quiz.zzim!=0 }">
-							<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a>
-						</c:if>
-						<div class="answer_${quiz.quizNo }" style="font-weight:bold;display:none;margin-top:20px;">${quiz.quizAnswer }</div>
+						<strong>${num+1 }.</strong>
+						<div id="quizProb_${quiz.quizNo }" style="font-weight:bold;display:inline;">${quiz.quizProb }</div>
+						<div style="margin-top: 20px;">
+							<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration:none;" onclick="openAnswer(this);">정답보기</a>
+							<c:if test="${quiz.zzim==0 }">
+								<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a>
+							</c:if>
+							<c:if test="${quiz.zzim!=0 }">
+								<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a>
+							</c:if>
+						</div>
+						<div class="answer_${quiz.quizNo }" style="display:none;margin-top:20px;">${quiz.quizAnswer }</div>
 						<div class="input-group" style="margin-bottom:20px;">
 						
 							<c:if test="${quiz.quizTag.length() > 0 }">
@@ -63,6 +65,12 @@
 	</div>
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
+window.onload = function(){
+	for(var i=1; i<${quizList.size()}; i++){
+		$('div#quizProb_'+i+' p').eq(0).css('display','inline');
+		$('div#quizProb_'+i+' p').eq(1).css('margin-top','20px');
+	}
+}
 var memId = '${sessionScope.loginUser.memId}';
 
 if(memId=='${quizList.get(0).memId}'){

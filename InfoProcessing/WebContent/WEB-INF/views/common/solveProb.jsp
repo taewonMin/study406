@@ -31,17 +31,19 @@
 										</c:if>
 									</div>
 								</div>
-								<strong style="font-size: 1.2em;">${num+1 }.</strong>
-								<div style="font-weight:bold;margin-bottom:40px;">${quiz.quizProb }</div>
-								<c:if test="${quizAnswer==1 }">
-									<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
-								</c:if>
-								<c:if test="${quiz.zzim==0 }">
-									<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a><br><br>
-								</c:if>
-								<c:if test="${quiz.zzim!=0 }">
-									<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a><br><br>
-								</c:if>
+								<strong>${num+1 }.</strong>
+								<div style="font-weight:bold;display:inline;">${quiz.quizProb }</div>
+								<div style="margin-top:20px;">
+									<c:if test="${quizAnswer==1 }">
+										<a href="javascript:void(0);" class="answer_${quiz.quizNo }" style="color:crimson;text-decoration: none;" onclick="openAnswer(this);">정답보기</a>
+									</c:if>
+									<c:if test="${quiz.zzim==0 }">
+										<a href="javascript:void(0);" zzim="true" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜하기</a><br><br>
+									</c:if>
+									<c:if test="${quiz.zzim!=0 }">
+										<a href="javascript:void(0);" zzim="false" style="color:crimson;text-decoration: none;float:right;" onclick="zzim(${quiz.quizId},this,'div#quizInfo_${quiz.quizId }');">찜취소</a><br><br>
+									</c:if>
+								</div>
 								<div class="answer_${quiz.quizNo }" style="font-weight:bold;display:none;margin-bottom:40px;color:#6495ed;">${quiz.quizAnswer }</div>
 							</div>
 						<c:if test="${quizNum==0 }">
