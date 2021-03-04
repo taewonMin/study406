@@ -25,7 +25,15 @@
 }
 .dropdown-toggle::after{
 	display: none;
-
 }
+@media(max-width:400px){
+	.btn{
+	    padding: .25rem .5rem;
+	    font-size: .875rem;
+	    line-height: 1.5;
+	    border-radius: .2rem;
+	}
+}
+
 </style>
 </head>
