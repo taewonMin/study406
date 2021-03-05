@@ -99,7 +99,7 @@
 
 <script>
 window.onload = function(){
-	for(var i=1; i<${quizList.size()}; i++){
+	for(var i=1; i<${quizList.size()+1}; i++){
 		$('div#quizProb_'+i+' p').eq(0).css('display','inline');
 		$('div#quizProb_'+i+' p').eq(1).css('margin-top','20px');
 	}

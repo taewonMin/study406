@@ -111,7 +111,9 @@ function addQuiz(){
 	$('textarea.quizProb').eq(quiz.quizNo-1).summernote({
 		height:100,
 		placeholder:'문제를 입력하세요.',
-		toolbar: []
+		toolbar: [
+			  ['view', ['codeview']]
+			]
 	});
 	
 	$('textarea.quizAnswer').eq(quiz.quizNo-1).summernote({

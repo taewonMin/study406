@@ -140,7 +140,11 @@
 window.onload = function(){
 	$('textarea').summernote({
 		height:100,
-		toolbar: []
+		toolbar: [
+			['para', ['ul', 'ol', 'paragraph']],
+			['view', ['codeview']],
+			['table', ['table']],
+		]
 	});
 };
 //과목 상세 코드 초기화
@@ -167,7 +171,11 @@ function addQuiz(){
 	$('textarea.quizProb').eq(quiz.quizNo-1).summernote({
 		height:100,
 		placeholder:'문제를 입력하세요.',
-		toolbar: []
+		toolbar: [
+			['para', ['ul', 'ol', 'paragraph']],
+			['view', ['codeview']],
+			['table', ['table']],
+			]
 	});
 	
 	$('textarea.quizAnswer').eq(quiz.quizNo-1).summernote({
