@@ -46,7 +46,7 @@
 									<h5 style="display:inline-block">${quiz.quizNo}번</h5>
 								</div>
 								<div class="col-sm-3" style="margin-bottom:5px;">
-									<select class="form-control" id="subject_${quiz.quizNo}" name="parentCode" onChange="subjectChange(this);">
+									<select class="form-control" id="subject_${quiz.quizNo}" name="parentCode" onChange="subjectChange(this,${param.studyNo });">
 										<option value="default">--과목 선택--</option>
 										<option value="P01" ${quiz.subNo.substring(0,3) eq 'P01' ? 'selected':''}>[1과목] 소프트웨어 설계</option>
 										<option value="P02" ${quiz.subNo.substring(0,3) eq 'P02' ? 'selected':''}>[2과목] 소프트웨어 개발</option>
@@ -103,7 +103,7 @@
 			<h5 style="display:inline-block">{{quizNo}}번</h5>
 		</div>
 		<div class="col-sm-3">
-			<select class="form-control" id="subject_{{quizNo}}" name="parentCode" onChange="subjectChange(this);">
+			<select class="form-control" id="subject_{{quizNo}}" name="parentCode" onChange="subjectChange(this,${param.studyNo });">
 				<option value="default">--과목 선택--</option>
 				<option value="P01">[1과목] 소프트웨어 설계</option>
 				<option value="P02">[2과목] 소프트웨어 개발</option>

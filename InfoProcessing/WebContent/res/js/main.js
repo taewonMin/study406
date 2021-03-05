@@ -129,9 +129,9 @@ function zzim_board(boardNo,obj,target){
 }
 
 // 세부 과목 변경 메서드
-function subjectChange(obj){
+function subjectChange(obj, studyNo){
 	var tagId = $(obj).attr("id");
-	$.get('<%=request.getContextPath()%>/subject/list.do?studyNo=${param.studyNo}',{subParentCode:obj.value},function(subList){
+	$.get(contextPath+'/subject/list.do?studyNo='+studyNo,{subParentCode:obj.value},function(subList){
 		if(subList.length > 0){
 			$('.'+tagId).css("display","block");
 			printData(subList,$('.'+tagId),$('#subject-template'),'.'+tagId+' select');
