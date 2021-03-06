@@ -11,6 +11,14 @@
 		cursor: pointer;
 	    background-color: #f0f8ff;
 	}
+	select[name=boardGroup]{
+		border: 1px solid #ced4da;
+		border-radius: .25rem;
+		color: #495057;
+		transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+		margin-bottom: 10px;
+		float: right;
+     }
 	@media(max-width:400px) {
 		#addBtn{
 		    padding: .25rem .5rem;
@@ -21,7 +29,9 @@
 		#headTitle{
 			font-size: 1.25rem;
 		}
-	
+		select[name=boardGroup]{
+			width : 80px;
+		}
      }
 </style>
 <body>
@@ -38,9 +48,20 @@
 				</div>
 				<hr style="clear: both;">
 				<div>
-					<ul class="list-group" style="clear:both;" id="boardList">
+					<select name="boardGroup" required="required" style="margin-bottom: 10px; float: right;" onchange="showList(this)">
+						<option value="">전체</option>
+						<option value="P01">소프트웨어 설계</option>
+						<option value="P02">소프트웨어 개발</option>
+						<option value="P03">데이터베이스 구축</option>
+						<option value="P04">프로그래밍 언어 활용</option>
+						<option value="P05">정보시스템 구축 관리</option>
+					</select>	
+				</div>
+				<div>
+					<table class="table table-hover table-bordered" style="clear:both;" id="boardList">
 					<c:forEach var="board" items="${boardList }">
-						<li class="list-group-item quizItem" onclick="location.href='detail.do?boardNo=${board.boardNo}';">
+						<tr class="${board.boardGroup }" style="cursor: pointer;" onclick="location.href='detail.do?boardNo=${board.boardNo}';">
+							<td>
 							<span style="font-weight: bold;"><span class="badge badge-dark">${board.boardGroupName } </span> ${board.boardTitle}</span>
 							<div style="display: block; font-size: x-small;">
 								<span>${board.memId}</span>
@@ -48,9 +69,10 @@
 								<span>조회수${board.boardCnt}</span>
 								<!-- <span style="float: right">...</span> -->
 							</div>
-						</li>
+							</td>
+						</tr>
 					</c:forEach>
-					</ul>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -58,6 +80,15 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 
+function showList(obj){
+	$("tr").hide();
+	
+	if(obj.value){
+		$("tr[class="+obj.value+"]").show();
+	}else{
+		$("tr").show();
+	}
+}
 
 </script>
 </body>

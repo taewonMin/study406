@@ -1,6 +1,7 @@
 package kr.or.ddit.member.dao;
 
 import java.sql.SQLException;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -25,6 +26,14 @@ public class MemberDaoImpl implements IMemberDao{
 	public MemberVO getMember(SqlMapClient smc, String memId) throws SQLException {
 		MemberVO member = (MemberVO) smc.queryForObject("member.getMember", memId);
 		return member;
+	}
+
+	@Override
+	public Map<String, Object> getStudyGroup(SqlMapClient smc) throws SQLException {
+		
+		 Map<String, Object> studyGroup = (Map<String, Object>)smc.queryForObject("member.getStudyGroup");
+		 
+		return studyGroup;
 	}
 
 

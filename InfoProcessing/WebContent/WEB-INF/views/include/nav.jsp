@@ -15,4 +15,4 @@
 		<button class="btn btn-primary form-control" type="button" style="float: right;" onclick="javascript:location.href='<%=request.getContextPath()%>/common/searchForm.do'"><i class="fa fa-fw fa-search"></i></button>
 	</div>
 </nav>
-<i class="fa fa-arrow-left" onclick="history.go(-1)" style="cursor: pointer; display: block; margin: 10px;"></i>
+<i class="fa fa-arrow-left" onclick="history.go(-1)"></i>

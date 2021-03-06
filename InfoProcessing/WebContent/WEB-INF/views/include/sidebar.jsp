@@ -8,13 +8,11 @@
 		<div>
 			<ul class="nav flex-column" id="info_board"> </ul>
 		</div>
-		<a href="#" class="list-group-item list-group-item-action bg-light">스터디그룹</a>
-		<div>
-			<ul class="nav flex-column">
-				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/quiz/list.do?studyNo=1">1기</a></li>
-			</ul>
-		</div>
 		<a href="javascript:location.href='<%=request.getContextPath() %>/member/zzimList.do?memId=${sessionScope.loginUser.memId }'" class="list-group-item list-group-item-action bg-light">찜목록</a>
+		<a href="javascript:$('#toggleTarget').slideToggle()" class="list-group-item list-group-item-action bg-light">스터디그룹</a>
+		<ul class="nav flex-column" id="toggleTarget" style="display: none;">
+			<li class="list-group-item-action bg-light" style=""><a class="nav-link" href="<%= request.getContextPath() %>/quiz/list.do?studyNo=1">1기</a></li>
+		</ul>
 		<h5 style="margin:15px;">${loginUser.memId }</h5>
 	</div>
 </div>

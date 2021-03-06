@@ -14,4 +14,9 @@
 		  where mem_id = #memId#
 	</select>
 	
+	<select id="getStudyGroup" resultClass="hashMap">
+		select * from study
+		 where study_no != 0
+		   and study_no != 9
+	</select>
 </sqlMap>

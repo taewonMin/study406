@@ -1,6 +1,7 @@
 package kr.or.ddit.member.service;
 
 import java.sql.SQLException;
+import java.util.Map;
 
 import com.ibatis.sqlmap.client.SqlMapClient;
 
@@ -43,6 +44,14 @@ public class MemberServiceImpl implements IMemberService{
 		}
 		
 		return member;
+	}
+
+	@Override
+	public Map<String, Object> getStudyGroup() throws SQLException {
+		
+		Map<String, Object> studyGroup = memberDao.getStudyGroup(smc);
+		
+		return studyGroup;
 	}
 
 }

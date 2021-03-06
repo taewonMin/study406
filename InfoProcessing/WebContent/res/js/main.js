@@ -154,3 +154,11 @@ function printData(data, target, templateObject, removeClass){
 	}
 	target.append(html);
 }
+
+function getStudyGroup(){
+	var url = contextPath + "/member/studyGroup.do"
+	$.getJSON(url,function(data){
+		return data;
+	});
+}
+
