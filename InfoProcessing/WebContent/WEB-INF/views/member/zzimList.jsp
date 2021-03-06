@@ -42,7 +42,7 @@
 						<c:if test="${not empty boardList }">
 							<ul style="padding: 0; margin-top: 10px;">
 								<c:forEach items="${boardList }" var="board">
-									<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/board/detail.do?boardGroup=${board.boardGroup }&boardNo=${board.boardNo }'">
+									<li class="list-group-item quizItem list-group-item-action" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/board/detail.do?boardGroup=${board.boardGroup }&boardNo=${board.boardNo }'">
 										<span style="font-weight: bold;">${board.boardTitle }</span>
 										<div style="display: block; font-size: x-small;">
 											<span>${board.memId } </span>
@@ -63,7 +63,7 @@
 						<c:if test="${not empty quizList }">
 							<ul style="padding: 0; margin-top: 10px;">
 								<c:forEach items="${quizList }" var="quiz">
-									<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/select.do?quizId=${quiz.quizId }'">
+									<li class="list-group-item quizItem list-group-item-action" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/quiz/select.do?quizId=${quiz.quizId }'">
 										<span style="font-weight: bold;">${quiz.quizTitle }</span>
 										<div style="display: block; font-size: x-small;">
 											<span>${quiz.memId } </span>

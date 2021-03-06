@@ -4,11 +4,11 @@
 	<div class="sidebar-heading" onclick="location.href='<%=request.getContextPath()%>/common/logout.do';" style="cursor: pointer;">로그아웃<span  class="glyphicon glyphicon-log-in" ></span></div>
 	<div class="list-group list-group-flush">
 		<a href="#" class="list-group-item list-group-item-action bg-light">이용안내</a>
-		<a href="#" class="list-group-item list-group-item-action bg-light">+정보게시판</a>
+		<a href="<%=request.getContextPath() %>/board/list.do" class="list-group-item list-group-item-action bg-light">정보게시판</a>
 		<div>
 			<ul class="nav flex-column" id="info_board"> </ul>
 		</div>
-		<a href="#" class="list-group-item list-group-item-action bg-light">+스터디그룹</a>
+		<a href="#" class="list-group-item list-group-item-action bg-light">스터디그룹</a>
 		<div>
 			<ul class="nav flex-column">
 				<li class="nav-item"><a class="nav-link" href="<%= request.getContextPath() %>/quiz/list.do?studyNo=1">1기</a></li>

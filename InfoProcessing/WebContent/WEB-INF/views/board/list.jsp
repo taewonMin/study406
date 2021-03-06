@@ -33,7 +33,7 @@
 			<!-- 내용 -->
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
-					<h4 id="headTitle" style="display: inline;"><strong>정보 게시판 </strong><span style="font-size: 0.8em">/ ${subjectName }</span></h4>
+					<h4 id="headTitle" style="display: inline;"><strong>정보 게시판 </strong></h4>
 					<button id="addBtn" class="btn btn-warning" style="float: right;" onclick="location.href = 'insert.do?boardGroup=${param.boardGroup}'">글등록</button>
 				</div>
 				<hr style="clear: both;">
@@ -41,7 +41,7 @@
 					<ul class="list-group" style="clear:both;" id="boardList">
 					<c:forEach var="board" items="${boardList }">
 						<li class="list-group-item quizItem" onclick="location.href='detail.do?boardNo=${board.boardNo}';">
-							<span style="font-weight: bold;">${board.boardTitle}</span>
+							<span style="font-weight: bold;"><span class="badge badge-dark">${board.boardGroupName } </span> ${board.boardTitle}</span>
 							<div style="display: block; font-size: x-small;">
 								<span>${board.memId}</span>
 								<span><fmt:formatDate value="${board.boardDate}" pattern="yyyy-MM-dd"/></span>

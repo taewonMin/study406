@@ -21,10 +21,16 @@
 					<form action="insert.do" class="form" method="post" id="boardForm" onsubmit="setTag('#targetTag')">
 						<input type="text" class="form-control" id="boardTitle" name="boardTitle" required="required" placeholder="제목을 입력해 주세요" style="margin-bottom: 10px;">
 						<input type="hidden" name="memId" value="${loginUser.memId }">
-						<input type="hidden" name="boardGroup" value="${param.boardGroup}">
+						<select name="boardGroup" required="required" class="form-control" style="margin-bottom: 10px;">
+							<option disabled="disabled" selected="selected">말머리</option>
+							<option value="P01">소프트웨어 설계</option>
+							<option value="P02">소프트웨어 개발</option>
+							<option value="P03">데이터베이스 구축</option>
+							<option value="P04">프로그래밍 언어 활용</option>
+							<option value="P05">정보시스템 구축 관리</option>
+						</select>
 						<input type="hidden" name="boardTag" value="" id="targetTag">
 						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요"></textarea>
-						
 						<div class="input-group" style="margin-bottom:20px; margin-top: 10px;">
 							<input class="form-control" type="text" id="boardTag" onKeypress="checkEnter('boardTag','div.tagList');" placeholder="태그를 추가하세요"/>
 							<button class="btn btn-success" type="button" onclick="addTag('boardTag','div.tagList');">태그 추가</button>

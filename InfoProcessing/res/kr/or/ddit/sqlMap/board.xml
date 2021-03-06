@@ -14,6 +14,7 @@
 		<result property="memId" column="MEM_ID"/>
 		<result property="boardCnt" column="BOARD_CNT"/>
 		<result property="boardTag" column="BOARD_TAG"/>
+		<result property="boardGroupName" column="BOARD_GROUP_NAME"/>
 	</resultMap>
 
 	<resultMap class="board" id="boardMap2">
@@ -29,10 +30,14 @@
 	</resultMap>
 
 	<select id="selectBoardList" resultMap="boardMap">
-		select * 
-		 from board
+		select distinct a.*,b.sub_parent_name as board_group_name
+		 from board a
+		inner join subject b
+           on a.board_group = b.sub_parent_code
 		where 1=1
+		<isNotEmpty property="boardGroup">
 	      and board_group = #boardGroup#
+		</isNotEmpty>
 		<isNotEmpty property="searchType">
 			<isNotEmpty property="keyword">
 			   and #searchType# like '%' || #keyword# || '%' 

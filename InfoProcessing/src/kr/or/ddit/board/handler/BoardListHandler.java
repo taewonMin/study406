@@ -38,9 +38,8 @@ public class BoardListHandler implements CommandHandler{
 		
 		boardService.getBoardGroupList(paging);
 		List<BoardVO> boardList = boardService.getBoardGroupList(paging);
-		String subjectName = boardService.getSubjectName(boardGroup);
 		request.setAttribute("boardList", boardList);
-		request.setAttribute("subjectName", subjectName);
+		
 		return url;
 	}
 }
