@@ -33,7 +33,6 @@
 						<input type="hidden" name="boardNo" value="${board.boardNo }">
 						<input type="hidden" name="boardTag" value="" id="targetTag">
 						<select name="boardGroup" required="required" class="form-control" style="margin-bottom: 10px;">
-							<option disabled="disabled">말머리</option>
 							<option value="P01" ${board.boardGroup eq 'P01' ? 'selected' : '' }>소프트웨어 설계</option>
 							<option value="P02" ${board.boardGroup eq 'P02' ? 'selected' : '' }>소프트웨어 개발</option>
 							<option value="P03" ${board.boardGroup eq 'P03' ? 'selected' : '' }>데이터베이스 구축</option>
@@ -51,6 +50,7 @@
 							</c:forEach>
 						</c:if>						
 						</div>
+						<input type="submit" style="display: none" id="subBtn">
 					</form>
 				</div>				
 			</div>
@@ -59,8 +59,7 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 function modify_go(){
-	var form = $('#boardForm');
-	form.submit();
+	$("#subBtn").trigger("click");
 }
 window.onload = function(){
 	summernote_start($('#content'));

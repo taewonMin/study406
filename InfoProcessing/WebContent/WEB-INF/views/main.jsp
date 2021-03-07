@@ -15,6 +15,10 @@ div.container-fluid{
 	div.container-fluid{
 		width:100%;
 	}
+	
+	tr.subject-name td{
+		font-size: small;
+	}
 }
 </style>
 <body>
@@ -48,6 +52,13 @@ div.container-fluid{
 							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub3" checked="checked" value="P03"><label for="sub3">3과목</label></td>
 							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub4" checked="checked" value="P04"><label for="sub4">4과목</label></td>
 							<td width="20%" style="padding:10px;"><input type="checkbox" name="quizSubCode" class="" id="sub5" checked="checked" value="P05"><label for="sub5">5과목</label></td>
+						</tr>
+						<tr class="subject-name" align="center">
+							<td width="20%" style="padding:10px;">소프트웨어 설계</td>
+							<td width="20%" style="padding:10px;">소프트웨어 개발</td>
+							<td width="20%" style="padding:10px;">데이터베이스 구축</td>
+							<td width="20%" style="padding:10px;">프로그래밍 언어 활용</td>
+							<td width="20%" style="padding:10px;">정보시스템 구축 관리</td>
 						</tr>
 						
 						<tr class="testProb">

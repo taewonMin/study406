@@ -18,11 +18,10 @@
 				</div>
 				<hr>
 				<div class="content">
-					<form action="insert.do" class="form" method="post" id="boardForm" onsubmit="setTag('#targetTag')">
+					<form action="insert.do" class="form" method="post" id="boardForm" onsubmit="setTag('#targetTag');">
 						<input type="text" class="form-control" id="boardTitle" name="boardTitle" required="required" placeholder="제목을 입력해 주세요" style="margin-bottom: 10px;">
 						<input type="hidden" name="memId" value="${loginUser.memId }">
 						<select name="boardGroup" required="required" class="form-control" style="margin-bottom: 10px;">
-							<option disabled="disabled" selected="selected">말머리</option>
 							<option value="P01">소프트웨어 설계</option>
 							<option value="P02">소프트웨어 개발</option>
 							<option value="P03">데이터베이스 구축</option>
@@ -36,6 +35,7 @@
 							<button class="btn btn-success" type="button" onclick="addTag('boardTag','div.tagList');">태그 추가</button>
 						</div>						
 						<div class="tagList"></div>
+						<input type="submit" style="display: none" id="subBtn">
 					</form>
 				</div>				
 			</div>
@@ -47,8 +47,7 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 function insert_go(){
-	var form = $('#boardForm');
-	form.submit();
+	$("#subBtn").trigger("click");
 }
 window.onload = function(){
 	summernote_start($('#content'));
