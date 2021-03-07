@@ -8,6 +8,7 @@ public class BoardVO {
 	private Date boardDate; // 등록 날짜
 	private int boardCnt =0; // 조회 수
 	private String boardGroup;
+	private String boardGroupName;
 	private String memId;	// 작성자
 	private String boardContent;
 	private String boardTag;
@@ -49,6 +50,12 @@ public class BoardVO {
 	}
 	public void setBoardGroup(String boardGroup) {
 		this.boardGroup = boardGroup;
+	}
+	public String getBoardGroupName() {
+		return boardGroupName;
+	}
+	public void setBoardGroupName(String boardGroupName) {
+		this.boardGroupName = boardGroupName;
 	}
 	public String getMemId() {
 		return memId;

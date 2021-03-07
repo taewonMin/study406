@@ -9,7 +9,15 @@ function summernote_start(content){
 		height:500,
 		disableResizeEditor: true,
 		useProtocol:false,
-		toolbar: []
+		toolbar: [
+		    ['fontname', ['fontname']],
+		    ['fontsize', ['fontsize']],
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    ['color', ['forecolor','color']],
+		    ['table', ['table']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']],
+		  ],
 	});
 	
 }

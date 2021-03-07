@@ -31,9 +31,14 @@
 						<input type="text" class="form-control" id="boardTitle" name="boardTitle" style="margin-bottom: 10px;" required="required" placeholder="제목을 입력해 주세요" value="${board.boardTitle }">
 						<input type="hidden" name="memId" value="${loginUser.memId }">
 						<input type="hidden" name="boardNo" value="${board.boardNo }">
-						<input type="hidden" name="boardGroup" value="${param.boardGroup}">
 						<input type="hidden" name="boardTag" value="" id="targetTag">
-						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요">${board.boardContent }</textarea>
+						<select name="boardGroup" required="required" class="form-control" style="margin-bottom: 10px;">
+							<option value="P01" ${board.boardGroup eq 'P01' ? 'selected' : '' }>소프트웨어 설계</option>
+							<option value="P02" ${board.boardGroup eq 'P02' ? 'selected' : '' }>소프트웨어 개발</option>
+							<option value="P03" ${board.boardGroup eq 'P03' ? 'selected' : '' }>데이터베이스 구축</option>
+							<option value="P04" ${board.boardGroup eq 'P04' ? 'selected' : '' }>프로그래밍 언어 활용</option>
+							<option value="P05" ${board.boardGroup eq 'P05' ? 'selected' : '' }>정보시스템 구축 관리</option>
+						</select>						<textarea id="content" class="textarea" rows="20" cols="" name="boardContent" class="form-control" placeholder="내용을 입력하세요">${board.boardContent }</textarea>
 						<div class="input-group" style="margin-bottom:20px; margin-top: 10px;">
 							<input class="form-control" type="text" id="boardTag" onKeypress="checkEnter('boardTag','div.tagList');" placeholder="태그를 추가하세요"/>
 							<button class="btn btn-success" type="button" onclick="addTag('boardTag','div.tagList');">태그 추가</button>
@@ -45,6 +50,7 @@
 							</c:forEach>
 						</c:if>						
 						</div>
+						<input type="submit" style="display: none" id="subBtn">
 					</form>
 				</div>				
 			</div>
@@ -53,8 +59,7 @@
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 <script>
 function modify_go(){
-	var form = $('#boardForm');
-	form.submit();
+	$("#subBtn").trigger("click");
 }
 window.onload = function(){
 	summernote_start($('#content'));

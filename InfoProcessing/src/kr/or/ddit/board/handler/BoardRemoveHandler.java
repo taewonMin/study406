@@ -29,7 +29,7 @@ public class BoardRemoveHandler implements CommandHandler{
 		
 		boardService.removeBoard(boardNo);
 		
-		url = request.getContextPath()+"/board/list.do?boardGroup="+board.getBoardGroup();
+		url = request.getContextPath()+"/board/list.do";
 		
 		return url;
 	}

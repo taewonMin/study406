@@ -34,6 +34,13 @@
 	    border-radius: .2rem;
 	}
 }
+i.fa-arrow-left{
+	cursor: pointer; 
+	display: block; 
+	margin: 10px;
+
+}
+
 
 </style>
 </head>

@@ -15,6 +15,17 @@
 		<result property="boardCnt" column="BOARD_CNT"/>
 		<result property="boardTag" column="BOARD_TAG"/>
 	</resultMap>
+	<resultMap class="board" id="boardMap3">
+		<result property="boardGroup" column="BOARD_GROUP"/>
+		<result property="boardNo" column="BOARD_NO"/>
+		<result property="boardTitle" column="BOARD_TITLE"/>
+		<result property="boardContent" column="BOARD_CONTENT"/>
+		<result property="boardDate" column="BOARD_DATE"/>
+		<result property="memId" column="MEM_ID"/>
+		<result property="boardCnt" column="BOARD_CNT"/>
+		<result property="boardTag" column="BOARD_TAG"/>
+		<result property="boardGroupName" column="BOARD_GROUP_NAME"/>
+	</resultMap>
 
 	<resultMap class="board" id="boardMap2">
 		<result property="boardGroup" column="BOARD_GROUP"/>
@@ -28,11 +39,15 @@
 		<result property="boardZzim" column="BOARD_ZZIM"/>
 	</resultMap>
 
-	<select id="selectBoardList" resultMap="boardMap">
-		select * 
-		 from board
+	<select id="selectBoardList" resultMap="boardMap3">
+		select distinct a.*,b.sub_parent_name as board_group_name
+		 from board a
+		inner join subject b
+           on a.board_group = b.sub_parent_code
 		where 1=1
+		<isNotEmpty property="boardGroup">
 	      and board_group = #boardGroup#
+		</isNotEmpty>
 		<isNotEmpty property="searchType">
 			<isNotEmpty property="keyword">
 			   and #searchType# like '%' || #keyword# || '%' 

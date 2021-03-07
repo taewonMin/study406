@@ -6,8 +6,6 @@
 <html lang="en">
 <%@ include file="/WEB-INF/views/include/header.jsp" %>
 <style>
-
-
 </style>
 <body>
 	<div class="d-flex" id="wrapper">
@@ -15,28 +13,27 @@
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 			<%@ include file="/WEB-INF/views/include/nav.jsp" %>
-			
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
-					<h4 style="display: inline;">${board.boardTitle }</h4>
-					<div id="zzim_badge" style="display: inline;">
-					<c:if test="${board.boardZzim != 0 }">
-						<span class="badge badge-warning">찜</span>
-					</c:if>					
+					<div style="display: block;">
+						<h4 style="display: inline;">${board.boardTitle }</h4>
+						<div id="zzim_badge" style="display: inline;">
+						<c:if test="${board.boardZzim != 0 }">
+							<span class="badge badge-warning">찜</span>
+						</c:if>					
+						</div>
+
+						<c:if test="${loginUser.memId eq board.memId }">
+						<div style="float: right;">
+							<a href="javascript:location.href ='modify.do?boardNo=${board.boardNo }'"  class="btn btn-success">수정</a>
+							<a href="javascript:checkConfirm()" class="btn btn-danger">삭제</a>
+						</div>
+						</c:if>	
 					</div>
-					<c:if test="${loginUser.memId eq board.memId }">
-					<div style="float: right;">
-						<a href="javascript:location.href ='modify.do?boardNo=${board.boardNo }'"  class="btn btn-success">수정</a>
-						<a href="javascript:checkConfirm()" class="btn btn-danger">삭제</a>
-					</div>
-					</c:if>
 				</div>
 				<hr style="clear: both;">
 				<div>
-					<div style="float: right;">
-						<span>작성자 : ${board.memId }</span>
-						<span>조회수 : ${board.boardCnt }</span>
-					</div>
+					<span style="float: right;" class="badge badge-light">${board.memId }</span>
 					<div style="clear: both;">${board.boardContent} </div>
 					<hr>
 					<c:if test="${board.boardTag.length() > 0 }">

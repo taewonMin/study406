@@ -1,4 +1,4 @@
-setBoardMenu();
+/*setBoardMenu();
 function setBoardMenu(){
 	var resHTML = '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P01">1. 소프트웨어 설계</a></li>';
 	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P02">2. 소프트웨어 개발</a></li>';
@@ -6,7 +6,7 @@ function setBoardMenu(){
 	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P04">4. 프로그래밍 언어 활용</a></li>';
 	resHTML += '<li class="nav-item"><a class="nav-link" href="'+contextPath+'/board/list.do?boardGroup=P05">5. 정보시스템 구축 관리</a></li>';
 	$("#info_board").append(resHTML);
-}
+}*/
 $("#menu-toggle").click(function(e) {
 	e.preventDefault();
     $("#wrapper").toggleClass("toggled");
@@ -154,3 +154,11 @@ function printData(data, target, templateObject, removeClass){
 	}
 	target.append(html);
 }
+
+function getStudyGroup(){
+	var url = contextPath + "/member/studyGroup.do"
+	$.getJSON(url,function(data){
+		return data;
+	});
+}
+

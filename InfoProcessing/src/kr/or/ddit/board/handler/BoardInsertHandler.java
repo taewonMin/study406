@@ -24,7 +24,7 @@ public class BoardInsertHandler implements CommandHandler {
 	public String process(HttpServletRequest req, HttpServletResponse resp) throws Exception {
 		
 		String boardGroup = req.getParameter("boardGroup");
-		String url = req.getContextPath()+"/board/list.do?boardGroup="+boardGroup;
+		String url = req.getContextPath()+"/board/list.do";
 		if(req.getMethod().equals("GET")) {
 			url = "/WEB-INF/views/board/registForm.jsp";
 		}else {
