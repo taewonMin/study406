@@ -119,7 +119,15 @@ function addQuiz(){
 	$('textarea.quizAnswer').eq(quiz.quizNo-1).summernote({
 		height:100,
 		placeholder:'정답을 입력하세요.',
-		toolbar: []
+		toolbar: [
+		    ['fontname', ['fontname']],
+		    ['fontsize', ['fontsize']],
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    ['color', ['forecolor','color']],
+		    ['table', ['table']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']],
+		  ]
 	});
 	
 	quiz.quizNo += 1;
