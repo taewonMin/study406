@@ -37,7 +37,7 @@
 							<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/detail.do?studyNo=${param.studyNo }&quizGroup=${quiz.quizGroup}';">
 								<span style="font-weight: bold;">${quiz.quizTitle}</span>
 								<div style="display: block; font-size: x-small;">
-									<span>${quiz.memId}</span>
+									<span>${quiz.memName}</span>
 									<span>${quiz.quizRegdate}</span>
 									<span>조회 ${quiz.quizViewcnt}</span>
 								</div>

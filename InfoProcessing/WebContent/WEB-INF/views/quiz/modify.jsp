@@ -31,7 +31,7 @@
 					</div>
 					<div style="margin-top:20px;">
 						<label for="writer" style="margin-top: 5px;"><strong>작성자:</strong></label>
-						<input type="text" class="form-control" id="writer" readonly="readonly" value="${quizList.get(0).memId }">
+						<input type="text" class="form-control" id="writer" readonly="readonly" value="${quizList.get(0).memName }">
 					</div>
 				</div>
 				<hr>

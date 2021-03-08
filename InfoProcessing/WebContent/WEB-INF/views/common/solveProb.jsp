@@ -78,7 +78,7 @@
 							<c:set var="quiz" value="${quizList.get(num) }" />
 							<div style="margin-bottom:20px;">
 								<div class="row" style="margin-bottom:10px">
-									<div class="col-sm-2" style="margin-top:5px;">
+									<div class="col-sm-2" style="margin-top:5px;color:blue;">
 										<h6 style="font-weight:bold;display:inline-block">${quiz.subParentName }</h6>
 										<h6 style="font-size:0.8em;display:inline-block">/ ${quiz.subName }</h6>
 										<c:if test="${quiz.zzim != 0 }">
@@ -87,9 +87,10 @@
 									</div>
 								</div>
 								<strong style="font-size: 1.2em;">${num+1 }.</strong>
-								<div style="font-weight:bold;">${quiz.quizProb }</div>
+								<div id="quizProb2_${quiz.quizNo }" style="font-weight:bold;display:inline;">${quiz.quizProb }</div>
 								<div style="font-weight:bold;margin-top:20px;color:#6495ed;">${quiz.quizAnswer }</div>
 							</div>
+							<hr>
 						</c:forEach>
 					</div>
 				</div>
@@ -167,6 +168,11 @@ function openAnswer(obj){
 function showAnswer(){
 	$('div.problem').css('display','none');
 	$('div.answer').css('display','block');
+	
+	for(var i=1; i<${quizList.size()+1}; i++){
+		$('div#quizProb2_'+i+' p').eq(0).css('display','inline');
+		$('div#quizProb2_'+i+' p').eq(1).css('margin-top','20px');
+	}
 }
 </script>
 </body>

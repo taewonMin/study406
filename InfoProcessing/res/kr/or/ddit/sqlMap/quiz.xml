@@ -12,6 +12,7 @@
 		<result property="quizProb" column="quiz_prob"/>
 		<result property="quizAnswer" column="quiz_answer"/>
 		<result property="memId" column="mem_id"/>
+		<result property="memName" column="mem_name"/>
 		<result property="subNo" column="sub_no"/>
 		<result property="quizRegdate" column="quiz_regdate"/>
 		<result property="quizViewcnt" column="quiz_viewcnt"/>
@@ -54,6 +55,7 @@
 		<result property="quizProb" column="quiz_prob"/>
 		<result property="quizAnswer" column="quiz_answer"/>
 		<result property="memId" column="mem_id"/>
+		<result property="memName" column="mem_name"/>
 		<result property="subNo" column="sub_no"/>
 		<result property="quizRegdate" column="quiz_regdate"/>
 		<result property="quizViewcnt" column="quiz_viewcnt"/>
@@ -100,18 +102,20 @@
 	
 	<select id="selectQuizGroupList" resultMap="quizMap">
 		select A.*, sub_parent_name, sub_name, 0 as zzim
-		from (select *
+		from (select quiz.*,member.mem_name
 			from quiz
-			where study_no = #studyNo#
-			group by quiz_group
-			order by quiz_group desc) A, subject
+			inner join member on member.mem_id=quiz.mem_id
+			where quiz.study_no = #studyNo#
+			group by quiz.quiz_group) A, subject
 		where subject.sub_no = A.sub_no
+		order by quiz_group desc
 	</select>
 	
 	<select id="selectQuizList" resultMap="quizMap">
 		select d.*,
 			   e.sub_parent_name,
 			   e.sub_name,
+			   f.mem_name,
 			   ifnull(c.zzim, 0) as zzim
 		  from (select b.quiz_id, 1 as zzim
 				  from quiz a
@@ -120,6 +124,7 @@
 				 where b.mem_id = #memId#) c
 		 right join quiz d on c.quiz_id = d.quiz_id
 		 inner join subject e on e.sub_no = d.sub_no
+		 inner join member f on f.mem_id = d.mem_id
 		 where d.study_no = #studyNo#
 		   and d.quiz_group = #quizGroup#
 	   <dynamic prepend="and sub_parent_code in">
@@ -200,6 +205,7 @@
 		select d.*,
 			   e.sub_parent_name,
 			   e.sub_name,
+			   f.mem_name,
 			   ifnull(c.zzim, 0) as zzim
 		  from (select b.quiz_id, 1 as zzim
 				  from quiz a
@@ -208,11 +214,12 @@
 				 where b.mem_id = #memId#) c
 		 right join quiz d on c.quiz_id = d.quiz_id
 		 inner join subject e on e.sub_no = d.sub_no
+		 inner join member f on f.mem_id = d.mem_id
 		 where d.quiz_id = #quizId#
 	</select>
 	
 	<select id="zzimQuiz" resultMap="quizMap3">
-		select a.*,b.sub_parent_name,b.sub_name 
+		select a.*,b.sub_parent_name,b.sub_name,c.mem_name
 		  from (
 			 		select quiz.*
 					  from quiz
@@ -222,6 +229,8 @@
 				) a
 		inner join subject b
 		  on a.sub_no = b.sub_no
+		inner join member c
+		  on c.mem_id = a.mem_id
 	</select>
 	
 </sqlMap> 

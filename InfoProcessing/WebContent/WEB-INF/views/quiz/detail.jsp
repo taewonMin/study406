@@ -15,7 +15,7 @@
 			<div class="container-fluid" style="padding: 20px;">
 				<div class="header">
 					<h4>${quizList.get(0).quizTitle}</h4>
-					<span id="writer">작성자 : ${quizList.get(0).memId}</span>
+					<span id="writer">작성자 : ${quizList.get(0).memName}</span>
 				</div>
 				<hr>
 				<div class="prob-body">

@@ -12,6 +12,7 @@ public class QuizVO {
 	private int quizViewcnt;
 	private String quizTag;
 	private String memId;
+	private String memName;
 	private int studyNo;
 	
 	private String subParentName;
@@ -20,6 +21,13 @@ public class QuizVO {
 	private int zzim;
 	
 	
+	
+	public String getMemName() {
+		return memName;
+	}
+	public void setMemName(String memName) {
+		this.memName = memName;
+	}
 	public int getZzim() {
 		return zzim;
 	}
