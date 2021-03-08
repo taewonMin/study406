@@ -138,14 +138,25 @@
 
 <script>
 window.onload = function(){
-	$('textarea').summernote({
+	$('textarea.quizProb').summernote({
 		height:100,
 		toolbar: [
-			['para', ['ul', 'ol', 'paragraph']],
-			['view', ['codeview']],
-			['table', ['table']],
-		]
+			  ['view', ['codeview']]
+			]
 	});
+	$('textarea.quizAnswer').summernote({
+		height:100,
+		toolbar: [
+		    ['fontname', ['fontname']],
+		    ['fontsize', ['fontsize']],
+		    ['style', ['bold', 'italic', 'underline','strikethrough', 'clear']],
+		    ['color', ['forecolor','color']],
+		    ['table', ['table']],
+		    ['para', ['ul', 'ol', 'paragraph']],
+		    ['height', ['height']],
+		  ]
+	});
+	
 };
 //과목 상세 코드 초기화
 for(var i=1; i<${quizList.size()}+1; i++){
@@ -172,9 +183,7 @@ function addQuiz(){
 		height:100,
 		placeholder:'문제를 입력하세요.',
 		toolbar: [
-			['para', ['ul', 'ol', 'paragraph']],
-			['view', ['codeview']],
-			['table', ['table']],
+			  ['view', ['codeview']]
 			]
 	});
 	
@@ -264,6 +273,13 @@ function modifyQuiz(){
 			alert('서버 에러 발생');
 		}
 	});
+}
+
+function checkTab(){
+	if(event.keyCode == 9){
+		alert('check');
+		return;
+	}
 }
 
 </script>

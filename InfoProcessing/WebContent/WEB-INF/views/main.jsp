@@ -78,7 +78,7 @@ div.container-fluid{
 						</tr>
 					</table>
 					<div style="text-align: right;">
-						<button type="submit" class="btn btn-primary" onclick="solveProb();">문제 풀기</button>					
+						<button type="button" class="btn btn-primary" onclick="solveProb();">문제 풀기</button>					
 					</div>
 				</form>
 			</div>
@@ -103,6 +103,8 @@ function solveProb(){
 		return;
 	}
 	
+	var form = $('form[role="conditionForm"]');
+	form.submit();
 }
 
 function changeGroup(obj){
