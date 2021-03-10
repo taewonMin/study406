@@ -21,7 +21,9 @@
 					<form action="insert.do" class="form" method="post" id="boardForm" onsubmit="setTag('#targetTag');">
 						<input type="text" class="form-control" id="boardTitle" name="boardTitle" required="required" placeholder="제목을 입력해 주세요" style="margin-bottom: 10px;">
 						<input type="hidden" name="memId" value="${loginUser.memId }">
+						<input type="hidden" name="memName" value="${loginUser.memName }">
 						<select name="boardGroup" required="required" class="form-control" style="margin-bottom: 10px;">
+							<option value="P00">잡담</option>
 							<option value="P01">소프트웨어 설계</option>
 							<option value="P02">소프트웨어 개발</option>
 							<option value="P03">데이터베이스 구축</option>

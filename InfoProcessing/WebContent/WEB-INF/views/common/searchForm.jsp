@@ -51,7 +51,7 @@
 								<select class="form-control-sm" onchange="javascript:$('#searchType').val(this.value);" style="border: 0">
 									<option value="all">전체</option>
 									<option value="board_title">제 목</option>
-									<option value="mem_id" >작성자</option>
+									<option value="mem_name" >작성자</option>
 									<option value="board_content">내 용</option>
 									<option value="board_tag">태그</option>
 								</select>
@@ -63,7 +63,7 @@
 								<select class="form-control-sm" onchange="javascript:$('#searchType').val(this.value);" style="border: 0">
 									<option value="quiz_prob">문 제</option>
 									<option value="quiz_answer">해 설</option>
-									<option value="mem_id" >작성자</option>
+									<option value="mem_name" >작성자</option>
 									<option value="quiz_tag">태 그</option>
 								</select>
 							</div>

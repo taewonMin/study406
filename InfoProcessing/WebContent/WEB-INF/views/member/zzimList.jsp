@@ -45,8 +45,8 @@
 									<li class="list-group-item quizItem list-group-item-action" style="cursor: pointer;" onclick="location.href='<%=request.getContextPath()%>/board/detail.do?boardGroup=${board.boardGroup }&boardNo=${board.boardNo }'">
 										<span style="font-weight: bold;">${board.boardTitle }</span>
 										<div style="display: block; font-size: x-small;">
-											<span>${board.memId } </span>
-											<span>${board.boardDate }</span>
+											<span>${board.memName } </span>
+											<span><fmt:formatDate value="${board.boardDate}" pattern="yyyy-MM-dd"/></span>
 											<span>조회 ${board.boardCnt }</span>
 										</div>
 									</li>
@@ -67,7 +67,7 @@
 										<span style="font-weight: bold;">${quiz.quizTitle } ${quiz.quizNo}번 문제</span>
 										<div style="display: block; font-size: x-small;">
 											<span>${quiz.memName } </span>
-											<span>${quiz.quizRegdate }</span>
+											<span><fmt:formatDate value="${quiz.quizRegdate}" pattern="yyyy-MM-dd"/></span>
 											<span>조회 ${quiz.quizViewcnt }</span>
 										</div>
 									</li>

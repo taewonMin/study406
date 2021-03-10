@@ -12,6 +12,7 @@
 		<result property="boardContent" column="BOARD_CONTENT"/>
 		<result property="boardDate" column="BOARD_DATE"/>
 		<result property="memId" column="MEM_ID"/>
+		<result property="memName" column="MEM_NAME"/>
 		<result property="boardCnt" column="BOARD_CNT"/>
 		<result property="boardTag" column="BOARD_TAG"/>
 	</resultMap>
@@ -22,6 +23,7 @@
 		<result property="boardContent" column="BOARD_CONTENT"/>
 		<result property="boardDate" column="BOARD_DATE"/>
 		<result property="memId" column="MEM_ID"/>
+		<result property="memName" column="MEM_NAME"/>
 		<result property="boardCnt" column="BOARD_CNT"/>
 		<result property="boardTag" column="BOARD_TAG"/>
 		<result property="boardGroupName" column="BOARD_GROUP_NAME"/>
@@ -34,12 +36,14 @@
 		<result property="boardContent" column="BOARD_CONTENT"/>
 		<result property="boardDate" column="BOARD_DATE"/>
 		<result property="memId" column="MEM_ID"/>
+		<result property="memName" column="MEM_NAME"/>
 		<result property="boardCnt" column="BOARD_CNT"/>
 		<result property="boardTag" column="BOARD_TAG"/>
 		<result property="boardZzim" column="BOARD_ZZIM"/>
 	</resultMap>
 
 	<select id="selectBoardList" resultMap="boardMap3">
+		
 		select distinct a.*,b.sub_parent_name as board_group_name
 		 from board a
 		inner join subject b
@@ -54,7 +58,9 @@
 			</isNotEmpty>
 		</isNotEmpty>
 		 order by board_no desc
+		 
 	</select>
+	
 	
 	<select id="getBoardListCnt" resultClass="int">
 		select count(*)
@@ -73,8 +79,8 @@
 	</select>
 	
 	<insert id="insertBoard">
-		insert into board(board_no,board_group,board_title,board_content,board_date,mem_id,board_cnt,board_tag)
-		values(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#,#boardCnt#,#boardTag#)
+		insert into board(board_no,board_group,board_title,board_content,board_date,mem_id,board_cnt,board_tag,mem_name)
+		values(#boardNo#,#boardGroup#,#boardTitle#,#boardContent#,now(),#memId#,#boardCnt#,#boardTag#,#memName#)
 	</insert>
 	
 	<select id="getBoard" resultMap="boardMap2">
@@ -115,18 +121,21 @@
 		    or board_content like CONCAT('%',#keyword#,'%')
 		    or board_tag like CONCAT('%',#keyword#,'%')
 		  </isEqual>
+		  
 		  <isEqual property="searchType" compareValue="board_title">
 		  where board_title like CONCAT('%',#keyword#,'%')
 		  </isEqual>
+		  
 		  <isEqual property="searchType" compareValue="mem_id">
 		  where mem_id like CONCAT('%',#keyword#,'%')
 		  </isEqual>
+		  
 		  <isEqual property="searchType" compareValue="board_content">
 		  where board_content like 'CONCAT('%',#keyword#,'%')
 		  </isEqual>
+		  
 		  <isEqual property="searchType" compareValue="board_tag">
 		  where board_tag like CONCAT('%',#keyword#,'%')
-
 		  </isEqual>
 		  
 	</select>
@@ -136,7 +145,7 @@
 		  from board
 		 inner join my_board
 		    on board.board_no = my_board.board_no
-		 where my_board.mem_id = #memId#
+		 where my_board.mem_id = #id#
 	</select>
 	
 	<insert id="insertMyBoard">

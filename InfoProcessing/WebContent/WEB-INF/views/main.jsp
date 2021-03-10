@@ -68,7 +68,6 @@ div.container-fluid{
 									<option disabled="disabled">--스터디 그룹 선택--</option>
 									<option value="0" selected>기출</option>
 									<option value="1">1기</option>
-									<option value="2">2기</option>
 								</select>
 							</td>
 							<td colspan="2">

@@ -50,6 +50,7 @@
 				<div>
 					<select name="boardGroup" required="required" style="margin-bottom: 10px; float: right;" onchange="showList(this)">
 						<option value="">전체</option>
+						<option value="P00">잡담</option>
 						<option value="P01">소프트웨어 설계</option>
 						<option value="P02">소프트웨어 개발</option>
 						<option value="P03">데이터베이스 구축</option>
@@ -64,7 +65,7 @@
 							<td>
 							<span style="font-weight: bold;"><span class="badge badge-dark">${board.boardGroupName } </span> ${board.boardTitle}</span>
 							<div style="display: block; font-size: x-small;">
-								<span>${board.memId}</span>
+								<span>${board.memName}</span>
 								<span><fmt:formatDate value="${board.boardDate}" pattern="yyyy-MM-dd"/></span>
 								<span>조회수${board.boardCnt}</span>
 								<!-- <span style="float: right">...</span> -->

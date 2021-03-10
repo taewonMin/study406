@@ -33,7 +33,7 @@
 				</div>
 				<hr style="clear: both;">
 				<div>
-					<span style="float: right;" class="badge badge-light">${board.memId }</span>
+					<span style="float: right;" class="badge badge-light">${board.memName }</span>
 					<div style="clear: both;">${board.boardContent} </div>
 					<hr>
 					<c:if test="${board.boardTag.length() > 0 }">

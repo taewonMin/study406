@@ -141,7 +141,8 @@ window.onload = function(){
 	$('textarea.quizProb').summernote({
 		height:100,
 		toolbar: [
-			  ['view', ['codeview']]
+			  ['view', ['codeview']],
+			  ['table', ['table']]
 			]
 	});
 	$('textarea.quizAnswer').summernote({

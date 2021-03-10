@@ -30,9 +30,11 @@
 					<form action="modify.do" class="form" method="post" id="boardForm" onsubmit="setTag('#targetTag')">
 						<input type="text" class="form-control" id="boardTitle" name="boardTitle" style="margin-bottom: 10px;" required="required" placeholder="제목을 입력해 주세요" value="${board.boardTitle }">
 						<input type="hidden" name="memId" value="${loginUser.memId }">
+						<input type="hidden" name="memName" value="${loginUser.memName }">
 						<input type="hidden" name="boardNo" value="${board.boardNo }">
 						<input type="hidden" name="boardTag" value="" id="targetTag">
 						<select name="boardGroup" required="required" class="form-control" style="margin-bottom: 10px;">
+							<option value="P00" ${board.boardGroup eq 'P00' ? 'selected' : '' }>잡담</option>
 							<option value="P01" ${board.boardGroup eq 'P01' ? 'selected' : '' }>소프트웨어 설계</option>
 							<option value="P02" ${board.boardGroup eq 'P02' ? 'selected' : '' }>소프트웨어 개발</option>
 							<option value="P03" ${board.boardGroup eq 'P03' ? 'selected' : '' }>데이터베이스 구축</option>

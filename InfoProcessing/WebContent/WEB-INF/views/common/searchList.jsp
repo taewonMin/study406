@@ -54,7 +54,7 @@
 								<select class="form-control-sm" onchange="javascript:$('#searchType').val(this.value);" style="border: 0">
 									<option value="all">전체</option>
 									<option value="board_title" ${search.kind eq '게시글' and search.searchType eq 'board_title' ? 'selected' : '' }>제 목</option>
-									<option value="mem_id" ${search.kind eq '게시글' and search.searchType eq 'mem_id' ? 'selected' : '' }>작성자</option>
+									<option value="mem_name" ${search.kind eq '게시글' and search.searchType eq 'mem_name' ? 'selected' : '' }>작성자</option>
 									<option value="board_content" ${search.kind eq '게시글' and search.searchType eq 'board_content' ? 'selected' : '' }>내 용</option>
 									<option value="board_tag" ${search.kind eq '게시글' and search.searchType eq 'board_tag' ? 'selected' : '' }>태그</option>
 								</select>
@@ -67,7 +67,7 @@
 								<select class="form-control-sm" onchange="javascript:$('#searchType').val(this.value);" style="border: 0">
 									<option value="quiz_prob">내 용</option>
 									<option value="quiz_answer" ${search.kind eq '문제' and search.searchType eq 'quiz_answer' ? 'selected' : '' }>해 설</option>
-									<option value="mem_id" ${search.kind eq '문제' and search.searchType eq 'mem_id' ? 'selected' : '' }>작성자</option>
+									<option value="mem_name" ${search.kind eq '문제' and search.searchType eq 'mem_name' ? 'selected' : '' }>작성자</option>
 									<option value="quiz_tag" ${search.kind eq '문제' and search.searchType eq 'quiz_tag' ? 'selected' : '' }>태 그</option>
 								</select>
 							</div>
@@ -79,8 +79,8 @@
 										<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/quiz/select.do?quizId=${quiz.quizId }'">
 											<span style="font-weight: bold;">${quiz.quizTitle }</span>
 											<div style="display: block; font-size: x-small;">
-												<span>${quiz.memId } </span>
-												<span>${quiz.quizRegdate }</span>
+												<span>${quiz.memName } </span>
+												<span><fmt:formatDate value="${quiz.quizRegdate}" pattern="yyyy-MM-dd"/></span>
 												<span>조회 ${quiz.quizViewcnt }</span>
 											</div>
 										</li>
@@ -93,8 +93,8 @@
 										<li class="list-group-item quizItem" onclick="location.href='<%=request.getContextPath()%>/board/detail.do?boardGroup=${board.boardGroup }&boardNo=${board.boardNo }'">
 											<span style="font-weight: bold;">${board.boardTitle }</span>
 											<div style="display: block; font-size: x-small;">
-												<span>${board.memId } </span>
-												<span>${board.boardDate }</span>
+												<span>${board.memName } </span>
+												<span><fmt:formatDate value="${board.boardDate}" pattern="yyyy-MM-dd"/></span>
 												<span>조회 ${board.boardCnt }</span>
 											</div>
 										</li>

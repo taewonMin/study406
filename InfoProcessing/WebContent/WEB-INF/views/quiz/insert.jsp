@@ -112,7 +112,8 @@ function addQuiz(){
 		height:100,
 		placeholder:'문제를 입력하세요.',
 		toolbar: [
-			  ['view', ['codeview']]
+			  ['view', ['codeview']],
+			  ['table', ['table']]
 			]
 	});
 	

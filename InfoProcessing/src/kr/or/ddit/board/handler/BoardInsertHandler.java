@@ -30,6 +30,7 @@ public class BoardInsertHandler implements CommandHandler {
 		}else {
 			String boardTitle = req.getParameter("boardTitle");
 			String memId = req.getParameter("memId");
+			String memName = req.getParameter("memName");
 			String boardContent = req.getParameter("boardContent");
 			String boardTag = req.getParameter("boardTag");
 			BoardVO board = new BoardVO();
@@ -39,6 +40,8 @@ public class BoardInsertHandler implements CommandHandler {
 			board.setBoardContent(boardContent);
 			board.setBoardCnt(0);
 			board.setBoardTag(boardTag);
+			board.setMemName(memName);
+			
 			boardService.insertBoard(board);
 		}
 		
