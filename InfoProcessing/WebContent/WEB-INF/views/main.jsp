@@ -89,7 +89,11 @@ div.container-fluid{
 <%@ include file="/WEB-INF/views/include/footer.jsp" %>
 
 <script>
-changeGroup(document.getElementsByTagName("select")[0]);
+window.onload = function(){
+	document.getElementsByTagName("select")[0].value = 0;
+	changeGroup(document.getElementsByTagName("select")[0]);
+	
+}
 
 function solveProb(){
 	if($('input[name="quizSubCode"]:checked').length==0){
