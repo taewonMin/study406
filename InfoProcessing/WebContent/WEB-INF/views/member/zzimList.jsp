@@ -67,7 +67,7 @@
 										<span style="font-weight: bold;">${quiz.quizTitle } ${quiz.quizNo}번 문제</span>
 										<div style="display: block; font-size: x-small;">
 											<span>${quiz.memName } </span>
-											<span><fmt:formatDate value="${quiz.quizRegdate}" pattern="yyyy-MM-dd"/></span>
+											<span>${quiz.quizRegdate}</span>
 											<span>조회 ${quiz.quizViewcnt }</span>
 										</div>
 									</li>
