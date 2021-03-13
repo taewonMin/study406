@@ -19,6 +19,9 @@ public interface IQuizDAO {
 	// 과목 정보 가져오기
 	public List<SubjectVO> getSubject(SqlMapClient smc, String subParentCode) throws SQLException;
 	
+	// 문제 개수 조회
+	public int selectQuizCnt(SqlMapClient smc, QuizVO quiz) throws SQLException;
+	
 	// 문제 등록
 	public void insertQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
 	
@@ -36,6 +39,9 @@ public interface IQuizDAO {
 	
 	// 문제 삭제
 	public void deleteQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException;
+	
+	// 문제 낱개 삭제
+	public void deleteQuizElement(SqlMapClient smc, QuizVO quiz) throws SQLException;
 
 	public List<SubjectVO> getSubjectParentList(SqlMapClient smc)  throws SQLException;
 

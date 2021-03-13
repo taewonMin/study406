@@ -58,21 +58,26 @@ public class QuizModifyHandler implements CommandHandler {
 				quiz.setStudyNo(studyNo);
 				quiz.setQuizGroup(quizGroup);
 				
-				quizService.remove(quiz);
+				int quizCnt = quizService.getQuizCnt(quiz);
+//				quizService.remove(quiz);
 				
 				for(int i=0; i<jsonArray.size(); i++) {
 					JSONObject obj = (JSONObject)jsonArray.get(i);
 					
 					quiz.setQuizNo(obj.getInt("quizNo"));
 					quiz.setQuizTitle(obj.getString("quizTitle"));
+					quiz.setMemId(obj.getString("memId"));
 					quiz.setQuizProb(obj.getString("quizProb"));
 					quiz.setQuizAnswer(obj.getString("quizAnswer"));
 					quiz.setSubNo(obj.getString("subNo"));
-					quiz.setMemId(obj.getString("memId"));
 					String quizTag = obj.getString("quizTag");
 					quiz.setQuizTag(quizTag==null ? "" : quizTag);
 					
-					quizService.regist(quiz);
+					if(i+1 > quizCnt) { // 추가
+						quizService.regist(quiz);
+					}else {	// 수정
+						quizService.modify(quiz);
+					}
 				}
 			}catch(SQLException e) {
 				response.sendError(HttpServletResponse.SC_INTERNAL_SERVER_ERROR);

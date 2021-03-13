@@ -135,6 +135,13 @@
 	     order by d.quiz_no
 	</select>
 	
+	<select id="selectQuizCnt" resultClass="int">
+		select count(*)
+		from quiz
+		where study_no = #studyNo#
+		and quiz_group = #quizGroup#
+	</select>
+	
 	<insert id="insertQuiz">
 		insert into quiz
 		(quiz_id,quiz_group,quiz_no,quiz_title,quiz_prob,quiz_answer,mem_id,sub_no,quiz_regdate,quiz_viewcnt,study_no
@@ -162,13 +169,15 @@
 	
 	<update id="updateQuiz">
 		update quiz
-		set quiz_title = #quizTitle#
-			,quiz_prob = #quizProb#
+		set quiz_prob = #quizProb#
 			,quiz_answer = #quizAnswer#
 			,sub_no = #subNo#
 			,quiz_regdate = now()
+			<isNotEmpty property="quizTag">
 			,quiz_tag = #quizTag#
-		where quiz_group = #quizGroup#
+			</isNotEmpty>
+		where study_no = #studyNo#
+		and quiz_group = #quizGroup#
 		and quiz_no = #quizNo#
 	</update>
 	
@@ -176,6 +185,13 @@
 		delete from quiz
 		where quiz_group = #quizGroup#
 		and study_no = #studyNo#
+	</delete>
+	
+	<delete id="deleteQuizElement">
+		delete from quiz
+		where quiz_group = #quizGroup#
+		and study_no = #studyNo#
+		and quiz_no = #quizNo#
 	</delete>
 	
 	<delete id="deleteMyQuiz">

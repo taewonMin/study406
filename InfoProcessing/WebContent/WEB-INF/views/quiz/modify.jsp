@@ -206,13 +206,27 @@ function addQuiz(){
 }
 
 function removeQuiz(){
-	quiz.quizNo -= 1;
-	$('div#quiz_'+quiz.quizNo).remove();
-	
-	$('span.quizCnt').text(quiz.quizNo-1);
-	
-	if(quiz.quizNo==1){
-		$('button.removeBtn').css("display","none");
+	if(confirm("문제를 삭제하시겠습니까?")){
+		quiz.quizNo -= 1;
+		$('div#quiz_'+quiz.quizNo).remove();
+		
+		$.ajax({
+			url:'<%= request.getContextPath() %>/quiz/remove.do',
+			type:'post',
+			data:{studyNo:${param.studyNo},
+				  quizGroup:${param.quizGroup},
+				  quizNo:quiz.quizNo,
+				  removeEl:'ok'},
+			error:function(xhr){
+				alert('서버 에러 발생');
+			}
+		});
+		
+		$('span.quizCnt').text(quiz.quizNo-1);
+		
+		if(quiz.quizNo==1){
+			$('button.removeBtn').css("display","none");
+		}
 	}
 }
 

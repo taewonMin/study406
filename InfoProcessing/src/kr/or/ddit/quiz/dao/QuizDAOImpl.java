@@ -72,6 +72,11 @@ public class QuizDAOImpl implements IQuizDAO {
 	public void deleteQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
 		smc.delete("quiz.deleteQuiz", quiz);
 	}
+	
+	@Override
+	public void deleteQuizElement(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		smc.delete("quiz.deleteQuizElement", quiz);
+	}
 
 	@Override
 	public List<SubjectVO> getSubjectParentList(SqlMapClient smc) throws SQLException {
@@ -85,6 +90,12 @@ public class QuizDAOImpl implements IQuizDAO {
 		return quizList;
 	}
 
+	@Override
+	public int selectQuizCnt(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		int cnt = (int) smc.queryForObject("quiz.selectQuizCnt", quiz);
+		return cnt;
+	}
+	
 	@Override
 	public void insertMyQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
 		smc.insert("quiz.insertMyQuiz",quiz);

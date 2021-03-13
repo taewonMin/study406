@@ -54,6 +54,12 @@ public class QuizServiceImpl implements IQuizService {
 	}
 	
 	@Override
+	public int getQuizCnt(QuizVO quiz) throws SQLException {
+		int cnt = quizDao.selectQuizCnt(smc, quiz);
+		return cnt;
+	}
+	
+	@Override
 	public void regist(QuizVO quiz) throws SQLException {
 		
 		int quizId = quizDao.createQuizId(smc);
@@ -75,11 +81,17 @@ public class QuizServiceImpl implements IQuizService {
 
 	@Override
 	public void modify(QuizVO quiz) throws SQLException {
+		quizDao.updateQuiz(smc, quiz);
 	}
 	
 	@Override
 	public void remove(QuizVO quiz) throws SQLException {
 		quizDao.deleteQuiz(smc, quiz);
+	}
+	
+	@Override
+	public void removeEl(QuizVO quiz) throws SQLException {
+		quizDao.deleteQuizElement(smc, quiz);
 	}
 
 	@Override
