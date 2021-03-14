@@ -19,6 +19,9 @@ public interface IQuizDAO {
 	// 과목 정보 가져오기
 	public List<SubjectVO> getSubject(SqlMapClient smc, String subParentCode) throws SQLException;
 	
+	// 과목 상세 코드 가져오기
+	public String getSubjectCode(SqlMapClient smc, QuizVO quiz) throws SQLException;
+	
 	// 문제 개수 조회
 	public int selectQuizCnt(SqlMapClient smc, QuizVO quiz) throws SQLException;
 	

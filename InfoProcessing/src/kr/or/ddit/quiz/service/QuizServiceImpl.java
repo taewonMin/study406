@@ -54,6 +54,12 @@ public class QuizServiceImpl implements IQuizService {
 	}
 	
 	@Override
+	public String getSubjectCode(QuizVO quiz) throws SQLException {
+		String subCode = quizDao.getSubjectCode(smc, quiz);
+		return subCode;
+	}
+	
+	@Override
 	public int getQuizCnt(QuizVO quiz) throws SQLException {
 		int cnt = quizDao.selectQuizCnt(smc, quiz);
 		return cnt;

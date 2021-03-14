@@ -8,7 +8,6 @@ public class SubjectVO {
 	private String subName;
 	private String subDescript;
 	
-	
 	public String getSubNo() {
 		return subNo;
 	}

@@ -89,6 +89,14 @@
 		where sub_parent_code = #subParentCode#
 	</select>
 	
+	<select id="getSubjectCode" resultClass="str">
+		select substr(sub_no,4) as subCode
+		from quiz
+		where quiz_Group = #quizGroup#
+		AND study_no = #studyNo#
+		AND quiz_no = #quizNo#
+	</select>
+	
 	<select id="createQuizId" resultClass="int">
 		select ifnull(max(quiz_id)+1,1)
 		from quiz

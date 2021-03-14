@@ -42,6 +42,12 @@ public class QuizDAOImpl implements IQuizDAO {
 	}
 
 	@Override
+	public String getSubjectCode(SqlMapClient smc, QuizVO quiz) throws SQLException {
+		String subCode = (String) smc.queryForObject("quiz.getSubjectCode",quiz);
+		return subCode;
+	}
+	
+	@Override
 	public void insertQuiz(SqlMapClient smc, QuizVO quiz) throws SQLException {
 		smc.insert("quiz.insertQuiz", quiz);
 	}

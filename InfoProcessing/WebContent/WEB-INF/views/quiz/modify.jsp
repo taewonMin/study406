@@ -160,9 +160,30 @@ window.onload = function(){
 	
 };
 //과목 상세 코드 초기화
+var temp = 1;
 for(var i=1; i<${quizList.size()}+1; i++){
-	var obj = document.getElementById("subject_"+i);
-	subjectChange(obj);
+	$.ajax({
+		url:'<%=request.getContextPath()%>/subject/list_detail.do',
+		type:'post',
+		data:{studyNo:${param.studyNo},
+			  quizGroup:${param.quizGroup},
+			  quizNo:i,
+			  subParentCode:$('select#subject_'+i).val()},
+		success:function(dataMap){
+			if(dataMap.subList.length > 0){
+				$('div.subject_'+temp).css("display","block");
+				printData(dataMap.subList,$('div.subject_'+temp),$('#subject-template'),'div.subject_'+temp+' select');
+				$('div.subject_'+temp+' select').val(dataMap.subCode);
+			}else{
+				$('div.subject_'+temp).css("display","none");
+				$('div.subject_'+temp+' select').remove();
+			}
+			temp++;
+		},
+		error:function(){
+			alert("서버 에러 발생");			
+		}
+	});
 }
 // 문제 삭제 버튼 초기화
 if(${quizList.size()} > 0){
@@ -184,7 +205,8 @@ function addQuiz(){
 		height:100,
 		placeholder:'문제를 입력하세요.',
 		toolbar: [
-			  ['view', ['codeview']]
+				['view', ['codeview']],
+			  	['table', ['table']]
 			]
 	});
 	
@@ -288,13 +310,6 @@ function modifyQuiz(){
 			alert('서버 에러 발생');
 		}
 	});
-}
-
-function checkTab(){
-	if(event.keyCode == 9){
-		alert('check');
-		return;
-	}
 }
 
 </script>

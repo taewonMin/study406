@@ -17,6 +17,9 @@ public interface IQuizService {
 	// 과목 정보 가져오기
 	public List<SubjectVO> getSubject(String subParentCode) throws SQLException;
 	
+	// 과목 상세 코드 가져오기
+	public String getSubjectCode(QuizVO quiz) throws SQLException;
+	
 	// 문제 개수 조회
 	public int getQuizCnt(QuizVO quiz) throws SQLException;
 	
