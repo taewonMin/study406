@@ -51,12 +51,15 @@
 						</c:if>
 						</c:forEach>
 						<c:if test="${quizNum==1 }">
-							<button class="btn btn-primary" style="display:none;" id="prevBtn" type="button" onclick="prev_go();">
-								<i class="fa fa-chevron-left" aria-hidden="true"></i>
-							</button>
-							<button class="btn btn-primary" style="float:right;" id="nextBtn" type="button" onclick="next_go();">
-								<i class="fa fa-chevron-right" aria-hidden="true"></i>
-							</button>
+							<div style="display: block;">
+								<button class="btn btn-primary" style="display:none;" id="prevBtn" type="button" onclick="prev_go();">
+									<i class="fa fa-chevron-left" aria-hidden="true"></i>
+								</button>
+								<button class="btn btn-primary" style="float:right;" id="nextBtn" type="button" onclick="next_go();">
+									<i class="fa fa-chevron-right" aria-hidden="true"></i>
+								</button>
+							</div>
+							
 						</c:if>
 						<c:if test="${quizAnswer==0 }">
 							<div class="row" style="clear:both;">
