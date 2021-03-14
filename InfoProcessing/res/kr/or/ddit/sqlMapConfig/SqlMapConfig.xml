@@ -8,7 +8,8 @@
 
 	<settings cacheModelsEnabled="true" enhancementEnabled="true"
 		lazyLoadingEnabled="true" maxRequests="32" maxSessions="10"
-		maxTransactions="5" useStatementNamespaces="true" />
+		maxTransactions="5" useStatementNamespaces="true"
+		 />
 		
 		
 	<typeAlias alias="int" type="java.lang.Integer"/>
