@@ -37,11 +37,14 @@ public class SubjectDetailListHandler implements CommandHandler {
 		quiz.setQuizGroup(quizGroup);
 		quiz.setQuizNo(quizNo);
 		
+		
 		try {
 			List<SubjectVO> subList = quizService.getSubject(subParentCode);
 			
 			String subCode = quizService.getSubjectCode(quiz);
 			
+			System.out.println(quizNo+"###################");
+			System.out.println(subCode+"################");
 			Map<String, Object> dataMap = new HashMap<String,Object>();
 			
 			dataMap.put("subList", subList);

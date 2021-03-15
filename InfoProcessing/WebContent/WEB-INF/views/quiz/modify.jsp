@@ -160,7 +160,6 @@ window.onload = function(){
 	
 };
 //과목 상세 코드 초기화
-var temp = 1;
 for(var i=1; i<${quizList.size()}+1; i++){
 	$.ajax({
 		url:'<%=request.getContextPath()%>/subject/list_detail.do',
@@ -169,16 +168,16 @@ for(var i=1; i<${quizList.size()}+1; i++){
 			  quizGroup:${param.quizGroup},
 			  quizNo:i,
 			  subParentCode:$('select#subject_'+i).val()},
+	  	async:false,
 		success:function(dataMap){
 			if(dataMap.subList.length > 0){
-				$('div.subject_'+temp).css("display","block");
-				printData(dataMap.subList,$('div.subject_'+temp),$('#subject-template'),'div.subject_'+temp+' select');
-				$('div.subject_'+temp+' select').val(dataMap.subCode);
+				$('div.subject_'+i).css("display","block");
+				printData(dataMap.subList,$('div.subject_'+i),$('#subject-template'),'div.subject_'+i+' select');
+				$('div.subject_'+i+' select').val(dataMap.subCode);
 			}else{
-				$('div.subject_'+temp).css("display","none");
-				$('div.subject_'+temp+' select').remove();
+				$('div.subject_'+i).css("display","none");
+				$('div.subject_'+i+' select').remove();
 			}
-			temp++;
 		},
 		error:function(){
 			alert("서버 에러 발생");			
